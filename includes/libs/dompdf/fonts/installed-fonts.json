@@ -1,0 +1,86 @@
+{
+    "sans-serif": {
+        "normal": "includes\/libs\/dompdf\/fonts\/\/Helvetica",
+        "bold": "includes\/libs\/dompdf\/fonts\/\/Helvetica-Bold",
+        "italic": "includes\/libs\/dompdf\/fonts\/\/Helvetica-Oblique",
+        "bold_italic": "includes\/libs\/dompdf\/fonts\/\/Helvetica-BoldOblique"
+    },
+    "times": {
+        "normal": "includes\/libs\/dompdf\/fonts\/\/Times-Roman",
+        "bold": "includes\/libs\/dompdf\/fonts\/\/Times-Bold",
+        "italic": "includes\/libs\/dompdf\/fonts\/\/Times-Italic",
+        "bold_italic": "includes\/libs\/dompdf\/fonts\/\/Times-BoldItalic"
+    },
+    "times-roman": {
+        "normal": "includes\/libs\/dompdf\/fonts\/\/Times-Roman",
+        "bold": "includes\/libs\/dompdf\/fonts\/\/Times-Bold",
+        "italic": "includes\/libs\/dompdf\/fonts\/\/Times-Italic",
+        "bold_italic": "includes\/libs\/dompdf\/fonts\/\/Times-BoldItalic"
+    },
+    "courier": {
+        "normal": "includes\/libs\/dompdf\/fonts\/\/Courier",
+        "bold": "includes\/libs\/dompdf\/fonts\/\/Courier-Bold",
+        "italic": "includes\/libs\/dompdf\/fonts\/\/Courier-Oblique",
+        "bold_italic": "includes\/libs\/dompdf\/fonts\/\/Courier-BoldOblique"
+    },
+    "helvetica": {
+        "normal": "includes\/libs\/dompdf\/fonts\/\/Helvetica",
+        "bold": "includes\/libs\/dompdf\/fonts\/\/Helvetica-Bold",
+        "italic": "includes\/libs\/dompdf\/fonts\/\/Helvetica-Oblique",
+        "bold_italic": "includes\/libs\/dompdf\/fonts\/\/Helvetica-BoldOblique"
+    },
+    "zapfdingbats": {
+        "normal": "includes\/libs\/dompdf\/fonts\/\/ZapfDingbats",
+        "bold": "includes\/libs\/dompdf\/fonts\/\/ZapfDingbats",
+        "italic": "includes\/libs\/dompdf\/fonts\/\/ZapfDingbats",
+        "bold_italic": "includes\/libs\/dompdf\/fonts\/\/ZapfDingbats"
+    },
+    "symbol": {
+        "normal": "includes\/libs\/dompdf\/fonts\/\/Symbol",
+        "bold": "includes\/libs\/dompdf\/fonts\/\/Symbol",
+        "italic": "includes\/libs\/dompdf\/fonts\/\/Symbol",
+        "bold_italic": "includes\/libs\/dompdf\/fonts\/\/Symbol"
+    },
+    "serif": {
+        "normal": "includes\/libs\/dompdf\/fonts\/\/Times-Roman",
+        "bold": "includes\/libs\/dompdf\/fonts\/\/Times-Bold",
+        "italic": "includes\/libs\/dompdf\/fonts\/\/Times-Italic",
+        "bold_italic": "includes\/libs\/dompdf\/fonts\/\/Times-BoldItalic"
+    },
+    "monospace": {
+        "normal": "includes\/libs\/dompdf\/fonts\/\/Courier",
+        "bold": "includes\/libs\/dompdf\/fonts\/\/Courier-Bold",
+        "italic": "includes\/libs\/dompdf\/fonts\/\/Courier-Oblique",
+        "bold_italic": "includes\/libs\/dompdf\/fonts\/\/Courier-BoldOblique"
+    },
+    "fixed": {
+        "normal": "includes\/libs\/dompdf\/fonts\/\/Courier",
+        "bold": "includes\/libs\/dompdf\/fonts\/\/Courier-Bold",
+        "italic": "includes\/libs\/dompdf\/fonts\/\/Courier-Oblique",
+        "bold_italic": "includes\/libs\/dompdf\/fonts\/\/Courier-BoldOblique"
+    },
+    "dejavu sans": {
+        "bold": "includes\/libs\/dompdf\/fonts\/\/DejaVuSans-Bold",
+        "bold_italic": "includes\/libs\/dompdf\/fonts\/\/DejaVuSans-BoldOblique",
+        "italic": "includes\/libs\/dompdf\/fonts\/\/DejaVuSans-Oblique",
+        "normal": "includes\/libs\/dompdf\/fonts\/\/DejaVuSans"
+    },
+    "dejavu sans mono": {
+        "bold": "includes\/libs\/dompdf\/fonts\/\/DejaVuSansMono-Bold",
+        "bold_italic": "includes\/libs\/dompdf\/fonts\/\/DejaVuSansMono-BoldOblique",
+        "italic": "includes\/libs\/dompdf\/fonts\/\/DejaVuSansMono-Oblique",
+        "normal": "includes\/libs\/dompdf\/fonts\/\/DejaVuSansMono"
+    },
+    "dejavu serif": {
+        "bold": "includes\/libs\/dompdf\/fonts\/\/DejaVuSerif-Bold",
+        "bold_italic": "includes\/libs\/dompdf\/fonts\/\/DejaVuSerif-BoldItalic",
+        "italic": "includes\/libs\/dompdf\/fonts\/\/DejaVuSerif-Italic",
+        "normal": "includes\/libs\/dompdf\/fonts\/\/DejaVuSerif"
+    },
+    "arial": {
+        "normal": "includes\/libs\/dompdf\/fonts\/\/arial",
+        "italic": "includes\/libs\/dompdf\/fonts\/\/arial_italic",
+        "bold": "includes\/libs\/dompdf\/fonts\/\/arial_bold",
+        "bold_italic": "includes\/libs\/dompdf\/fonts\/\/arial_bold_italic"
+    }
+}
