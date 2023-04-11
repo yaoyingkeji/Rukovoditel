@@ -1,0 +1,7 @@
+2022-10-10 18:46:55Array
+(
+    [vpbx_api_key] => 87dmqslh7253clm5twr0rx847in1zz2y
+    [sign] => 645f47d31b276b7af32c5d7153039c2f78ab33d9c4c8129dbb0feda6145bc7f4
+    [json] => {"entry_id":"MTU3MzM1NDM5ODA=","call_direction":1,"from":{"number":"79787942412"},"to":{"extension":"1","number":"sip:admin_sip@vpbx400252892.mangosip.ru"},"line_number":"73433633348","create_time":1665396348,"forward_time":1665396348,"talk_time":0,"end_time":1665396352,"entry_result":0,"disconnect_reason":1100}
+)
+2022-10-10 18:46:55OK12022-10-10 18:46:55OK2
