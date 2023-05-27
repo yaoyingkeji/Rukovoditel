@@ -14,6 +14,7 @@ switch($app_module_action)
             'title' => $_POST['title'],
             'width' => (isset($_POST['width']) ? $_POST['width'] : ''),
             'exclude_values' => (isset($_POST['exclude_values']) ? implode(',', $_POST['exclude_values']) : ''),
+            'exclude_values_not_in_listing' => $_POST['exclude_values_not_in_listing']??0,
             'display_type' => (isset($_POST['display_type']) ? $_POST['display_type'] : ''),
             'search_type_match' => (isset($_POST['search_type_match']) ? $_POST['search_type_match'] : ''),
             'height' => (isset($_POST['height']) ? $_POST['height'] : ''),
@@ -176,6 +177,7 @@ switch($app_module_action)
 				<label class="col-md-3 control-label" for="fields_id">' . TEXT_EXCLUDE_VALUES . '</label>
 			    <div class="col-md-9">
 			  	  ' . select_tag('exclude_values[]', $choices, $obj['exclude_values'], array('class' => 'form-control chosen-select', 'multiple' => 'multiple')) . '
+                                  <label class="help-block">' . input_checkbox_tag('exclude_values_not_in_listing',1,['checked'=>$obj['exclude_values_not_in_listing']]) . ' ' . TEXT_EXCLUDE_VALUES_NOT_IN_LISTING .'</label>    
 			    </div>
 			  </div>
 			 ';
@@ -278,6 +280,36 @@ switch($app_module_action)
 			  </div>
 			 ';
         }
+        
+        if(in_array($field_info['type'],fields_types::get_numeric_types()))
+        {
+            $choices = [
+                'input' => TEXT_FIELDTYPE_INPUT_TITLE,
+                'input_range' => TEXT_FIELDTYPE_INPUT_TITLE . ' (' . TEXT_DATE_FROM. '/'  .TEXT_DATE_TO . ')',
+            ];
+            $html .= '
+                <div class="form-group">
+                    <label class="col-md-3 control-label" for="fields_id">' . TEXT_DISPLAY_AS . '</label>
+                    <div class="col-md-9">
+                          ' . select_tag('display_type', $choices, $obj['display_type'], array('class' => 'form-control required')) . '
+                    </div>
+                </div>
+                 ';
+
+            if($panels_info['position'] == 'horizontal')
+            {
+
+                $html .= '
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" for="width">' . TEXT_WIDHT . '</label>
+                            <div class="col-md-9">	
+                                  ' . select_tag('width', ['input-small' => TEXT_INPTUT_SMALL, 'input-medium' => TEXT_INPUT_MEDIUM], $obj['width'], array('class' => 'form-control input-medium')) . '
+                            </div>			
+                        </div>
+				 ';
+            }
+        }
+                
 
         echo $html;
 

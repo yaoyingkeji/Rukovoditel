@@ -268,7 +268,7 @@ var App = function () {
     var handleFixedSidebar = function () {
         var menu = $('.page-sidebar-menu');
 
-        if (menu.parent('.slimScrollDiv').size() === 1) { // destroy existing instance before updating the height
+        if (menu.parent('.slimScrollDiv').length === 1) { // destroy existing instance before updating the height
             menu.slimScroll({
                 destroy: true
             });
@@ -276,7 +276,7 @@ var App = function () {
             $('.page-sidebar').removeAttr('style');
         }
 
-        if ($('.page-sidebar-fixed').size() === 0) {
+        if ($('.page-sidebar-fixed').length === 0) {
             handleSidebarAndContentHeight();
             return;
         }
@@ -579,9 +579,9 @@ var App = function () {
             return;
         }
         var test = $("input[type=checkbox]:not(.toggle), input[type=radio]:not(.toggle, .star)");
-        if (test.size() > 0) {
+        if (test.length > 0) {
             test.each(function () {
-                if ($(this).parents(".checker").size() == 0) {
+                if ($(this).parents(".checker").length == 0) {
                     $(this).show();
                     $(this).uniform();
                 }
@@ -626,9 +626,9 @@ var App = function () {
     var handleModals = function () {
         // fix stackable modal issue: when 2 or more modals opened, closing one of modal will remove .modal-open class. 
         $('body').on('hide.bs.modal', function () {
-           if ($('.modal:visible').size() > 1 && $('html').hasClass('modal-open') == false) {
+           if ($('.modal:visible').length > 1 && $('html').hasClass('modal-open') == false) {
               $('html').addClass('modal-open');
-           } else if ($('.modal:visible').size() <= 1) {
+           } else if ($('.modal:visible').length <= 1) {
               $('html').removeClass('modal-open');
            }
         });
@@ -727,7 +727,7 @@ var App = function () {
             return;
         }
 
-        if (jQuery(".fancybox-button").size() > 0) {
+        if (jQuery(".fancybox-button").length > 0) {
             jQuery(".fancybox-button").fancybox({
                 groupAttr: 'data-rel',
                 prevEffect: 'none',
@@ -816,13 +816,13 @@ var App = function () {
 
             $('.header > .header-inner').removeClass("container");
 
-            if ($('.page-container').parent(".container").size() === 1) {
+            if ($('.page-container').parent(".container").length === 1) {
                 $('.page-container').insertAfter('body > .clearfix');
             }
 
-            if ($('.footer > .container').size() === 1) {
+            if ($('.footer > .container').length === 1) {
                 $('.footer').html($('.footer > .container').html());
-            } else if ($('.footer').parent(".container").size() === 1) {
+            } else if ($('.footer').parent(".container").length === 1) {
                 $('.footer').insertAfter('.page-container');
             }
 
@@ -1101,7 +1101,7 @@ var App = function () {
 
         // wrapper function to scroll(focus) to an element
         scrollTo: function (el, offeset) {
-            pos = (el && el.size() > 0) ? el.offset().top : 0;
+            pos = (el && el.length > 0) ? el.offset().top : 0;
             jQuery('html,body').animate({
                 scrollTop: pos + (offeset ? offeset : 0)
             }, 'slow');
@@ -1148,7 +1148,7 @@ var App = function () {
         initUniform: function (els) {
             if (els) {
                 jQuery(els).each(function () {
-                    if ($(this).parents(".checker").size() == 0) {
+                    if ($(this).parents(".checker").length == 0) {
                         $(this).show();
                         $(this).uniform();
                     }

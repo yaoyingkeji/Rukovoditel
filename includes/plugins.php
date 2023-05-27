@@ -13,6 +13,11 @@
       {          
         require($v);
       }
+      elseif(is_file($v = 'plugins/' . $plugin .'/languages/english.php'))
+      {
+          require($v);
+      }
+          
                    
       //include plugin
       if(is_file('plugins/' . $plugin .'/application_top.php'))

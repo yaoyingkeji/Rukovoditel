@@ -28,6 +28,15 @@ class fieldtype_phone
 		
 		$cfg[TEXT_SETTINGS][] = array('title' => TEXT_IS_UNIQUE_FIELD_VALUE, 'name' => 'is_unique', 'type' => 'dropdown', 'choices' => fields_types::get_is_unique_choices(_POST('entities_id')), 'tooltip_icon' => TEXT_IS_UNIQUE_FIELD_VALUE_TIP, 'params' => array('class' => 'form-control input-large'));
 		$cfg[TEXT_SETTINGS][] = array('title'=>TEXT_ERROR_MESSAGE, 'name'=>'unique_error_msg','type'=>'input','tooltip_icon'=>TEXT_UNIQUE_FIELD_VALUE_ERROR_MSG_TIP,'tooltip'=>TEXT_DEFAULT . ': ' . TEXT_UNIQUE_FIELD_VALUE_ERROR,'params'=>array('class'=>'form-control input-xlarge'));
+                
+                $cfg[TEXT_DYNAMIC_MASK][] = array(
+                    'title' => TEXT_INPUT_FIELD_MASK, 
+                    'name' => 'dynamic_mask', 
+                    'type' => 'input', 
+                    'tooltip' => TEXT_INPUT_FIELD_MASK_TIP . '<br>' . 
+                    TEXT_FIELDTYPE_INPUT_DYNAMIC_MASK_INFO . '<br>' . TEXT_EXAMPLE . ': aa-9{1,4} <br><br>' . 
+                    TEXT_FIELDTYPE_INPUT_DYNAMIC_MASK_OPTIONAL_INFO . '<br>' . TEXT_EXAMPLE . ': 999[-999]', 
+                    'params' => array('class' => 'form-control'));
 		
 		if(is_ext_installed())
 		{
@@ -110,15 +119,33 @@ END";
 
 		$script = '';
 
-		if(strlen($cfg->get('mask'))>0)
+                if (strlen($cfg->get('dynamic_mask')))
+                {            
+                    $script = '
+                        <script>
+                          jQuery(function($){                                    
+                             $(".field_' . $field['id'] . '").inputmask({
+                                mask: "' . $cfg->get('dynamic_mask') . '",
+                                greedy: false,
+                                clearIncomplete:true,
+                                definitions: {
+                                    "я": {
+                                      validator: "[А-ЯЁа-яё]"                              
+                                    }
+                                  }
+                            });               
+                          });
+                        </script>';
+                }
+                elseif(strlen($cfg->get('mask'))>0)
 		{
-			$script = '
-        <script>
-          jQuery(function($){
-             $(".field_' . $field['id'] . '").mask("' . $cfg->get('mask') . '");
-          });
-        </script>
-      ';
+                    $script = '
+                        <script>
+                          jQuery(function($){
+                             $(".field_' . $field['id'] . '").mask("' . $cfg->get('mask') . '");
+                          });
+                        </script>
+                      ';
 		}
 
 		return input_tag('fields[' . $field['id'] . ']',$obj['field_' . $field['id']],$attributes) . $script;

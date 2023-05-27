@@ -90,7 +90,7 @@ class listing_highlight
             if (!isset($item['field_' . $rule['fields_id']]))
                 continue;
 
-            if ($this->match_rule($rule, $item['field_' . $rule['fields_id']]))
+            if ($this->match_rule($rule, $item['field_' . $rule['fields_id']], $item))
             {
                 return ' listing_highlight_' . $this->entities_id . '_' . $rule['id'];
             }
@@ -99,7 +99,7 @@ class listing_highlight
         return '';
     }
 
-    function match_rule($rule, $item_field_value)
+    function match_rule($rule, $item_field_value, $item)
     {
         switch (listing_highlight::get_field_type_key($rule['type']))
         {
@@ -163,8 +163,27 @@ class listing_highlight
 
                 if (!strlen($item_field_value))
                     return false;
+                
+                $fields_values = $rule['fields_values'];
+                     
+                //check item field values
+                if(preg_match_all('/\[(\d+)\]/',$fields_values,$matches))
+                {
+                    foreach($matches[1] as $k=>$v)
+                    {
+                        if(isset($item['field_'. $v]) and is_numeric($item['field_'. $v]))
+                        {
+                            $fields_values = str_replace('[' . $v . ']',$item['field_'. $v],$fields_values);
+                        }
+                        else
+                        {
+                            $fields_values = str_replace('[' . $v . ']',0,$fields_values);
+                        }
+                    }                    
+                }
+                                
 
-                $values = preg_split("/(&|\|)/", $rule['fields_values'], 0, PREG_SPLIT_DELIM_CAPTURE);
+                $values = preg_split("/(&|\|)/", $fields_values, 0, PREG_SPLIT_DELIM_CAPTURE);
 
                 $default_condition = false;
 
@@ -276,6 +295,7 @@ class listing_highlight
             'fieldtype_grouped_users',
             'fieldtype_tags',
             'fieldtype_stages',
+            'fieldtype_color',
         ];
 
         $allowed_types['boolean'] = [

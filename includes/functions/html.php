@@ -115,6 +115,8 @@ function select_tag($name, $choices = array(), $value = '', $attributes = array(
     $default = array('name' => $name, 'id' => generate_id_from_name($name));
 
     $html = '';
+    
+    $value = $value??'';
 
     if(!is_array($value))
     {
@@ -355,9 +357,9 @@ function button_tag($value, $url, $is_dialog = true, $attributes = array(), $lef
 {
     $default = array('class' => 'btn btn-primary', 'type' => 'button');
 
-    if(strlen($left_icon) > 0)
+    if(strlen($left_icon??'') > 0)
         $left_icon = app_render_icon($left_icon) . ' ';
-    if(strlen($right_icon) > 0)
+    if(strlen($right_icon??'') > 0)
         $right_icon = ' ' . app_render_icon($right_icon);
 
     return '<button ' . ($is_dialog ? 'onClick="open_dialog(\'' . $url . '\'); return false;"' : (strlen($url) > 0 ? 'onClick="location.href=\'' . $url . '\'"' : '')) . ' ' . tag_attributes_to_html($default, $attributes) . '>' . $left_icon . $value . $right_icon . '</button>';
@@ -452,7 +454,7 @@ function select_entities_tag($name, $choices = array(), $value = '', $attributes
   			
   			$("#' . $field_id . '").select2({		      
 				    width: "100%",		      
-				    dropdownParent: $("#ajax-modal"),
+				    ' . (IS_AJAX ? 'dropdownParent: $("#ajax-modal"),':'') . '
 				    "language":{
 				      "noResults" : function () { return "' . addslashes(TEXT_NO_RESULTS_FOUND) . '"; },
 				  		"searching" : function () { return "' . addslashes(TEXT_SEARCHING) . '"; },

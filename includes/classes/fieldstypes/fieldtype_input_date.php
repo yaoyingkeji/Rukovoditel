@@ -154,7 +154,9 @@ class fieldtype_input_date
             $value = date('Y-m-d', strtotime("+" . (int) $cfg->get('default_value') . " day"));
         }
 
-        $attributes = array('class' => 'form-control fieldtype_input_date field_' . $field['id'] . ($field['is_required'] == 1 ? ' required' : '') . ($cfg->get('is_unique') > 0 ? ' is-unique' : ''));
+        $attributes = array('class' => 'form-control fieldtype_input_date field_' . $field['id'] . 
+            ($field['is_required'] == 1 ? ' required' : '') . 
+            ($cfg->get('is_unique') > 0 ? ' is-unique' : ''));
 
         $attributes = fields_types::prepare_uniquer_error_msg_param($attributes, $cfg);
 

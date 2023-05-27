@@ -23,7 +23,10 @@ class default_filters {
             db_perform('app_reports',$sql_data);		
             $reports_id = db_insert_id();
 
-            reports::auto_create_parent_reports($reports_id);
+            if($auto_create_parent)
+            {
+                reports::auto_create_parent_reports($reports_id);
+            }
         }
         else
         {

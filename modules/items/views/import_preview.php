@@ -165,9 +165,13 @@ echo  '<br>
 	})
 		
   function bind_field(col)
-  {
-    $.post("<?php echo url_for('items/import','action=bind_field&path=' . $app_path . '&multilevel_import=' . $multilevel_import) ?>", $("#bind_field_form").serialize()).success(function(data) { 
-            
+  {        
+    $.ajax({
+        method: 'POST',
+        url: '<?=  url_for('items/import','action=bind_field&path=' . $app_path . '&multilevel_import=' . $multilevel_import) ?>',
+        data: $("#bind_field_form").serialize()
+    }).done(function (data){
+    
       if(data.trim()!='')
       {
         $('#import_col_'+col).html('<div class="binded_field_container" >'+data+'</div>');

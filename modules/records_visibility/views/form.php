@@ -11,6 +11,7 @@
             <li class="active"><a href="#general_info"  data-toggle="tab"><?php echo TEXT_GENERAL_INFO ?></a></li>
             <li><a href="#merged_fields_tab"  data-toggle="tab"><?php echo TEXT_LINKED_ENTITIES ?></a></li>    
             <li><a href="#mysql_query_tab"  data-toggle="tab"><?php echo TEXT_MYSQL_QUERY ?></a></li>    
+            <li><a href="#php_code_tab"  data-toggle="tab"><?php echo TEXT_PHP_CODE ?></a></li>    
             <li><a href="#note"  data-toggle="tab"><?php echo TEXT_NOTE ?></a></li>
         </ul> 
 
@@ -88,6 +89,21 @@
                         <?php echo textarea_tag('mysql_query', $obj['mysql_query'], array('class' => 'form-control code_mirror','mode'=>'sql')) ?>
                         <?php echo tooltip_text(TEXT_AVAILABLE_VALUES . ': <code>[current_user_id]</code>, <code>[current_user_group_id]</code>') ?>
                         <?php echo tooltip_text(TEXT_EXAMPLE . ': <code>(select count(*) from app_entity_1 where id=e.id and id=[current_user_id])>0</code>') ?>
+                    </div>			
+                </div> 
+            </div>
+            
+            <div class="tab-pane fade" id="php_code_tab">
+                <div class="form-group">
+                    <div class="col-md-12">	
+                        <p><?php echo TEXT_RECORDS_VISIBILITY_PHP_CODE_INFO ?></p>
+                    </div>
+                    <div class="col-md-12">	
+                        <?php echo textarea_tag('php_code', $obj['php_code'], array('class' => 'form-control code_mirror','mode'=>'php')) ?>
+                        <?php echo tooltip_text(TEXT_AVAILABLE_VALUES . ': <code>$app_user[\'id\']</code>, <code>$app_user[\'group_id\']</code>, <code>$app_user[\'fields\'][\'field_X\']</code>') ?>
+                        <?php echo tooltip_text(TEXT_EXAMPLE . ': <code><br> 
+                            $items_list = [1,2,3];<br>
+                            $output_value = "e.id in (" . db_input_in($items_list) . ")"; </code>') ?>
                     </div>			
                 </div> 
             </div>

@@ -565,7 +565,7 @@ class reports
         $listing_order_fields = array();
         $listing_order_clauses = array();
 
-        foreach (explode(',', $reports_order_fields) as $key => $order_field)
+        foreach (explode(',', $reports_order_fields??'') as $key => $order_field)
         {
             if (strlen($order_field) == 0)
                 continue;
@@ -867,7 +867,7 @@ class reports
                             $values[2] = fieldtype_jalali_calendar::jalali_date_to_gregorian($values[2]);
                         }
 
-                        $sql[] = $field_name . "<=" . get_date_timestamp($values[2]);                                                
+                        $sql[] = $field_name . "<=" .  (strlen($values[2])==10 ? get_date_timestamp($values[2])+86399 : get_date_timestamp($values[2]));                                                
                     }
                     
                     $sql[] = "{$field_name}!=0";
@@ -1095,6 +1095,21 @@ class reports
 
         switch ($field_info['type'])
         {
+            case 'fieldtype_related_mail':
+                if($filters_values=='has_related_emails')
+                {
+                    $html = TEXT_HAS_RELATED_EMALS;
+                }
+                elseif($filters_values=='has_unread_emails')
+                {
+                    $html = TEXT_HAS_UNREAD_RELATED_EMALS;
+                }
+                else
+                {
+                    $html = TEXT_NO_RELATED_EMALS;
+                }
+                
+                break;
             case 'fieldtype_user_accessgroups':
                 $list = array();
                 foreach (explode(',', $filters_values) as $id)

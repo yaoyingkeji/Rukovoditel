@@ -290,7 +290,7 @@ switch($app_module_action)
 						<link href="template/css/style-responsive.css?v=2" rel="stylesheet" type="text/css"/>
 						<link href="template/css/plugins.css" rel="stylesheet" type="text/css"/>
 						<link rel="stylesheet" type="text/css" href="css/default.css?v=' . PROJECT_VERSION . '"/>
-						<script src="template/plugins/jquery-1.10.2.min.js" type="text/javascript"></script>		
+						<script src="' . CFG_PATH_TO_JQUERY . '" type="text/javascript"></script>		
 											
         </head>
         <body>

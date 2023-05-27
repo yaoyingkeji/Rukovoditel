@@ -35,6 +35,7 @@ $(function(){
               height: 300,
               lineWrapping: true,
               matchBrackets: true,
+              theme: app_skin_dir=='Dark_Mode' ? 'darcula':'default',
               extraKeys: {
                          "F11": function(cm) {
                            cm.setOption("fullScreen", !cm.getOption("fullScreen"));

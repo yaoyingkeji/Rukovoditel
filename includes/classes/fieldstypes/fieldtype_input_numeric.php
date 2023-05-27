@@ -74,6 +74,7 @@ class fieldtype_input_numeric
 
         $attributes = array('class' => 'number form-control ' . $input_width .
             ' fieldtype_input_numeric field_' . $field['id'] .
+            ($field['is_heading'] == 1 ? ' autofocus' : '') .
             ($field['is_required'] == 1 ? ' required noSpace' : '') .
             ($cfg->get('is_unique') > 0 ? ' is-unique' : '') .
             ($decimals == 0 ? ' digitsCustom' : '')
@@ -220,7 +221,7 @@ class fieldtype_input_numeric
             return $value;
         }
 
-        if(strlen($cfg->get('number_format')) > 0 and strlen($options['value']) > 0 and is_numeric($options['value']))
+        if(strlen($cfg->get('number_format')) > 0 and strlen($options['value']??'') > 0 and is_numeric($options['value']))
         {
             $format = explode('/', str_replace('*', '', $cfg->get('number_format')));
 
@@ -232,7 +233,7 @@ class fieldtype_input_numeric
         }
 
         //add prefix and sufix
-        $value = (strlen($value) ? $cfg->get('prefix') . $value . $cfg->get('suffix') : '');
+        $value = (strlen($value??'') ? $cfg->get('prefix') . $value . $cfg->get('suffix') : '');
 
         return $value;
     }

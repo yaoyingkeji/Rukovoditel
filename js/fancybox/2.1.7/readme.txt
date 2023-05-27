@@ -1,0 +1,1 @@
+https://web.archive.org/web/20210320162609/http://fancyapps.com/fancybox/

@@ -17,10 +17,18 @@ switch ($app_module_action)
         $listing_sql_query_join = '';
 
         //add filters from defualt report
-        $default_reports_query = db_query("select * from app_reports where entities_id='" . db_input($parent_entity_id) . "' and reports_type='default'");
+        $default_reports_query = db_query("select r.id from app_reports r where r.entities_id='" . db_input($parent_entity_id) . "' and r.reports_type='form_add_in{$entity_id}' and (select count(*) from app_reports_filters rf where rf.reports_id=r.id)>0");
         if ($default_reports = db_fetch_array($default_reports_query))
         {
             $listing_sql_query = reports::add_filters_query($default_reports['id'], $listing_sql_query);
+        }
+        else
+        {    
+            $default_reports_query = db_query("select * from app_reports where entities_id='" . db_input($parent_entity_id) . "' and reports_type='default'");
+            if ($default_reports = db_fetch_array($default_reports_query))
+            {
+                $listing_sql_query = reports::add_filters_query($default_reports['id'], $listing_sql_query);
+            }
         }
         
         if (isset($_POST['search']))
@@ -28,7 +36,20 @@ switch ($app_module_action)
             $items_search = new items_search($parent_entity_id);
             $items_search->set_search_keywords($_POST['search']);
             
-            $listing_sql_query .= $items_search->build_search_sql_query('and');
+            $listing_sql_query .= "and (e.id>0 " . $items_search->build_search_sql_query('and');
+            
+            //add search for second parent
+            if($app_entities_cache[$parent_entity_id]['parent_id']>0)
+            {
+                $items_search = new items_search($app_entities_cache[$parent_entity_id]['parent_id']);
+                $items_search->set_search_keywords($_POST['search']);
+                $items_search->prefix = 'p';
+            
+                $listing_sql_query .= " or e.parent_item_id in (select p.id from app_entity_" . $app_entities_cache[$parent_entity_id]['parent_id'] . " p where p.id>0 " . $items_search->build_search_sql_query('and') . ")";
+                //echo $listing_sql_query;
+            }
+            
+            $listing_sql_query .= ")";
         }
 
         //check view assigned only access

@@ -38,7 +38,7 @@ while($v = db_fetch_array($fields_query))
     {
         $html .= '
 	      <th  data-field-id="' . $v['id'] . '" ' . $listing -> get_listing_col_width($v['id']) . '>
-	      		<div ' . (strlen($v['short_name']) ? 'title="' . htmlspecialchars($v['long_name']) . '"' : '' ) . '>' . fields_types::get_option($v['type'], 'name', $v['name']) . '</div>
+	      		<div ' . (strlen($v['short_name']??'') ? 'title="' . htmlspecialchars($v['long_name']) . '"' : '' ) . '>' . fields_types::get_option($v['type'], 'name', $v['name']) . '</div>
 	      </th>
 	  ';
     }

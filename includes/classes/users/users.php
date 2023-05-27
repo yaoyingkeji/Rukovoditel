@@ -28,7 +28,7 @@ class users
         //get public profile fields
         if(defined('CFG_PUBLIC_USER_PROFILE_FIELDS') and $include_public_profile)
         {
-            if(strlen(CFG_PUBLIC_USER_PROFILE_FIELDS) > 0)
+            if(!is_null(CFG_PUBLIC_USER_PROFILE_FIELDS) and strlen(CFG_PUBLIC_USER_PROFILE_FIELDS) > 0)
             {
                 $fields_query = db_query("select f.*, t.name as tab_name from app_fields f, app_forms_tabs t where f.type not in (" . fields_types::get_reserverd_types_list() . ") and f.id in (" . CFG_PUBLIC_USER_PROFILE_FIELDS . ") and  f.entities_id='1' and f.forms_tabs_id=t.id order by  field(f.id," . CFG_PUBLIC_USER_PROFILE_FIELDS . ")");
                 while($v = db_fetch_array($fields_query))
@@ -78,7 +78,7 @@ class users
                 }
             }
 
-            if(strlen($users['field_10']) > 0)
+            if(isset($users['field_10']) and strlen($users['field_10']) > 0)
             {
                 
                 $file = attachments::parse_filename($users['field_10']);                
@@ -338,10 +338,10 @@ class users
                 }
             }
             else
-            {
-                if(CFG_EMAIL_COPY_SENDER == 0 and $users_id == $app_user['id'])
+            {                
+                if(CFG_EMAIL_COPY_SENDER == 0 and $users_id == $app_user['id'] and isset($app_user['email']) and $app_user['email']!=CFG_EMAIL_ADDRESS_FROM)
                     continue;
-
+                                
                 if(users_cfg::get_value_by_users_id($users_id, 'disable_notification') == 1)
                     continue;
 
@@ -484,7 +484,7 @@ class users
                 $options['body'] = str_replace('${body}',$options['body'],CFG_EMAIL_HTML_LAYOUT);
             }
 
-            $mail->Subject = (strlen(CFG_EMAIL_SUBJECT_LABEL) > 0 ? CFG_EMAIL_SUBJECT_LABEL . ' ' : '') . $options['subject'];
+            $mail->Subject = (!is_null(CFG_EMAIL_SUBJECT_LABEL) and strlen(CFG_EMAIL_SUBJECT_LABEL) > 0 ? CFG_EMAIL_SUBJECT_LABEL . ' ' : '') . $options['subject'];
             $mail->Body = $options['body'];
 
             $h2t = new html2text($options['body']);
@@ -591,7 +591,7 @@ class users
         $acess_info_query = db_query("select * from app_entities_access where access_groups_id='" . db_input($access_groups_id) . "'");
         while($acess_info = db_fetch_array($acess_info_query))
         {
-            if(strlen($acess_info['access_schema']))
+            if(isset($acess_info['access_schema']) and strlen($acess_info['access_schema']))
             {
                 $access_schema[$acess_info['entities_id']] = explode(',', $acess_info['access_schema']);
             }
@@ -648,7 +648,7 @@ class users
         $acess_info_query = db_query("select access_schema,access_groups_id  from app_entities_access where entities_id='" . db_input($entities_id) . "'");
         while($acess_info = db_fetch_array($acess_info_query))
         {
-            $access_schema[$acess_info['access_groups_id']] = explode(',', $acess_info['access_schema']);
+            $access_schema[$acess_info['access_groups_id']] = explode(',', $acess_info['access_schema']??'');
         }
 
         return $access_schema;

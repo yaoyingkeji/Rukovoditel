@@ -6,7 +6,7 @@ class fields_types_cfg
   
   function __construct($configuration)
   {
-    if(strlen($configuration)>0)
+    if(isset($configuration) and strlen($configuration)>0)
     {
       $this->cfg = json_decode($configuration,true);
     }

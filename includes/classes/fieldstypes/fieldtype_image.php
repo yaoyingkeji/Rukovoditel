@@ -24,7 +24,7 @@ class fieldtype_image
   {
     $filename = $obj['field_' . $field['id']];
     $html = '';
-    if(strlen($filename)>0)
+    if(strlen($filename??'')>0)
     {
       $file = attachments::parse_filename($filename);
       $html = '
@@ -56,7 +56,7 @@ class fieldtype_image
     }
     
     
-    if(strlen($_FILES['fields']['name'][$field_id])>0)
+    if(isset($_FILES['fields']['name'][$field_id]) and strlen($_FILES['fields']['name'][$field_id])>0)
     {     
       $file = attachments::prepare_filename($_FILES['fields']['name'][$field_id]);
                           
@@ -86,7 +86,7 @@ class fieldtype_image
   {
   	$options_cfg = new fields_types_options_cfg($options);
   	
-    if(strlen($options['value'])>0)
+    if(strlen($options['value']??'')>0)
     {  
       $file = attachments::parse_filename($options['value']);
             

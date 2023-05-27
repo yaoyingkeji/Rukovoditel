@@ -15,11 +15,11 @@ $sql_data['password']=$hasher->HashPassword($password);
 
 $to_name = (CFG_APP_DISPLAY_USER_NAME_ORDER=='firstname_lastname' ? $_POST['fields'][7] . ' ' . $_POST['fields'][8] : $_POST['fields'][8] . ' ' . $_POST['fields'][7]);
 
-$body = str_replace(['[FirstName]','[LastName]'],[db_prepare_input($_POST['fields'][7]),db_prepare_input($_POST['fields'][8])],CFG_REGISTRATION_EMAIL_BODY);
+$body = str_replace(['[FirstName]','[LastName]'],[db_prepare_input($_POST['fields'][7]),db_prepare_input($_POST['fields'][8])],CFG_REGISTRATION_EMAIL_BODY??'');
 
 $options = array('to' => $_POST['fields'][9],
                  'to_name' => $to_name,
-                 'subject'=>(strlen(CFG_REGISTRATION_EMAIL_SUBJECT)>0 ? CFG_REGISTRATION_EMAIL_SUBJECT :TEXT_NEW_USER_DEFAULT_EMAIL_SUBJECT),
+                 'subject'=>(!is_null(CFG_REGISTRATION_EMAIL_SUBJECT) and strlen(CFG_REGISTRATION_EMAIL_SUBJECT)>0 ? CFG_REGISTRATION_EMAIL_SUBJECT :TEXT_NEW_USER_DEFAULT_EMAIL_SUBJECT),
                  'body'=>$body . '<p><b>' . TEXT_LOGIN_DETAILS . '</b></p><p>' . TEXT_USERNAME .': ' . $_POST['fields'][12] . '<br>' . TEXT_PASSWORD . ': ' . $password . '</p><p><a href="' . url_for('users/login','',true) . '">' . url_for('users/login','',true). '</a></p>',
                  'from'=> CFG_EMAIL_ADDRESS_FROM,
                  'from_name'=> CFG_EMAIL_NAME_FROM );

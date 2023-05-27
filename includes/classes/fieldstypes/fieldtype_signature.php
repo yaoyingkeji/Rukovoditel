@@ -12,10 +12,18 @@ class fieldtype_signature
 
     function get_configuration($params = array())
     {
-
+        $choices = [
+            '1' => TEXT_YES,
+            '2' => TEXT_YES  . ' (' . TEXT_CURRENT_USER. ')',
+            '0' => TEXT_NO,
+        ];
+        
+        $cfg[TEXT_SETTINGS][] = array('title' => TEXT_DISPLAY_INPUT_FIELD_ENTER_PERSON_NAME, 'name' => 'display_person_name_input', 'type' => 'dropdown','choices'=>$choices, 'params'=>['class'=>'form-control input-medium']);
         $cfg[TEXT_SETTINGS][] = array('title' => TEXT_DESCRIPTION, 'name' => 'signature_description', 'type' => 'textarea', 'params' => array('class' => 'form-control textarea-small'));
         $cfg[TEXT_SETTINGS][] = array('title' => TEXT_WIDTH_IN_ITEM_PAGE, 'name' => 'signature_width_item_page', 'type' => 'input', 'params' => array('class' => 'form-control input-medium'), 'tooltip_icon' => TEXT_WIDTH_IN_ITEM_PAGE_INFO);
         $cfg[TEXT_SETTINGS][] = array('title' => TEXT_WIDTH_IN_PRINT_PAGE, 'name' => 'signature_width_print_page', 'type' => 'input', 'params' => array('class' => 'form-control input-medium'), 'tooltip_icon' => TEXT_WIDTH_IN_PRINT_PAGE_INFO);
+        $cfg[TEXT_SETTINGS][] = array('title' => TEXT_HIDE_NAME_ON_PRINT_PAGE, 'name' => 'hide_name_on_print_page', 'type' => 'checkbox');
+        
 
         $cfg[TEXT_BUTTON][] = array('title' => TEXT_BUTTON_TITLE, 'name' => 'button_title', 'type' => 'input', 'params' => array('class' => 'form-control input-medium'), 'tooltip_icon' => TEXT_DEFAULT . ': ' . TEXT_APPROVE);
         $cfg[TEXT_BUTTON][] = array('title' => TEXT_ICON, 'name' => 'button_icon', 'type' => 'input', 'params' => array('class' => 'form-control input-medium'), 'tooltip' => TEXT_MENU_ICON_TITLE_TOOLTIP);
@@ -67,8 +75,10 @@ class fieldtype_signature
 
             if(strlen($options['value']))
             {
-
-                $html .= '<td>' . $options['value'] . '</td>';
+                if($cfg->get('hide_name_on_print_page')!=1)
+                {
+                    $html .= '<td>' . $options['value'] . '</td>';
+                }
 
                 $approved_users = approved_items::get_approved_users_by_field($options['field']['entities_id'], $options['item']['id'], $options['field']['id']);
 
@@ -87,7 +97,7 @@ class fieldtype_signature
             if(strlen($html))
             {
                 $html = '
-      			<table>
+      			<table border="0">
       				<tr>' . $html . '</tr>
       			</table>
       			';

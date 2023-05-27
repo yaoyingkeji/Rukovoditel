@@ -133,7 +133,7 @@ class fieldtype_users
                 
         $value = '';
         
-        if(strlen($obj['field_' . $field['id']]))
+        if(strlen($obj['field_' . $field['id']]??''))
         {
             $value = $obj['field_' . $field['id']]; 
         }
@@ -176,7 +176,7 @@ class fieldtype_users
         {
             if (is_array($options['value']))
             {
-                $app_send_to = array_merge($options['value'], $app_send_to);
+                $app_send_to = array_merge($options['value'], $app_send_to??[]);
             } else
             {
                 $app_send_to[] = $options['value'];
@@ -210,7 +210,7 @@ class fieldtype_users
         if (isset($options['is_export']))
         {
             $users_list = array();
-            foreach (explode(',', $options['value']) as $id)
+            foreach (explode(',', $options['value']??'') as $id)
             {
                 if (isset($app_users_cache[$id]))
                 {
@@ -222,7 +222,7 @@ class fieldtype_users
         } else
         {
             $users_list = array();
-            foreach (explode(',', $options['value']) as $id)
+            foreach (explode(',', $options['value']??'') as $id)
             {
                 if (isset($app_users_cache[$id]))
                 {

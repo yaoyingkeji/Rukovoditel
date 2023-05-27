@@ -49,7 +49,7 @@ switch($app_module_action)
     case 'load':
         
         //set filters
-        report_page\report_filters::set_filters();
+        report_page\report_filters::set_filters($report_page);
         
         $page = new report_page\report($report_page);
         

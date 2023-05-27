@@ -1,7 +1,7 @@
 <?php 
 
-    define('PROJECT_VERSION','3.3.1');
-    define('PROJECT_VERSION_DEV','');    
+    define('PROJECT_VERSION','3.4');
+    define('PROJECT_VERSION_DEV','BETA 1');    
     
 //is HTTPS
     define('IS_HTTPS',(isset($_SERVER['HTTPS']) ? (strtolower($_SERVER['HTTPS'])=='on' ? true : false): false));
@@ -22,8 +22,16 @@
     define('CFG_PATH_TO_DOMPDF_FONTS','includes/libs/dompdf/fonts/');
 
     //php word
-    define('CFG_PATH_TO_PHPWORD','includes/libs/PHPWord/0.18.2/vendor/autoload.php');
-    define('CFG_PATH_TO_PHPSPREADSHEET','includes/libs/PHPSpreadsheet/1.18.0/vendor/autoload.php');
+    define('CFG_PATH_TO_PHPWORD','includes/libs/PHPWord/1.0.0/vendor/autoload.php');
+    define('CFG_PATH_TO_PHPSPREADSHEET','includes/libs/PHPSpreadsheet/1.27.0/vendor/autoload.php');
+    
+    //jquery
+    define('CFG_PATH_TO_JQUERY','js/jquery/3.6.4/jquery-3.6.4.min.js');
+    define('CFG_PATH_TO_JQUERY_VALIDATION','js/validation/1.9.5/jquery.validate.min.js');
+    define('CFG_PATH_TO_JQUERY_VALIDATION_METHODS','js/validation/1.9.5/additional-methods.min.js');
+    
+    //ckeditor
+    define('CFG_PATH_TO_CKEDITOR','template/plugins/ckeditor/4.21.0/');
 
 
 //include classes
@@ -157,6 +165,8 @@
     require('includes/classes/fieldstypes/fieldtype_yandex_map_directions.php');
     require('includes/classes/fieldstypes/fieldtype_yandex_map_nested.php');
     require('includes/classes/fieldstypes/fieldtype_google_map_nested.php');
+    require('includes/classes/fieldstypes/fieldtype_related_mail.php');
+    require('includes/classes/fieldstypes/fieldtype_3dviewer.php');
 
 
 //include models
@@ -210,7 +220,7 @@
     require('includes/classes/items/forms_wizard.php');
     require('includes/classes/items/items_filters.php');
     require('includes/classes/items/items_query.php');
-    require('includes/classes/items/items_import.php');
+    require('includes/classes/items/items_import.php');    
 
 //reports	
     require('includes/classes/reports/reports.php');
@@ -238,8 +248,8 @@
     require('includes/functions/validations.php');
 
 //include libs
-    require('includes/libs/PasswordHash.php');	
-    require('includes/libs/htmlpurifier-4.12.0/library/HTMLPurifier.auto.php');
+    require('includes/libs/PasswordHash.php');	    
+    require('includes/libs/htmlpurifier/4.15.0/library/HTMLPurifier.auto.php');
     require('includes/libs/php-barcode-generator-master/src/Barcode.php');
     require('includes/libs/php-barcode-generator-master/src/BarcodeBar.php');
     require('includes/libs/php-barcode-generator-master/src/BarcodeGenerator.php');
@@ -247,7 +257,7 @@
     require('includes/libs/phpqrcode-master/qrlib.php');
 
 //PHPMailer	        
-    require 'includes/libs/PHPMailer/6.7.1/vendor/autoload.php';
+    require 'includes/libs/PHPMailer/6.8.0/vendor/autoload.php';
     require('includes/libs/PHPMailer/extras/Html2Text.php');
 
 //NCLNameCase        
@@ -396,6 +406,9 @@
     if(!defined('CFG_APP_LOGIN_PAGE_BACKGROUND_MOBILE')) define('CFG_APP_LOGIN_PAGE_BACKGROUND_MOBILE','');
     if(!defined('CFG_SERVICE_DOCX_PREVIEW')) define('CFG_SERVICE_DOCX_PREVIEW','');
     
+    if(!defined('CFG_PUBLIC_REGISTRATION_PWD_REQUIRED')) define('CFG_PUBLIC_REGISTRATION_PWD_REQUIRED',0);
+    
+    
             
                                     
 //get max upload file size
@@ -434,6 +447,18 @@ $app_num2str = new num2str();
 
 //include custom PHP code
 custom_php::include();
+
+//incluce plugins application core
+if(defined('AVAILABLE_PLUGINS'))
+{  	  	
+    foreach(explode(',',AVAILABLE_PLUGINS) as $plugin)
+    {  
+        if(is_file('plugins/' . $plugin .'/application_core.php'))
+        {
+          require('plugins/' . $plugin .'/application_core.php');        
+        } 
+    }
+}
 	
 	
 	

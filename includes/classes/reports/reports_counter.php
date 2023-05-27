@@ -7,6 +7,7 @@ class reports_counter
     public $title;
     public $parent_item_id;
     public $common_filter_reports_id;
+    public $redirect_to;
 
     function __construct()
     {
@@ -40,8 +41,8 @@ class reports_counter
         $count = 0;
         while($reports = db_fetch_array($reports_query))
         {
-            $color_style = (strlen($reports['in_dashboard_counter_color']) ? 'style="color: ' . $reports['in_dashboard_counter_color'] . '"' : '');
-            $color_bg_style = (strlen($reports['in_dashboard_counter_bg_color']) ? 'style="background-color: ' . $reports['in_dashboard_counter_bg_color'] . '"' : '');
+            $color_style = (strlen($reports['in_dashboard_counter_color']??'') ? 'style="color: ' . $reports['in_dashboard_counter_color'] . '"' : '');
+            $color_bg_style = (strlen($reports['in_dashboard_counter_bg_color']??'') ? 'style="background-color: ' . $reports['in_dashboard_counter_bg_color'] . '"' : '');
 
             $reports_details = $this->get_reports_details($reports);
 
@@ -92,7 +93,7 @@ class reports_counter
                         <div ' . $color_bg_style . ' class="stats-overview stat-block stats-default ' . ($is_selected ? 'selected' : '') . ' reports-counter-' . $reports['id'] . '" onClick="location.href=\'' . $click_url . '\'">
                             <table>
                                 <tr>	
-                                ' . (($reports['in_dashboard_icon'] and strlen($reports['menu_icon'])) ? '<td><div class="icon">' . app_render_icon($reports['menu_icon'], $color_style) . '</div></td>' : '') . '
+                                ' . (($reports['in_dashboard_icon'] and strlen($reports['menu_icon']??'')) ? '<td><div class="icon">' . app_render_icon($reports['menu_icon'], $color_style) . '</div></td>' : '') . '
                                         <td>
 
                                         <table>
@@ -152,7 +153,7 @@ class reports_counter
 
         $sum_by_fields = [];
 
-        if(strlen($report_info['in_dashboard_counter_fields']))
+        if(strlen($report_info['in_dashboard_counter_fields']??''))
         {
             $sum_by_fields = explode(',', $report_info['in_dashboard_counter_fields']);
         }
@@ -206,7 +207,7 @@ class reports_counter
             $fields_query = db_query("select f.* from app_fields f, app_forms_tabs t  where f.id in (" . implode(',', $sum_by_fields) . ") and f.forms_tabs_id=t.id order by field(f.id," . implode(',', $sum_by_fields) . ")");
             while($fields = db_fetch_array($fields_query))
             {
-                $sum_fields[$fields['id']] = array('title' => (strlen($fields['short_name']) ? $fields['short_name'] : $fields['name'] ), 'configuration' => $fields['configuration']);
+                $sum_fields[$fields['id']] = array('title' => (strlen($fields['short_name']??'') ? $fields['short_name'] : $fields['name'] ), 'configuration' => $fields['configuration']);
 
                 if($fields['type'] != 'fieldtype_formula')
                 {
@@ -223,7 +224,7 @@ class reports_counter
                 {
                     foreach($sum_fields as $k => $v)
                     {
-                        if(!strlen($items['field_' . $k]))
+                        if(!strlen($items['field_' . $k]??''))
                             continue;
 
                         if(isset($fields_totals[$k]))

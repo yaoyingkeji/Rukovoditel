@@ -32,7 +32,7 @@ function build_user_menu()
         $menu = array_merge($menu, $plugin_menu);
     }
 
-    if(strlen(CFG_APP_SKIN) == 0)
+    if(!is_null(CFG_APP_SKIN) and strlen(CFG_APP_SKIN) == 0)
     {
         $menu[] = array('title' => TEXT_CHANGE_SKIN, 'url' => url_for('users/change_skin'), 'modalbox' => true, 'class' => 'fa-picture-o');
     }
@@ -142,7 +142,7 @@ function build_custom_entities_menu($menu, $parent_id = 0, $level = 0)
         $sub_menu = array();
 
         //add entities
-        if(strlen($entities_menu['entities_list']) and $entities_menu['type']=='entity')
+        if(strlen($entities_menu['entities_list']??'') and $entities_menu['type']=='entity')
         {
             $where_sql = " e.id in (" . $entities_menu['entities_list'] . ")";
 
@@ -240,7 +240,7 @@ function build_custom_entities_menu($menu, $parent_id = 0, $level = 0)
         }
         elseif(count($sub_menu) > 0)
         {
-            $menu_icon = (strlen($entities_menu['icon']) > 0 ? $entities_menu['icon'] : 'fa-reorder');
+            $menu_icon = (strlen($entities_menu['icon']??'') > 0 ? $entities_menu['icon'] : 'fa-reorder');
             $menu[] = array(
                 'title' => $entities_menu['name'], 
                 'url' => $sub_menu[0]['url'], 
@@ -801,14 +801,16 @@ function renderNavbarMenu($menu = array(), $html = '', $level = 0, $selected_id 
 
         if(!isset($v['selected_id']))
             $v['selected_id'] = 0;
+        
+        $menu_css = $v['menu_css']??'';
 
         if(isset($v['submenu']))
         {
-            $html .= '<li class="dropdown ' . ($selected_id == $v['selected_id'] ? 'selected' : '') . '"><a href="#" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown">' . $v['title'] . ' <i class="fa fa-angle-down"></i></a>';
+            $html .= '<li class="dropdown ' . $menu_css . ' ' . ($selected_id == $v['selected_id'] ? 'selected' : '') . '"><a href="#" class="dropdown-toggle ' . $menu_css . '" data-hover="dropdown" data-toggle="dropdown">' . $v['title'] . ' <i class="fa fa-angle-down"></i></a>';
         }
         else
         {
-            $html .= '<li class="' . ($selected_id == $v['selected_id'] ? 'selected' : '') . '"><a ' . $url . '>' . $v['title'] . '</a>';
+            $html .= '<li class="' . $menu_css . ' ' . ($selected_id == $v['selected_id'] ? 'selected' : '') . '"><a class="' . $menu_css . '"' . $url . '>' . $v['title'] . '</a>';
         }
 
         if(isset($v['submenu']))

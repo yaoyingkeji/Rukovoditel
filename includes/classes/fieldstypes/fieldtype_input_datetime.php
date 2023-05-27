@@ -225,17 +225,20 @@ class fieldtype_input_datetime
 
         $cfg = new fields_types_cfg($options['field']['configuration']);
 
-        switch($cfg->get('date_format_in_calendar'))
+        if(strlen($options['value']))
         {
-            case 'yyyy-mm-dd hh':
-                $options['value'] = $options['value'] . ':00';
-                break;
-            case 'yyyy':
-                $options['value'] = $options['value'] . '-01';
-                break;
+            switch($cfg->get('date_format_in_calendar'))
+            {
+                case 'yyyy-mm-dd hh':
+                    $options['value'] = $options['value'] . ':00';
+                    break;
+                case 'yyyy':
+                    $options['value'] = $options['value'] . '-01';
+                    break;
+            }
         }
-
-        $value = !is_numeric($options['value']) ? (int) get_date_timestamp($options['value']) : (int) $options['value'];
+                
+        $value = (strlen($options['value']) and !is_numeric($options['value'])) ? (int) get_date_timestamp($options['value']) : (int) $options['value'];
 
         if(!$options['is_new_item'])
         {
@@ -302,7 +305,7 @@ class fieldtype_input_datetime
             {
                 if($options['value'] < strtotime('+' . $cfg->get('day_before_date2') . ' day'))
                 {
-                    $html = render_bg_color_block($cfg->get('day_before_date2_color'), format_date($options['value'], $cfg->get('date_format')));
+                    $html = render_bg_color_block($cfg->get('day_before_date2_color'), format_date_time($options['value'], $cfg->get('date_format')));
                 }
             }
 

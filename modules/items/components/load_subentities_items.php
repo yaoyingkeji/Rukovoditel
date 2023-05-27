@@ -74,13 +74,23 @@ if(isset($subentities_items_position))
             }
             
             $portlets = new portlets('entity_items_listing' . $subentity_report['id'], $entity_cfg->get('collapsed_subentity' . $entities['id'],false) );
+            
+            $filters_panels_html = '';
+            if($entity_cfg->get('display_filter_panel_subentity' . $entities['id'])==1)
+            {
+                $filets_reports_id = reports::auto_create_report_by_type($entities['id'],'item_page_subentity_filters' . $subentity_report['id'],true);
+                $filters_panels = new filters_panels($entities['id'], $filets_reports_id, $listing_container, $current_item_id);
+                $filters_panels->custom_panel_css = '.subentity-portlet-' . $entities['id'];
+                $filters_panels->custom_panel_id = 'subentity' . $entities['id'];
+                $filters_panels_html =  $filters_panels->render_horizontal();
+            }
 
             $html = '
 					
                 <div class="row info-page-reports-container" id="' . $listing_container . '_info_block" ' . ($entity_cfg->get('hide_subentity' . $entities['id'] . '_if_empty') == 1 ? 'style="display:none"' : '') . '>
                     <div class="col-md-12">
 	      	        		
-                        <div class="portlet">
+                        <div class="portlet subentity-portlet-' . $entities['id'] . '">
                             <div class="portlet-title">
 				<div class="caption">        
                                     <a href="' . url_for('items/items', 'path=' . $app_path . '/' . $subentity_report['entities_id']) . '">' . 
@@ -93,7 +103,9 @@ if(isset($subentities_items_position))
 				</div>
                             </div>
                             <div class="portlet-body" ' . $portlets->render_body() . '>  		
-	      
+                            
+                            ' . $filters_panels_html . ' 
+                                
                             <div class="row">
                               <div class="col-sm-6 entitly-listing-buttons-left">   
                                    ' . $add_button . '
@@ -115,6 +127,7 @@ if(isset($subentities_items_position))
                             <div id="' . $listing_container . '" class="entity_items_listing"></div>
                             ' . input_hidden_tag($listing_container . '_order_fields', $subentity_report['listing_order_fields']) .
                                   input_hidden_tag($listing_container . '_has_with_selected', (strlen($with_selected_menu) ? 1 : 0)) .
+                                  input_hidden_tag($listing_container . '_force_item_page_subentity_filters', 1) .
                                   input_hidden_tag('subentity' . $subentity_report['entities_id'] . '_items_listing_path', $app_path . '/' . $subentity_report['entities_id']) . ' 	      
 
 

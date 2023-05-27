@@ -120,7 +120,7 @@ class items_query
             {
                 $this->sql['having'] = \reports::prepare_filters_having_query($sql_query_having[$this->entity_id]);
             }
-            
+                        
             $this->sql['where'] = items::add_access_query($this->entity_id, $this->sql['where'], $this->report['displays_assigned_only']);
         }
         else

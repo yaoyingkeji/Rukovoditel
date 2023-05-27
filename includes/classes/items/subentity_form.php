@@ -2,6 +2,12 @@
 
 class subentity_form 
 {        
+    public $entities_id;
+    public $items_id;
+    public $cfg;
+    public $field_id;
+    public $field_name;
+    
     function __construct($entities_id, $items_id, $field_id) 
     {
         global $app_fields_cache;
@@ -31,7 +37,7 @@ class subentity_form
         {
             case 'column':
             case 'row':
-                $html = '<button type="button" id="subentity_form_btn' . $this->field_id . '" class="btn ' . $btn_css . ' subentity_form_btn">' . $button_title . '</button>';
+                $html = '<button type="button" id="subentity_form_btn' . $this->field_id . '" class="btn btn-default ' . $btn_css . ' subentity_form_btn">' . $button_title . '</button>';
                 $html .='
                     <script>
                     $("#subentity_form_btn' . $this->field_id . '").click(function(){
@@ -578,6 +584,9 @@ class subentity_form
         global $app_subentity_form_items, $app_path, $app_items_form_name;
         
         $listing_fields = $this->get_listing_fields();
+        
+        $listing_totals_fields = (is_array($this->cfg->get('fields_totals_in_listing')) ? $this->cfg->get('fields_totals_in_listing') : []);
+        $listing_totals = [];
                 
         if(!count($listing_fields) or !count($app_subentity_form_items[$this->field_id])) return ['rows_count'=>0,'html'=>''];
                 
@@ -633,6 +642,18 @@ class subentity_form
                     'path_info'   => []);
             
                 $html .= '<td>' . fields_types::output($output_options) . '</td>';
+                
+                if(in_array($field['id'],$listing_totals_fields) and strlen($item[$field['id']]))
+                {
+                    if(isset($listing_totals[$field['id']]))
+                    {
+                        $listing_totals[$field['id']] += $item[$field['id']];
+                    }
+                    else
+                    {
+                        $listing_totals[$field['id']]=$item[$field['id']];
+                    }
+                }
             }
                         
             $url_params = 'is_submodal=true&redirect_to=subentity_form_' . $this->entities_id . '_' . $this->field_id . '_' . $row . '&entities_id=' . $this->entities_id . '&fields_id=' . $this->field_id . '&current_entity_id=' . $this->cfg->get('entity_id') . '&path=' . $this->cfg->get('entity_id') . '&form_name=' . $app_items_form_name;                                    
@@ -645,7 +666,41 @@ class subentity_form
         }
         
         $html .= '            
-            </tbody>
+            </tbody>';
+        
+        //display totals
+        if(count($listing_totals))
+        {
+            $html .= '<tfoot>';            
+            foreach($listing_fields as $field)
+            {                        
+                if(isset($listing_totals[$field['id']]))
+                {
+                    $value = $listing_totals[$field['id']];
+                    
+                    $cfg = new settings($field['configuration']);
+                
+                    if(strlen($cfg->get('number_format')) > 0 and strlen($value) > 0 and is_numeric($value))
+                    {
+                        $format = explode('/', str_replace('*', '', $cfg->get('number_format')));
+
+                        $value = number_format($value, $format[0], $format[1], $format[2]);
+                    }                    
+
+                    //add prefix and sufix
+                    $value = (strlen($value) ? $cfg->get('prefix') . $value . $cfg->get('suffix') : '');
+                
+                    $html .= '<td>' . $value . '</td>';
+                }
+                else
+                {
+                    $html .= '<td></td>';
+                }
+            }
+            $html .= '</tfoot>';
+        }
+        
+        $html .= '
             </table>
             ';
                               
@@ -733,6 +788,7 @@ class subentity_form
         switch($field['type'])
         {
             case 'fieldtype_input_date':
+            case 'fieldtype_input_date_extra':    
             case 'fieldtype_input_datetime':    
                 if(!is_numeric($value))
                 {                    

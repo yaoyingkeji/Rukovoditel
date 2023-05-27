@@ -1,6 +1,6 @@
-<h3 class="form-title"><?php echo (strlen(CFG_LOGIN_PAGE_HEADING) > 0 ? CFG_LOGIN_PAGE_HEADING : TEXT_HEADING_LOGIN) ?></h3>
+<h3 class="form-title"><?php echo ((!is_null(CFG_LOGIN_PAGE_HEADING) and strlen(CFG_LOGIN_PAGE_HEADING)) > 0 ? CFG_LOGIN_PAGE_HEADING : TEXT_HEADING_LOGIN) ?></h3>
 
-<?php echo (strlen(CFG_LOGIN_PAGE_CONTENT) > 0 ? '<p>' . CFG_LOGIN_PAGE_CONTENT . '</p>' : '') ?>
+<?php echo ((!is_null(CFG_LOGIN_PAGE_CONTENT) and strlen(CFG_LOGIN_PAGE_CONTENT)) > 0 ? '<p>' . CFG_LOGIN_PAGE_CONTENT . '</p>' : '') ?>
 
 <?php echo maintenance_mode::login_message() ?>
 
@@ -59,7 +59,7 @@ if(CFG_ENABLE_SOCIAL_LOGIN != 2)
     </div>
 <?php endif ?>
 
-<?php if(strlen(CFG_LOGIN_DIGITAL_SIGNATURE_MODULE)): ?>
+<?php if(strlen(CFG_LOGIN_DIGITAL_SIGNATURE_MODULE??'')): ?>
     <div class="create-account">
         <p><a href="<?php echo url_for('users/signature_login') ?>"><?php echo TEXT_DIGITAL_SIGNATURE_LOGIN ?></a></p>
     </div>

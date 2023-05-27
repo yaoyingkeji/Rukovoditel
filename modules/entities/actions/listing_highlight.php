@@ -78,6 +78,7 @@ switch($app_module_action)
                 case 'numeric':
                     $values_html_heading = tooltip_icon(TEXT_FILTERS_NUMERIC_FIELDS_TOOLTIP) . TEXT_VALUES;
                     $values_html = input_tag('fields_values',$obj['fields_values'],['class'=>'form-control required']);
+                    $values_html .= tooltip_text(TEXT_LISTING_HIGHLIGHT_NUMERIC_FIELDS_TOOLTIP);
                     break;                                        
             }
             

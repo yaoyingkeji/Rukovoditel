@@ -140,6 +140,11 @@ switch($app_module_action)
         
         attachments_viewer::reset_tmp_files();
         
+        if(is_ext_installed())
+        {            
+            $app_calendar_reminder->init();
+        }
+        
         app_exit();
         break;
     case 'set_users_alers_viewed':
@@ -159,5 +164,15 @@ switch($app_module_action)
         db_query("update app_reports_filters set is_active=" . _POST('is_active'). " where id=" . _POST('filter_id'));
         
         app_exit();
+        break;
+    
+    case 'calendar_reminder_confirm':        
+        $app_calendar_reminder->reset();
+        exit();
+        break;
+    
+    case 'calendar_remind_later':
+        $app_calendar_reminder->remind_later();
+        exit();
         break;
 } 

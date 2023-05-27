@@ -48,14 +48,14 @@ else
             }
 
 //display default confirmation if not set
-            if (isset($_GET['reports_id']) and !strlen(strip_tags($app_process_info['confirmation_text'])) and !$has_insert_item_entity_action)
+            if (isset($_GET['reports_id']) and !strlen(strip_tags($app_process_info['confirmation_text']??'')) and !$has_insert_item_entity_action)
             {
                 echo '<p>' . TEXT_ARE_YOU_SURE . '</p>';
             }
 
 
 //display configramtion text
-            if (strlen($app_process_info['confirmation_text']))
+            if (strlen($app_process_info['confirmation_text']??''))
             {
                 echo '<p>' . $app_process_info['confirmation_text'] . '</p>';
             }
@@ -96,7 +96,7 @@ else
                         }
 
                         
-                        $value = str_replace(['[current_user_id]'],[$app_user['id']],$actions_fields['value']);
+                        $value = str_replace(['[current_user_id]'],[$app_user['id']],$actions_fields['value']??'');
 
                         $output_options = array('class' => $field['type'],
                             'value' => $value,
@@ -104,7 +104,7 @@ else
                             'is_listing' => true,
                         );
 
-                        if (in_array($field['type'], array('fieldtype_input_numeric')) and strstr($actions_fields['value'], '['))
+                        if (in_array($field['type'], array('fieldtype_input_numeric')) and strstr($actions_fields['value']??'', '['))
                         {
                             $html .= '
 						<tr>
@@ -253,11 +253,16 @@ else
             if($current_item_id and ($count_selected==1 or $count_selected==0) and ($current_entity_id==$app_process_info['entities_id']))
             {
                 $item_info_query = db_query("select e.* " . fieldtype_formula::prepare_query_select($app_process_info['entities_id'], '') . " from app_entity_" . $app_process_info['entities_id'] . " e  where e.id='" . $current_item_id . "'");
-                $item_info = db_fetch_array($item_info_query);
-                
-                echo !$has_parent_item_id ? input_hidden_tag('parent_item_id',$item_info['parent_item_id']) : '';
-                echo input_hidden_tag('parent_id',$item_info['parent_id']);
-                echo input_hidden_tag('process_item_id',$item_info['id']);
+                if($item_info = db_fetch_array($item_info_query))
+                {                
+                    echo !$has_parent_item_id ? input_hidden_tag('parent_item_id',$item_info['parent_item_id']) : '';
+                    echo input_hidden_tag('parent_id',$item_info['parent_id']);
+                    echo input_hidden_tag('process_item_id',$item_info['id']);
+                }
+                else
+                {
+                    $item_info = false;
+                }
             }
             else
             {
@@ -449,12 +454,27 @@ else
                     echo $smart_input->render();
                 }
 
-                //include fields displays rueles	
+                //include fields displays rueles
+                /*
                 if ($current_item_id > 0 and $app_process_info['apply_fields_display_rules'] == 1)
                 {
                     $item_info = db_find('app_entity_' . $current_entity_id, $current_item_id);
                     $app_items_form_name = 'process';
                     require(component_path('items/forms_fields_rules.js'));
+                }                 
+                 */
+                if(isset($entities_in_process) and is_array($entities_in_process) and $app_process_info['apply_fields_display_rules'] == 1)
+                {
+                    foreach ($entities_in_process as $entities_id)
+                    {
+                        $forms_fields_rules = new forms_fields_rules($entities_id,'process');
+                        if($entities_id==$current_entity_id and $current_item_id>0)
+                        {
+                            $item_info = db_find('app_entity_' . $current_entity_id, $current_item_id);
+                            $forms_fields_rules->set_item($item_info);
+                        }
+                        echo $forms_fields_rules->apply();
+                    }
                 }
             }
             
@@ -493,7 +513,13 @@ else
                 <div class="form-group">
                     <label class="col-md-3 control-label" for="name"><?php echo TEXT_COMMENT ?></label>
                     <div class="col-md-9">	
-                        <?php echo textarea_tag('description', '', array('class' => 'form-control autofocus ' . ($entity_cfg->get('use_editor_in_comments') == 1 ? 'editor-auto-focus' : ''))) ?>        
+                        <?php 
+                        $attr = ['class'=>'form-control autofocus ' . ($entity_cfg->get('use_editor_in_comments')!=0 ? 'editor-auto-focus':'')];          
+                        if($entity_cfg->get('use_editor_in_comments')==2)
+                        {
+                           $attr['toolbar'] = 'small';
+                        }
+                        echo textarea_tag('description', '', $attr) ?>        
                     </div>			
                 </div>
 

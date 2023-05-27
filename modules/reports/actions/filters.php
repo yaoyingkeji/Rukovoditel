@@ -130,7 +130,14 @@ switch($app_module_action)
                 break;
         }
 
-        $filters_values = (is_array($_POST['field_val']) ? implode(',', $_POST['field_val']) : $_POST['field_val']);
+        if(isset($_POST['field_val']))
+        {
+            $filters_values = (is_array($_POST['field_val']) ? implode(',', $_POST['field_val']) : $_POST['field_val']);
+        }
+        else
+        {
+            $filters_values = '';
+        }
 
         $field_id = _post::int('field_id');
         $reports_id = _get::int('reports_id');

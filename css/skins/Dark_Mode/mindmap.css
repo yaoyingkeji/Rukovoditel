@@ -1,0 +1,12 @@
+html, body {
+    background-color: #333437;
+}
+
+.ui {
+    background-color: #292a2d;
+    color: #d1d1d1;
+}
+
+.ui select{
+    background-color: #333437;
+}

@@ -30,13 +30,13 @@
 <link href="template/css/plugins.css" rel="stylesheet" type="text/css"/>
 <link href="css/skins/<?php echo $app_skin ?>" rel="stylesheet" type="text/css" />
 
-<script src="template/plugins/jquery-1.10.2.min.js" type="text/javascript"></script>
+<script src="<?= CFG_PATH_TO_JQUERY ?>" type="text/javascript"></script>
 
-<script type="text/javascript" src="js/validation/jquery.validate.min.js"></script>
-<script type="text/javascript" src="js/validation/additional-methods.min.js"></script>
+<script type="text/javascript" src="<?= CFG_PATH_TO_JQUERY_VALIDATION ?>"></script>
+<script type="text/javascript" src="<?= CFG_PATH_TO_JQUERY_VALIDATION_METHODS ?>"></script>
 <?php require('js/validation/validator_messages.php'); ?> 
 
-<script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript" src="js/main.js?v=<?php echo PROJECT_VERSION ?>"></script>
 
 <script>
         var app_cfg_drop_down_menu_on_hover = <?php echo CFG_DROP_DOWN_MENU_ON_HOVER ?>;
@@ -110,7 +110,7 @@
 
 <!-- BEGIN COPYRIGHT -->
 <div class="copyright">
-	 <?php echo (strlen(CFG_APP_COPYRIGHT_NAME)>0 ? '&copy; ' . CFG_APP_COPYRIGHT_NAME . ' ' . date('Y') . '<br>': '') ?>
+	 <?php echo ((!is_null(CFG_APP_COPYRIGHT_NAME) and strlen(CFG_APP_COPYRIGHT_NAME))>0 ? '&copy; ' . CFG_APP_COPYRIGHT_NAME . ' ' . date('Y') . '<br>': '') ?>
      <?php echo app_powered_by_text() ?>
 </div>
 <!-- END COPYRIGHT -->
@@ -134,7 +134,7 @@
 <script type="text/javascript" src="template/plugins/select2/select2.min.js"></script>
 <!-- END PAGE LEVEL PLUGINS -->
 <!-- BEGIN PAGE LEVEL SCRIPTS -->
-<script src="template/scripts/app.js" type="text/javascript"></script>
+<script src="template/scripts/app.js?v=<?php echo PROJECT_VERSION ?>" type="text/javascript"></script>
 <!-- END PAGE LEVEL SCRIPTS -->
 
 <?php 

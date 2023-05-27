@@ -61,6 +61,8 @@ class fieldtype_users_ajax
         
         $cfg[TEXT_LIST][] = array('title'=>TEXT_FIELDTYPE_MYSQL_QUERY_WHERE_QUERY, 'name'=>'mysql_query_where', 'type'=>'textarea', 'tooltip'=>TEXT_FIELDTYPE_ENTITY_MYSQL_QUERY_TIP, 'params'=>array('class'=>'form-control code'));
         
+        $cfg[TEXT_LIST][] = array('title' => TEXT_DO_NOT_APPLY_RECORD_VISIBILITY_RULES, 'name' => 'disable_record_visibility', 'type' => 'checkbox', 'tooltip_icon'=>TEXT_DO_NOT_APPLY_RECORD_VISIBILITY_RULES_INFO);
+        
         
         $choices = [];
         

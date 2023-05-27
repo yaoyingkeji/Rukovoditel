@@ -134,7 +134,7 @@ function auto_link_text($text)
 {
     $pattern = '/(?s)<pre[^<]*>.*?<\\/pre>(*SKIP)(*F)|([^"]|^)(((http[s]?:\/\/(.+(:.+)?$)?))[a-z0-9](([-a-z0-9]+\.)*\.[a-z]{2,})?\/?[a-z0-9()$.,_\/~#&=:;%+!?-]+)/i';
 
-    $result = preg_replace_callback($pattern, 'callback_prepare_link_in_text', $text);
+    $result = preg_replace_callback($pattern, 'callback_prepare_link_in_text', $text??'');
 
     if($result != null)
     {

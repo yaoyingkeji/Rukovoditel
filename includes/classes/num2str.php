@@ -60,10 +60,17 @@ class num2str
                     {
                         $number = 0;
                     }
+                    
+                    $minus = '';
+                    if(substr($number,0,1)=='-')
+                    {
+                        $number = substr($number,1);
+                        $minus = '- '; 
+                    }
                                         
                     //echo $matches[0][$matches_key] . ' - ' . $number . '<br>' . $this->convert($code, $number) . '<br><br>';
 
-                    $text = str_replace($matches[0][$matches_key], $this->convert($code, $number), $text);
+                    $text = str_replace($matches[0][$matches_key], $minus . $this->convert($code, $number), $text);
                 }
             }
         }

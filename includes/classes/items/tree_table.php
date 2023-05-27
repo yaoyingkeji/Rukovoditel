@@ -2,6 +2,20 @@
 
 class tree_table
 {
+    public $listing_fields;
+    public $entities_id;
+    public $fields_access_schema;
+    public $redirect_to;
+    public $is_info_page;
+    public $reset_parent;
+    public $current_page_number;
+    public $users_notifications;
+    public $entity_cfg;
+    public $listing_highlight;
+    public $listing;
+    public $reports_id;
+    public $user_has_comments_access;
+                
     function __construct($entities_id, $listing_fields, $fields_access_schema)
     {
         $this->listing_fields = $listing_fields;

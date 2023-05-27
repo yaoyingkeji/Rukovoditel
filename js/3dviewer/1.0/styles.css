@@ -1,0 +1,43 @@
+body { margin: 0; }
+canvas { display: block; }
+#baustern {
+    position: absolute;
+    top: 50px;
+    left: 20px;
+    font-size: 20px;
+    color: white;
+    z-index: 1;
+}
+#navigation {
+    position: absolute;
+    top: 40px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(94, 89, 89, 0.247);
+    border-radius: 10px;
+    padding: 10px;
+    z-index: 1;
+}
+
+#navigation button {
+    background-color: white;
+   
+    border: none;
+    border-radius: 4px;
+    padding: 8px;
+    margin: 4px;
+    cursor: pointer;
+}
+
+#navigation button:hover {
+    background-color: #24c716;
+}
+
+#loading_text{
+    padding: 15px;
+    color: #000;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 15px;
+}

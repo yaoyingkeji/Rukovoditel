@@ -228,7 +228,7 @@ class global_lists
                 {
                     $html .= (strlen($html) == 0 ? $app_global_choices_cache[$id]['name'] : ', ' . $app_global_choices_cache[$id]['name']);
                 }
-                elseif(strlen($app_global_choices_cache[$id]['bg_color']) > 0)
+                elseif(strlen($app_global_choices_cache[$id]['bg_color']??'') > 0)
                 {
                     $html .= render_bg_color_block($app_global_choices_cache[$id]['bg_color'], $app_global_choices_cache[$id]['name']);
                 }

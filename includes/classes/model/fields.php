@@ -66,7 +66,7 @@ class fields
             $cache[$fields['entities_id']][$fields['id']] = array(
                 'id' => $fields['id'],
                 'type' => $fields['type'],
-                'name' => (strlen($fields['name']) ? $fields['name'] : str_replace('fieldtype_', '', $fields['type'])),
+                'name' => (strlen($fields['name']??'') ? $fields['name'] : str_replace('fieldtype_', '', $fields['type']??'')),
                 'entities_id' => $fields['entities_id'],
                 'configuration' => $fields['configuration'],
                 'is_heading' => $fields['is_heading'],
@@ -272,7 +272,7 @@ class fields
                 $attributes[] = 'max: jQuery.validator.format("' . htmlspecialchars(TEXT_MAX_VALUE_WARNING) . '")';
             }
 
-            if(strlen($v['required_message']) > 0)
+            if(isset($v['required_message']) and strlen($v['required_message']) > 0)
             {
                 $attributes[] = 'required: "' . str_replace(array("\n", "\r", "\n\r", '<br><br>'), "<br>", htmlspecialchars($v['required_message'])) . '"';
             }
@@ -646,11 +646,11 @@ class fields
     {
         $text = '';
 
-        if(strlen($field['tooltip']) and $field['tooltip_in_item_page'] == 1)
+        if(isset($field['tooltip']) and strlen($field['tooltip']) and $field['tooltip_in_item_page'] == 1)
         {
             $text = $field['tooltip'];
         }
-        elseif(strlen($field['tooltip_item_page']))
+        elseif(isset($field['tooltip_item_page']) and strlen($field['tooltip_item_page']))
         {
             $text = $field['tooltip_item_page'];
         }
@@ -731,6 +731,9 @@ class fields
 	  	    </li>
 	  	    <li>
 	  	      <a href="#" class="insert_to_template_' . $unique_id . '" data-field="[date_added]">' . TEXT_FIELDTYPE_DATEADDED_TITLE . ' [date_added]</a>
+	  	    </li>
+                    <li>
+	  	      <a href="#" class="insert_to_template_' . $unique_id . '" data-field="[date_updated]">' . TEXT_FIELDTYPE_DATE_UPDATED_TITLE . ' [date_added]</a>
 	  	    </li>
 	  	    <li>
 	  	      <a href="#" class="insert_to_template_' . $unique_id . '" data-field="[created_by]">' . TEXT_FIELDTYPE_CREATEDBY_TITLE . ' [created_by]</a>

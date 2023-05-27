@@ -91,7 +91,7 @@ class fieldtype_users_approve
 
         //get users choices
         //select all active users or already assigned users
-        $where_sql = (strlen($value) ? "(u.field_5=1 or u.id in (" . $value . "))" : "u.field_5=1");
+        $where_sql = (strlen($value) ? "(u.field_5=1 or u.id in (" . db_input_in($value) . "))" : "u.field_5=1");
 
         //hide administrators
         if($cfg->get('hide_admin') == 1)

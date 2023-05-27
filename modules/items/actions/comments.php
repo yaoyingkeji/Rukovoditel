@@ -40,6 +40,11 @@ switch($app_module_action)
         if(isset($_GET['is_quick_comment']))
         {
             $description = $_POST['quick_comments_description'];
+            
+            if($entity_cfg->get('use_editor_in_comments')!=0)
+            {
+                $description = nl2br($description);
+            }
         }
         else
         {

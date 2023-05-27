@@ -1232,3 +1232,5 @@ CREATE TABLE IF NOT EXISTS `app_nested_entities_menu` (
   KEY `idx_entities_id` (`entities_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+ALTER TABLE `app_records_visibility_rules` ADD `php_code` TEXT NOT NULL AFTER `mysql_query`;
+ALTER TABLE `app_filters_panels_fields` ADD `exclude_values_not_in_listing` TINYINT(1) NOT NULL DEFAULT '0' AFTER `exclude_values`;

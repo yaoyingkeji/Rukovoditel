@@ -488,6 +488,7 @@ class entities
             case 'fieldtype_items_by_query':
             case 'fieldtype_process_button':
             case 'fieldtype_subentity_form':
+            case 'fieldtype_related_mail':
                 $db_type = 'VARCHAR(1)';
                 break;
             default:
@@ -529,6 +530,10 @@ class entities
                     'fieldtype_checkboxes',
                     'fieldtype_autostatus',
                     'fieldtype_random_value',
+            
+                    'fieldtype_input_date',
+                    'fieldtype_input_date_extra',
+                    'fieldtype_input_datetime'
                 ]))
         {
             if (entities::prepare_field_type($type) == 'TEXT')

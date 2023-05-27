@@ -25,16 +25,31 @@ if($field_info['type'] == 'fieldtype_users_approve')
 
 
 $condition_html = '
-  <div class="form-group">
-  	<label class="col-md-3 control-label" for="filters_condition">' . tooltip_icon(TEXT_FILTERS_CONDITION_TOOLTIP) . TEXT_FILTERS_CONDITION . '</label>
-    <div class="col-md-9">	
-  	  ' . select_tag('filters_condition', $condition_array, $filter_info['filters_condition'], array('class' => 'form-control input-medium')) . '      
-    </div>			
-  </div>  
+    <div class="form-group">
+        <label class="col-md-3 control-label" for="filters_condition">' . tooltip_icon(TEXT_FILTERS_CONDITION_TOOLTIP) . TEXT_FILTERS_CONDITION . '</label>
+        <div class="col-md-9">	
+              ' . select_tag('filters_condition', $condition_array, $filter_info['filters_condition'], array('class' => 'form-control input-medium')) . '      
+        </div>			
+    </div>  
 ';
 
 switch($field_info['type'])
 {
+    case 'fieldtype_related_mail':
+        $condition_array = [
+            'has_related_emails' => TEXT_HAS_RELATED_EMALS, 
+            'has_unread_emails' => TEXT_HAS_UNREAD_RELATED_EMALS,
+            'no_related_emails' => TEXT_NO_RELATED_EMALS,
+        ];
+        $html = '
+            <div class="form-group">
+                <label class="col-md-3 control-label" for="filters_condition">' . TEXT_FILTERS_CONDITION . '</label>
+                <div class="col-md-9">	
+                      ' . select_tag('values[]', $condition_array, $filter_info['filters_condition'], array('class' => 'form-control input-large')) . '      
+                </div>			
+            </div> 
+            ';
+        break;
     case 'fieldtype_user_accessgroups':
 
         $choices = access_groups::get_choices();

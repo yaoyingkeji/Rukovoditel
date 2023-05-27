@@ -228,7 +228,7 @@ class entities_menu
             'image_map',
             'pivot_map_reports',
             'map_reports',
-            'pivot_tables',
+            'pivot_tables',            
         );
     }
 
@@ -333,7 +333,7 @@ class entities_menu
     {
         global $app_user;
 
-        if(!strlen($reports_list))
+        if(!isset($reports_list) or  !strlen($reports_list))
             return $sub_menu;
 
         foreach(explode(',', $reports_list) as $reports_type)
@@ -411,7 +411,7 @@ class entities_menu
                     $reports_query = db_query("select id, name, allowed_groups from app_ext_graphicreport where id='" . $reports_id . "'");
                     if($reports_info = db_fetch_array($reports_query))
                     {
-                        if(in_array($app_user['group_id'], explode(',', $reports_info['allowed_groups'])) or $app_user['group_id'] == 0)
+                        if(in_array($app_user['group_id'], explode(',', $reports_info['allowed_groups']??'')) or $app_user['group_id'] == 0)
                         {
                             $menu_icon = 'fa-area-chart';
                             $sub_menu[] = array('title' => $reports_info['name'], 'url' => url_for('ext/graphicreport/view', 'id=' . $reports_info['id']), 'class' => $menu_icon);

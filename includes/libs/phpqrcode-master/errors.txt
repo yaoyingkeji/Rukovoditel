@@ -1,1 +1,900 @@
-2022-12-19 16:10:46: empty string!!!
+2022-12-19 16:10:46: empty string!!!2023-05-01 20:21:50: <br />
+<b>Deprecated</b>:  Implicit conversion from float 0.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 0.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 0.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 1.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 1.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 1.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 2.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 2.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 2.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 3.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 3.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 3.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 4.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 4.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 4.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 5.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 5.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 5.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 6.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 6.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 6.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 7.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 7.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 7.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 8.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 8.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 8.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 0.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 0.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 0.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 1.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 1.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 1.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 2.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 2.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 2.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 3.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 3.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 3.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 4.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 4.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 4.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 5.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 5.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 5.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 6.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 6.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 6.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 7.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 7.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 7.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 8.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 8.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 8.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 9.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 9.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 9.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 10.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 10.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 10.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 11.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 11.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 11.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 12.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 12.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 12.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 13.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 13.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 13.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 14.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 14.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 14.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 15.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 15.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 15.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+2023-05-01 20:27:48: <br />
+<b>Deprecated</b>:  Implicit conversion from float 0.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 0.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 0.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 1.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 1.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 1.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 2.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 2.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 2.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 3.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 3.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 3.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 4.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 4.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 4.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 5.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 5.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 5.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 6.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 6.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 6.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 7.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 7.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 7.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 8.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 8.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 8.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 0.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 0.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 0.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 1.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 1.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 1.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 2.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 2.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 2.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 3.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 3.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 3.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 4.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 4.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 4.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 5.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 5.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 5.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 6.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 6.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 6.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 7.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 7.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 7.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 8.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 8.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 8.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 9.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 9.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 9.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 10.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 10.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 10.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 11.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 11.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 11.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 12.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 12.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 12.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 13.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 13.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 13.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 14.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 14.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 14.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 15.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 15.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 15.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+2023-05-01 20:28:11: <br />
+<b>Deprecated</b>:  Implicit conversion from float 0.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 0.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 0.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 1.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 1.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 1.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 2.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 2.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 2.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 3.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 3.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 3.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 4.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 4.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 4.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 5.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 5.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 5.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 6.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 6.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 6.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 7.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 7.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 7.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 8.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 8.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 8.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 0.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 0.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 0.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 1.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 1.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 1.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 2.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 2.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 2.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 3.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 3.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 3.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 4.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 4.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 4.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 5.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 5.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 5.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 6.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 6.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 6.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 7.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 7.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 7.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 8.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 8.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 8.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 9.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 9.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 9.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 10.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 10.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 10.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 11.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 11.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 11.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 12.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 12.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 12.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 13.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 13.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 13.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 14.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 14.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 14.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 15.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 15.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 15.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+2023-05-01 20:28:53: <br />
+<b>Deprecated</b>:  Implicit conversion from float 0.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 0.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 0.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 1.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 1.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 1.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 2.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 2.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 2.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 3.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 3.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 3.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 4.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 4.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 4.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 5.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 5.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 5.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 6.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 6.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 6.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 7.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 7.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 7.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 8.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 8.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 8.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 0.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 0.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 0.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 1.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 1.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 1.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 2.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 2.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 2.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 3.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 3.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 3.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 4.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 4.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 4.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 5.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 5.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 5.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 6.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 6.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 6.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 7.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 7.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 7.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 8.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 8.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 8.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 9.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 9.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 9.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 10.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 10.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 10.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 11.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 11.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 11.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 12.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 12.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 12.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 13.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 13.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 13.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 14.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 14.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 14.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 15.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 15.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 15.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+2023-05-01 20:29:00: <br />
+<b>Deprecated</b>:  Implicit conversion from float 0.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 0.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 0.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 1.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 1.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 1.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 2.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 2.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 2.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 3.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 3.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 3.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 4.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 4.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 4.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 5.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 5.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 5.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 6.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 6.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 6.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 7.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 7.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 7.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 8.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 8.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 8.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 0.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 0.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 0.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 1.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 1.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 1.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 2.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 2.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 2.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 3.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 3.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 3.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 4.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 4.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 4.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 5.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 5.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 5.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 6.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 6.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 6.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 7.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 7.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 7.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 8.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 8.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 8.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 9.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 9.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 9.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 10.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 10.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 10.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 11.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 11.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 11.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 12.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 12.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 12.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 13.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 13.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 13.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 14.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 14.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 14.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 15.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 15.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 15.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+2023-05-01 20:30:21: <br />
+<b>Deprecated</b>:  Implicit conversion from float 0.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 0.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 0.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 1.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 1.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 1.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 2.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 2.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 2.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 3.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 3.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 3.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 4.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 4.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 4.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 5.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 5.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 5.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 6.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 6.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 6.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 7.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 7.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 7.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 8.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 8.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 8.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>140</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 0.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 0.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 0.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 1.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 1.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 1.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 2.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 2.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 2.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 3.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 3.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 3.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 4.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 4.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 4.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 5.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 5.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 5.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 6.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 6.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 6.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 7.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 7.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 7.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 8.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 8.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 8.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 9.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 9.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 9.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 10.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 10.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 10.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 11.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 11.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 11.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 12.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 12.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 12.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 13.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 13.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 13.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 14.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 14.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 14.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 15.25 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 15.5 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />
+<br />
+<b>Deprecated</b>:  Implicit conversion from float 15.75 to int loses precision in <b>C:\SERVERS\xampp824\htdocs\rukovoditel\product_3.4\includes\libs\phpqrcode-master\qrencode.php</b> on line <b>144</b><br />

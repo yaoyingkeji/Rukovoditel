@@ -201,7 +201,7 @@ class fieldtype_barcode
                 $generator = new Picqer\Barcode\BarcodeGeneratorPNG();
                 $generator->useGd();
 
-                $generated = $generator->getBarcode($options['value'], self::get_barcode_generator_type($generator, $type), 1.5, $height);
+                $generated = $generator->getBarcode($options['value'], self::get_barcode_generator_type($generator, $type), 1, $height);
 
                 $html = '<img src="data:image/png;base64,' . base64_encode($generated) . '">';
             }

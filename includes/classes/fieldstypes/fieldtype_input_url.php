@@ -19,7 +19,10 @@ class fieldtype_input_url
         $cfg[] = array('title' => TEXT_ALLOW_SEARCH, 'name' => 'allow_search', 'type' => 'checkbox', 'tooltip_icon' => TEXT_ALLOW_SEARCH_TIP);
         $cfg[] = array('title' => TEXT_URL_PREVIEW_TEXT, 'name' => 'preview_text', 'type' => 'input', 'tooltip_icon' => TEXT_URL_PREVIEW_TEXT_TIP, 'params' => array('class' => 'form-control input-medium'));
         $cfg[] = array('title' => TEXT_URL_PREFIX, 'name' => 'prefix', 'type' => 'input', 'tooltip_icon' => TEXT_URL_PREFIX_TIP, 'params' => array('class' => 'form-control input-small'));
+        
+        $cfg[] = array('title' => TEXT_DISPLAY_COPY_TO_CLIPBOARD_ICON, 'name' => 'copy_to_clipboard', 'type' => 'checkbox', 'tooltip_icon' => TEXT_ICON_WILL_DISPLAYED_ON_RECORD_PAGE);
         $cfg[] = array('title' => TEXT_HIDE_FIELD_IF_EMPTY, 'name' => 'hide_field_if_empty', 'type' => 'checkbox', 'tooltip_icon' => TEXT_HIDE_FIELD_IF_EMPTY_TIP);
+        
 
         $cfg[] = array('title' => TEXT_IS_UNIQUE_FIELD_VALUE, 'name' => 'is_unique', 'type' => 'dropdown', 'choices' => fields_types::get_is_unique_choices(_POST('entities_id')), 'tooltip_icon' => TEXT_IS_UNIQUE_FIELD_VALUE_TIP, 'params' => array('class' => 'form-control input-large'));
         $cfg[] = array('title' => TEXT_ERROR_MESSAGE, 'name' => 'unique_error_msg', 'type' => 'input', 'tooltip_icon' => TEXT_UNIQUE_FIELD_VALUE_ERROR_MSG_TIP, 'tooltip' => TEXT_DEFAULT . ': ' . TEXT_UNIQUE_FIELD_VALUE_ERROR, 'params' => array('class' => 'form-control input-xlarge'));
@@ -84,7 +87,13 @@ class fieldtype_input_url
             }
             else
             {
-                return '<a href="' . $url . '" target="' . $cfg->get('target', '_blank') . '">' . $url_text . '</a>';
+                $html = '';
+                if(($options['is_item_page']??false)==true and $cfg->get('copy_to_clipboard')==1)
+                {
+                    $html = app_clipboardjs_icon($url);
+                }
+                
+                return '<a href="' . $url . '" target="' . $cfg->get('target', '_blank') . '">' . $url_text . '</a>' . $html;
             }
         }
         else

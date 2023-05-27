@@ -12,7 +12,8 @@
 <thead>
   <tr>
     <th><?php echo TEXT_ACTION ?></th> 
-    <th><?php echo TEXT_COLOR ?></th>              
+    <th><?php echo TEXT_COLOR ?></th> 
+    <th><?php echo TEXT_POSITION ?></th>
     <th width="100%"><?php echo TEXT_TITLE ?></th>      
     <th><?php echo TEXT_ASSIGNED_TO ?></th>
     <th><?php echo TEXT_IS_ACTIVE ?></th>        
@@ -22,7 +23,8 @@
 </thead>
 <tbody>
 <?php
-	$access_groups_cache = access_groups::get_cache();
+
+  $access_groups_cache = access_groups::get_cache();
 	
   $pages_query = db_query("select * from app_help_pages where entities_id='" . _get::int('entities_id') . "' and type='announcement' order by sort_order, name");
   while($pages = db_fetch_array($pages_query)):  
@@ -30,9 +32,18 @@
   <tr>
     <td style="white-space: nowrap;"><?php echo button_icon_delete(url_for('help_pages/delete','id=' . $pages['id'] . '&entities_id=' .  _get::int('entities_id'))) . ' ' . button_icon_edit(url_for('help_pages/form','id=' . $pages['id'] . '&type=page'. '&entities_id=' .  _get::int('entities_id'))); ?></td>        
     <td><?php echo '<span class="label label-' . $pages['color'] . '">' . help_pages::get_color_by_name($pages['color']) . '</span>' ?></td>
+    <td><?php 
+        echo help_pages::get_position_by_name($pages['position']);
+        if($pages['position']=='info')
+        {            
+            $reports_id = reports::auto_create_report_by_type(_GET('entities_id'), 'help_pages' . $pages['id']);
+            $count_filters = reports::count_filters_by_reports_id($reports_id);
+            echo  '<br>' . link_to(TEXT_FILTERS . ' (' . $count_filters . ')', url_for('default_filters/filters', 'reports_id=' . $reports_id . '&redirect_to=help_pages' . $pages['id']));
+        }
+    ?></td>                
     <td>
     	<?php echo $pages['name'] ?>
-    	<div><i><small><?php echo (strlen($pages['description'])>64 ? substr(strip_tags($pages['description']),0,64) . '...' : $pages['description'] )?></small></i></div>
+    	<div><i><small><?php echo app_truncate_text($pages['description']) ?></small></i></div>
     	<?php echo ($pages['start_date'] ? TEXT_DATE_FROM . ': ' . format_date($pages['start_date']) . '<br>': '') ?>
     	<?php echo ($pages['end_date'] ? TEXT_DATE_TO . ': ' . format_date($pages['end_date']) : '') ?>
     </td>            

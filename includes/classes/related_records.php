@@ -8,7 +8,7 @@ class related_records
     public $field;
     public $cfg;
     public $entities_access_schema;
-    public $current_entities_access_schema;
+    public $current_entities_access_schema;    
 
     function __construct($entities_id, $items_id)
     {
@@ -170,7 +170,6 @@ class related_records
                 <div class="col-sm-' . ($this->cfg->get('display_search_bar')==1 ? '6':'12'). '">
             ';
         
-
         if (users::has_access('update', $this->current_entities_access_schema) and $current_field_access != 'view')
         {
             //add button
@@ -197,21 +196,21 @@ class related_records
             if (!$this->field_has_button('with_selected'))
             {
                 $with_selected_menu = '';
-            }
-
-            //with selected
-            if (strlen($with_selected_menu) and $count_related_items > 0)
-            {
-                $html_btn .= '
-	            <div class="btn-group">
-	      				<button class="btn btn-default dropdown-toggle btn-sm" type="button" data-toggle="dropdown" data-hover="dropdown">
-	      				' . TEXT_WITH_SELECTED . '<i class="fa fa-angle-down"></i>
-	      				</button>
-	      				<ul class="dropdown-menu" role="menu">
-	      					' . $with_selected_menu . '
-	      				</ul>
-	      			</div>';
-            }
+            }           
+        }
+        
+        //with selected
+        if (strlen($with_selected_menu) and $count_related_items > 0)
+        {
+            $html_btn .= '
+                <div class="btn-group">
+                    <button class="btn btn-default dropdown-toggle btn-sm" type="button" data-toggle="dropdown" data-hover="dropdown">
+                    ' . TEXT_WITH_SELECTED . '<i class="fa fa-angle-down"></i>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                            ' . $with_selected_menu . '
+                    </ul>
+                </div>';
         }
         
         
@@ -611,10 +610,13 @@ class related_records
                         app_send_new_comment_notification($comments_id, $related_items_id, $related_entities_id);
 
                         //track changes
-                        if (class_exists('track_changes'))
+                        if (is_ext_installed())
                         {
                             $log = new track_changes($related_entities_id, $related_items_id);
                             $log->log_comment($comments_id, array());
+                            
+                            $email_rules = new email_rules($related_entities_id, $related_items_id);                            
+                            $email_rules->send_comments_msg($item_info);
                         }
                     }
                 }

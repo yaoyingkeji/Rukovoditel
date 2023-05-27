@@ -2,6 +2,130 @@
 
 class forms_fields_rules
 {
+    private $entity_id;
+    private $form_name;
+    private $allowed_field_types;
+    private $item;
+
+    function __construct($entity_id, $form_name = false)
+    {
+        $this->entity_id = $entity_id;
+        $this->form_name = $form_name;        
+        $this->item = false;
+        
+        $this->allowed_field_types = [
+            'fieldtype_entity',
+            'fieldtype_entity_ajax',
+            'fieldtype_entity_multilevel',
+            'fieldtype_dropdown',
+            'fieldtype_dropdown_multiple',
+            'fieldtype_checkboxes',
+            'fieldtype_radioboxes',
+            'fieldtype_user_accessgroups',
+            'fieldtype_grouped_users',
+            'fieldtype_boolean_checkbox',
+            'fieldtype_boolean',
+            'fieldtype_autostatus', 
+            'fieldtype_stages', 
+            'fieldtype_color'
+        ];              
+    }
+    
+    function set_item($item)
+    {
+        $this->item = $item;
+    }
+
+    function apply()
+    {
+        global $app_user, $app_module_path;
+        
+        $html = '';
+                
+        $form_fields_query = db_query("select r.*, f.name, f.id as fields_id, f.type from app_forms_fields_rules r, app_fields f where r.is_active=1 and  f.type in (" . db_input_in($this->allowed_field_types). ") and r.fields_id=f.id and r.entities_id='" . $this->entity_id . "'",false);
+
+        if(db_num_rows($form_fields_query) > 0)
+        {                   
+            $rules_for_fields = array();
+
+            while($form_fields = db_fetch_array($form_fields_query))
+            {
+                if(strlen($form_fields['visible_fields']??'') and strlen($form_fields['choices']??''))
+                {
+                    $html .= '
+				<input class="disply-fields-rules-' . $form_fields['fields_id'] . '" type="hidden" data-type="visible" data-choices="' . $form_fields['choices'] . '" value="' . $form_fields['visible_fields'] . '">';
+                }
+
+                if(strlen($form_fields['hidden_fields']??'') and strlen($form_fields['choices']??''))
+                {
+                    $html .= '
+				<input class="disply-fields-rules-' . $form_fields['fields_id'] . '" type="hidden" data-type="hidden" data-choices="' . $form_fields['choices'] . '" value="' . $form_fields['hidden_fields'] . '">';
+                }
+
+                $rules_for_fields[$form_fields['fields_id']] = $form_fields['type'];
+            }
+
+//include form rules if form exist
+
+            if($this->form_name)
+            {
+                $html .= '
+		<script>
+			$(function(){
+			';
+
+                $container = ((IS_AJAX and $app_user['id'] != 0) ? 'ajax-modal' : '');
+
+                foreach($rules_for_fields as $fields_id => $fields_type)
+                {
+                    $html .= '
+			$(".field_' . $fields_id . '").change(function(){					
+				app_handle_forms_fields_display_rules(\'' . $container . '\',' . $fields_id . ',\'' . $fields_type . '\',false,false)						
+			})	
+			
+			' . (($app_module_path != 'items/info' and $app_module_path != 'items/comments_form' and $app_module_path != 'items/processes') ? 'app_handle_forms_fields_display_rules(\'' . $container . '\',' . $fields_id . ',\'' . $fields_type . '\',false,false)' : '') . '
+		';
+
+                    //handle comments and process forms
+                    if(($app_module_path == 'items/comments_form' or $app_module_path == 'items/processes'))
+                    {
+                        $field = db_find('app_fields', $fields_id);
+                        $cfg = new fields_types_cfg($field['configuration']);
+
+                        $is_multiple = false;
+
+                        if(in_array($field['type'], ['fieldtype_dropdown_multiple', 'fieldtype_checkboxes']))
+                        {
+                            $is_multiple = true;
+                        }
+
+                        if($field['type'] == 'fieldtype_grouped_users' and in_array($cfg->get('display_as'), ['checkboxes', 'dropdown_muliple']))
+                        {
+                            $is_multiple = true;
+                        }
+
+                        if($this->item)
+                        {
+                            $value = items::prepare_field_value_by_type($field, $this->item);
+                            $html .= 'app_handle_forms_fields_display_rules(\'\',' . $field['id'] . ',"","' . (strlen($value) ? $value : '0') . '",' . (int) $is_multiple . '); ';
+                        }
+                        else
+                        {
+                            $html .= 'app_handle_forms_fields_display_rules(\'\',' . $field['id'] . ',"",false,' . (int) $is_multiple . '); ';
+                        }
+                    }
+                }
+
+                $html .= '
+			})
+		</script>
+			';
+            }
+           
+        }
+        
+        return $html;
+    }
 
     static function prepare_hidden_fields($entity_id, $item, $fields_access_schema)
     {

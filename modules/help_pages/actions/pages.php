@@ -5,12 +5,22 @@ $app_title = app_set_title(TEXT_USERS_ALERTS);
 switch($app_module_action)
 {
   case 'save':
+               
+    if(isset($_POST['position']))
+    {
+        $position = (is_array($_POST['position']) ? implode(',',$_POST['position']) : $_POST['position']);
+    }
+    else
+    {
+        $position = ''; 
+    }
+      
     $sql_data = array(
     	'is_active'	=> (isset($_POST['is_active']) ? 1:0),
     	'entities_id' => _get::int('entities_id'),
     	'type'	=> $_POST['type'],    	    
     	'color'	=> (isset($_POST['color']) ? $_POST['color'] : ''),
-    	'position'	=> (isset($_POST['position']) ? $_POST['position'] : ''),
+    	'position'	=> $position,
     	'start_date' => (isset($_POST['start_date']) ? (int)get_date_timestamp($_POST['start_date']):0),
     	'end_date' => (isset($_POST['end_date']) ? (int)get_date_timestamp($_POST['end_date']):0),
     	'name'	=> $_POST['name'],

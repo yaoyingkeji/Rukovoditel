@@ -48,8 +48,10 @@ class hot_reports
              },60000);                                                                   
           });
           ':'') . '
-          		
+          	
+          $(function(){
           ' . (!strlen($html_cache) ? 'hot_reports_' . $reports['id'] . '_render_dropdown();':'') . '
+          });    
           		                    		
         </script>
       ';

@@ -87,15 +87,21 @@ while($item = db_fetch_array($items_query))
                           
   $attachments = fields_types::output($output_options);
 
-  if($entity_cfg->get('use_editor_in_comments')!=1)
+  if($entity_cfg->get('use_editor_in_comments')!=1 and $entity_cfg->get('use_editor_in_comments')!=2)
   {
     $item['description'] = nl2br($item['description']);
   }
   
   $photo = '';
-  if($entity_cfg->get('disable_avatar_in_comments',0)!=1 and $item['created_by'])
+  if($entity_cfg->get('disable_avatar_in_comments',0)!=1 and $item['created_by']>0 and isset($app_users_cache[$item['created_by']]))
   {
       $photo = render_user_photo($app_users_cache[$item['created_by']]['photo'],'avatar img-responsive');
+  }
+  
+  $name = '';
+  if(isset($app_users_cache[$item['created_by']]))
+  {
+      $name = '<span class="name" ' . users::render_publi_profile($app_users_cache[$item['created_by']],false). '>' . $app_users_cache[$item['created_by']]['name']. '</span>';
   }
     
   $html .= '
@@ -103,7 +109,7 @@ while($item = db_fetch_array($items_query))
             <div class="message">
                 <div class="head">' . $html_action_column . $photo . '                    
                     <span class="datetime">' . format_date_time($item['date_added']) . '</span><br>    
-                    <span class="name" ' . users::render_publi_profile($app_users_cache[$item['created_by']],false). '>' . $app_users_cache[$item['created_by']]['name']. '</span>                    
+                    ' . $name . '                    
                 </div>    
                     
                 <span class="body">

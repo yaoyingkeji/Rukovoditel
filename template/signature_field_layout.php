@@ -17,7 +17,7 @@
     <link rel="stylesheet" type="text/css" href="js/signature_pad-master/css/ie9.css">
   <![endif]-->
   
-  <script src="template/plugins/jquery-1.10.2.min.js" type="text/javascript"></script>
+  <script src="<?= CFG_PATH_TO_JQUERY ?>" type="text/javascript"></script>
 
 
 </head>
@@ -30,7 +30,26 @@
 ?>
 
   <div id="signature-pad" class="signature-pad">
-  	<div style="margin-bottom: 15px;"><?php echo input_tag('name','',['class'=>'form-control','placeholder'=>TEXT_ENTER_YOUR_NAME]) ?></div>
+  	<div style="margin-bottom: 15px;">
+            <?php 
+                $html = '';
+                switch($cfg->get('display_person_name_input'))
+                {
+                    case 0:
+                        $html = input_hidden_tag('name',$app_user['name']);
+                        break;
+                    case 2:
+                        $html = input_tag('name',$app_user['name'],['class'=>'form-control','placeholder'=>TEXT_ENTER_YOUR_NAME]);   
+                        break;
+                    case 1:
+                    default:
+                        $html = input_tag('name','',['class'=>'form-control','placeholder'=>TEXT_ENTER_YOUR_NAME]);   
+                        break;
+                }
+                echo $html;
+            
+                    ?>
+        </div>
   	
     <div class="signature-pad--body">
       <canvas></canvas>

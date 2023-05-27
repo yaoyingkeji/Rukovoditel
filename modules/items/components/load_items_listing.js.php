@@ -72,6 +72,7 @@
         force_display_id:$('#'+listing_container+'_force_display_id').val(),
         force_popoup_fields:$('#'+listing_container+'_force_popoup_fields').val(),
         force_filter_by:$('#'+listing_container+'_force_filter_by').val(),
+        force_item_page_subentity_filters: $('#'+listing_container+'_force_item_page_subentity_filters').val(),
       },
       function(response, status, xhr) {
         if (status == "error") {                                 
@@ -287,6 +288,7 @@
                 listing_order_fields:$('#'+listing_container+'_order_fields').val(),
                 force_display_id:$('#'+listing_container+'_force_display_id').val(),
                 force_filter_by:$('#'+listing_container+'_force_filter_by').val(),
+                force_item_page_subentity_filters: $('#'+listing_container+'_force_item_page_subentity_filters').val(),
                 }}).done(function(){
 
                     $('.ajax-loading-small').remove()

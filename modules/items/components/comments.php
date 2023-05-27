@@ -4,15 +4,16 @@
       <?php 
       	if(users::has_comments_access('create', $access_rules->get_comments_access_schema()))
       	{
+            $text_add_comment = strlen($entity_cfg->get('comments_insert_button')) ? $entity_cfg->get('comments_insert_button') : TEXT_BUTTON_ADD_COMMENT;
       		echo '
     				<div class="btn-group">' . 
-      				button_tag(TEXT_BUTTON_ADD_COMMENT, url_for('items/comments_form','path=' . $_GET['path']),true,array('class'=>'btn btn-primary btn-sm')) . 
+      				button_tag($text_add_comment, url_for('items/comments_form','path=' . $_GET['path']),true,array('class'=>'btn btn-primary btn-sm')) . 
       				'<button onClick="quick_comment_toggle()" style="margin-left: -5px;" title="' . addslashes(TEXT_QUICK_COMMENT) . '" type="button" class="btn btn-default btn-sm"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
       			</div>';
       	}
       	?>
       	
-      	<?php if(class_exists('processes')) echo $processes->render_buttons('comments_section'); ?>
+      	<?php if(is_ext_installed()) echo $processes->render_buttons('comments_section'); ?>
     </div>
   </div>
   <div class="col-sm-4">
@@ -30,13 +31,28 @@
   </div>
 </div>
 
+<?php
+    if(is_mobile())
+    {
+        $comments_listing_url = "items/comments_listing_mobile";
+    }
+    elseif($entity_cfg->get('comments_listing_type')=='list')
+    {
+        $comments_listing_url = "items/comments_listing_list";
+    }
+    else
+    {
+        $comments_listing_url = "items/comments_listing";
+    }
+?>
+
 <script>
   function load_comments_listing(listing_container,page,search_keywords)
   {      
     $('#'+listing_container).append('<div class="data_listing_processing"></div>');
     $('#'+listing_container).css("opacity", 0.5);
     
-    $('#'+listing_container).load('<?php echo url_for("items/comments_listing" . (is_mobile() ? '_mobile':'')  )?>',{path:'<?php echo $_GET["path"]?>',page:page,search_keywords:$('#'+listing_container+'_search_keywords').val()},
+    $('#'+listing_container).load('<?php echo url_for($comments_listing_url)?>',{path:'<?php echo $_GET["path"]?>',page:page,search_keywords:$('#'+listing_container+'_search_keywords').val()},
       function(response, status, xhr) {
         if (status == "error") {                                 
            $(this).html('<div class="alert alert-error"><b>Error:</b> ' + xhr.status + ' ' + xhr.statusText+'<div>'+response +'</div></div>')                    
@@ -44,6 +60,8 @@
         $('#'+listing_container).css("opacity", 1);    
         
         appHandlePopover();   
+        
+        appHandleTruncatedText()
         
         ckeditor_images_content_prepare(); 
 
@@ -55,7 +73,8 @@
         	}
       	}); 
 
-        hljs_init_copy_code()                                                                                             
+        hljs_init_copy_code()  
+                
       }
     );
   }

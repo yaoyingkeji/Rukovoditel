@@ -2,12 +2,14 @@
   $header_menu_button = ''; 
   
   //add templates menu in header
-  if(class_exists('comments_templates'))
+  if(is_ext_installed())
   {
     $header_menu_button = comments_templates::render_modal_header_menu($current_entity_id);
   }
   
-  echo ajax_modal_template_header($header_menu_button . TEXT_COMMENT_IFNO); 
+  $text_comment = strlen($entity_cfg->get('comments_window_heading')) ? $entity_cfg->get('comments_window_heading') : TEXT_COMMENT;   
+  
+  echo ajax_modal_template_header($header_menu_button . $text_comment); 
           
   $app_items_form_name = 'comments_form';         
 ?>
@@ -25,9 +27,9 @@
 	if(isset($_GET['reply_to']))
 	{
 		$reply_to_obj = db_find('app_comments',$_GET['reply_to']);
-		if($entity_cfg->get('use_editor_in_comments')==1)
+		if($entity_cfg->get('use_editor_in_comments')==1 or $entity_cfg->get('use_editor_in_comments')==2)
 		{
-			$obj['description'] = '<blockquote>' . $reply_to_obj['description'] . '</blockquote>' . "\n";
+			$obj['description'] = '<blockquote>' . $reply_to_obj['description'] . '</blockquote><p></p>' . "\n";
 		}
 		else 
 		{
@@ -145,7 +147,7 @@ if(!isset($_GET['id']))
 }  
 ?>    
     <div class="form-group">
-    	<label class="col-md-3 control-label" for="name"><?php echo TEXT_COMMENT ?></label>
+    	<label class="col-md-3 control-label" for="name"><?php echo $text_comment ?></label>
       <div class="col-md-9">	
     	  <?php 
           $attr = ['class'=>'form-control autofocus ' . ($entity_cfg->get('use_editor_in_comments')!=0 ? 'editor-auto-focus':'')];          
@@ -187,7 +189,7 @@ if(!isset($_GET['id']))
 
 
   //render templates fields values
-  if(class_exists('comments_templates'))
+  if(is_ext_installed())
   {
     echo comments_templates::render_fields_values($current_entity_id);
   }
@@ -207,7 +209,9 @@ if(!isset($_GET['id']))
 ?> 
 
 <?php 	
-	require(component_path('items/forms_fields_rules.js')); 
+	
+    $forms_fields_rules = new forms_fields_rules($current_entity_id,$app_items_form_name);                    
+    echo $forms_fields_rules->apply();
 ?>
 
    

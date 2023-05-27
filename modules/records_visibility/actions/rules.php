@@ -11,6 +11,8 @@ switch($app_module_action)
             'merged_fields_empty_values' => (isset($_POST['merged_fields_empty_values']) ? implode(',', $_POST['merged_fields_empty_values']) : ''),
             'notes' => $_POST['notes'],
             'mysql_query' =>$_POST['mysql_query'],
+            'php_code' =>$_POST['php_code'],
+            
         );
 
         if(isset($_GET['id']))

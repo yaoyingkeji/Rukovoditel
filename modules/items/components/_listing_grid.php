@@ -16,8 +16,13 @@ $html .= '
 		<ul class="listing-grid">';
 while($item = db_fetch_array($items_query))
 {
+    $html_li = '';
+    if($listing->settings->get('display_as_link')==1)
+    {
+        $html_li = 'style="cursor:pointer" onClick="location.href=\'' . url_for('items/info','path=' . $current_entity_id . '-' . $item['id'] ) . '\'"';
+    }
 	$html .= '
-			<li class="' . $listing_highlight->apply($item) . '">
+			<li class="' . $listing_highlight->apply($item) . '" ' . $html_li .  '>
 				<table style="width: 100%" ' . (($users_notifications->has($item['id']) and $entity_cfg->get('disable_highlight_unread')!=1) ? 'class="unread-item-row"':''). '>
 			';
 	
@@ -196,7 +201,7 @@ $html .= '</ul>';
 
 //add pager
 $html .= '
-<div class="row">
+<div class="row listing-split-page">
   <div class="col-md-4 col-sm-12">' . $listing_split->display_count() . '</div>
   <div class="col-md-8 col-sm-12">' . $listing_split->display_links(). '</div>
 </div>

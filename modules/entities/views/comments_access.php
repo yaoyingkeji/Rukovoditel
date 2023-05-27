@@ -29,7 +29,7 @@
     $acess_info_query = db_query("select access_schema from app_comments_access where entities_id='" . db_input($_GET['entities_id']) . "' and access_groups_id='" . $v['id']. "'");
     if($acess_info = db_fetch_array($acess_info_query))
     {
-      $schema = str_replace(',','_',$acess_info['access_schema']);      
+      $schema = str_replace(',','_',$acess_info['access_schema']??'');      
     }
                
     echo '

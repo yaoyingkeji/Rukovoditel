@@ -171,6 +171,13 @@ class reports_sections
                                     $choices[TEXT_EXT_RESOURCE_TIMELINE]['resource_timeline' . $v['id']] = $v['name'];
                             }
 			}
+                        
+                        //report designer
+                        $reports_query = db_query("select id, name from app_ext_report_page where entities_id=0  and is_active=1 and (find_in_set('" . $app_user['group_id'] . "',users_groups) or find_in_set('" . $app_user['id'] . "',assigned_to))");
+                        while($v = db_fetch_array($reports_query))
+                        {                            
+                            $choices[TEXT_EXT_REPORT_DESIGNER]['report_page' . $v['id']] = $v['name'];
+                        }
 		}
 		
 		$html = select_tag($type . '_section' . $sections['id'],$choices,$sections[$type], array('class'=>'form-control','onChange'=>'reports_section_edit(' . $sections['id'] . ',\'' .$type .  '\',this.value)')); 

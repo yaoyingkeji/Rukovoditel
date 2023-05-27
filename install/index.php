@@ -1,7 +1,8 @@
 <?php
     error_reporting(E_ALL & ~E_NOTICE);
+        
 
-    define('PROJECT_VERSION', '3.3.1');
+    define('PROJECT_VERSION', '3.4');
 
     // set default timezone if none exists (PHP 5.3 throws an E_WARNING)
     define('CFG_TIME_ZONE', 'Europe/Moscow');
@@ -28,6 +29,9 @@
             case 'russian':
                 include('languages/russian.php');
                 break;
+            case 'chinese':
+                include('languages/chinese.php');
+                break;
             case 'italian':
                 include('languages/italian.php');
                 break;	
@@ -47,6 +51,13 @@
 
     $step = $_GET['step'] ?? '';
     $action = $_GET['action'] ?? '';
+    
+    
+    //Check if app is intalled    
+    if(is_file(substr(__DIR__,0,-7) . 'config/database.php') and $step!='success')
+    {
+       header('Location: ../index.php'); 
+    }
 
 
     if ($step == 'rukovoditel_config')
@@ -95,10 +106,10 @@
 }
 </style>
 
-<script src="../template/plugins/jquery-1.10.2.min.js" type="text/javascript"></script>
+<script src="js/jquery/3.6.4/jquery-3.6.4.min.js" type="text/javascript"></script>
 
-<script type="text/javascript" src="../js/validation/jquery.validate.min.js"></script>
-<script type="text/javascript" src="../js/validation/additional-methods.min.js"></script>
+<script type="text/javascript" src="js/validation/1.9.5/jquery.validate.min.js"></script>
+<script type="text/javascript" src="js/validation/1.9.5/additional-methods.min.js"></script>
  
 <script type="text/javascript" src="../js/main.js"></script>
 

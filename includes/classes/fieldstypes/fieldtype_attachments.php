@@ -16,13 +16,34 @@ class fieldtype_attachments
 
         $cfg[TEXT_SETTINGS][] = array('title' => TEXT_NOTIFY_WHEN_CHANGED, 'name' => 'notify_when_changed', 'type' => 'checkbox', 'tooltip_icon' => TEXT_NOTIFY_WHEN_CHANGED_TIP);
         $cfg[TEXT_SETTINGS][] = array('title' => TEXT_ALLOW_SEARCH, 'name' => 'allow_search', 'type' => 'checkbox', 'tooltip_icon' => TEXT_ALLOW_SEARCH_TIP);
-        $cfg[TEXT_SETTINGS][] = array('title' => TEXT_USE_IMAGE_PREVIEW, 'name' => 'use_image_preview', 'type' => 'checkbox', 'tooltip_icon' => TEXT_USE_IMAGE_PREVIEW_TIP);
-        $cfg[TEXT_SETTINGS][] = array('title' => TEXT_DISPLAY_FILE_DATE_ADDED, 'name' => 'display_date_added', 'type' => 'checkbox');
+        
+        
         $cfg[TEXT_SETTINGS][] = array('title' => TEXT_ALLOW_CHANGE_FILE_NAME, 'name' => 'allow_change_file_name', 'type' => 'checkbox');
         $cfg[TEXT_SETTINGS][] = array('title' => TEXT_FILES_UPLOAD_LIMIT, 'name' => 'upload_limit', 'type' => 'input', 'tooltip_icon' => TEXT_FILES_UPLOAD_LIMIT_TIP, 'params' => array('class' => 'form-control input-xsmall'));
         $cfg[TEXT_SETTINGS][] = array('title' => TEXT_FILES_UPLOAD_SIZE_LIMIT, 'name' => 'upload_size_limit', 'type' => 'input', 'tooltip_icon' => TEXT_FILES_UPLOAD_SIZE_LIMIT_TIP, 'tooltip' => TEXT_MAX_UPLOAD_FILE_SIZE . ' ' . CFG_SERVER_UPLOAD_MAX_FILESIZE . 'MB ' . TEXT_MAX_UPLOAD_FILE_SIZE_TIP, 'params' => array('class' => 'form-control input-xsmall'));
         $cfg[TEXT_SETTINGS][] = array('title' => TEXT_ALLOWED_EXTENSIONS, 'name' => 'allowed_extensions', 'type' => 'input', 'tooltip_icon' => TEXT_ALLOWED_EXTENSIONS_TIP, 'params' => array('class' => 'form-control input-large'));
         $cfg[TEXT_SETTINGS][] = array('title' => TEXT_PLAY_AUDIO_FILE, 'name' => 'play_audio_file', 'type' => 'checkbox', 'tooltip_icon' => 'mp3, wav, ogg');
+        
+        $cfg[TEXT_EXTRA][] = array('title' => TEXT_USE_IMAGE_PREVIEW, 'name' => 'use_image_preview', 'type' => 'checkbox', 'tooltip_icon' => TEXT_USE_IMAGE_PREVIEW_TIP);
+        $cfg[TEXT_EXTRA][] = array('title' => TEXT_DISPLAY_FILE_DATE_ADDED, 'name' => 'display_date_added', 'type' => 'checkbox');
+        
+        $cfg[TEXT_EXTRA][] = array(
+            'title' => TEXT_ATTACHMENTS_SORT_ORDER, 
+            'name' => 'allow_sort_order', 
+            'choices' =>[
+                '' => TEXT_BY_DATE_UPLOAD,
+                'sorting_by_filename' => TEXT_BY_FILENAME,
+                'manual_sorting' => TEXT_MANUAL_SORTING
+            ],
+            'type' => 'dropdown', 
+            'params' => ['class'=>'form-control input-large'],
+            'tooltip' => '<span form_display_rules="fields_configuration_allow_sort_order:manual_sorting">' . TEXT_ALLOW_SORT_ORDER_ATTACHMENTS_TIP . '</span>');
+                
+        $cfg[TEXT_EXTRA][] = array('title' => TEXT_HIDE_FIELD_IF_EMPTY, 'name' => 'hide_field_if_empty', 'type' => 'checkbox', 'tooltip_icon' => TEXT_HIDE_FIELD_IF_EMPTY_TIP);
+        
+        $tooltip = TEXT_ENTER_TEXT_PATTERN_INFO_SHORT . '<br>' . TEXT_EXAMPLE . ': <code>myfile_[221]_[current_date_time]</code>' ;
+        $cfg[TEXT_EXTRA][] = array('title' => TEXT_FILENAME_TEMPLATE, 'name' => 'filename_template', 'type' => 'input', 'params' => array('class' => 'form-control input-larege'),'tooltip'=>$tooltip,'tooltip_icon'=>TEXT_FIELDTYPE_ATTACHMENTS_FILENAME_TEMPLATE_NOTE);
+
 
 
         $cfg[TEXT_DELETION][] = array('title' => TEXT_CONFIRM_DELETION, 'name' => 'confirm_delation', 'type' => 'checkbox');
@@ -45,7 +66,7 @@ class fieldtype_attachments
         $uploadify_attachments[$field_id] = array();
         $uploadify_attachments_queue[$field_id] = array();
 
-        if(strlen($obj['field_' . $field['id']]) > 0)
+        if(strlen($obj['field_' . $field['id']]??'') > 0)
         {
             $uploadify_attachments[$field_id] = explode(',', $obj['field_' . $field['id']]);
         }
@@ -157,7 +178,9 @@ class fieldtype_attachments
                 "formData"         : {
                                         "timestamp" : ' . $timestamp . ',
                                         "token"     : "' . $form_token . '",
-                                        "form_session_token" : "' . $app_session_token . '"		
+                                        "form_session_token" : "' . $app_session_token . '",
+                                        "app_form_name": "' . $app_items_form_name . '",                                
+                                        "filename_template": "' . ($cfg->get('upload_limit')==1 ? addslashes($cfg->get('filename_template')) : '') . '" 
                                      },
                 "queueID"          : "uploadifive_queue_list_' . $field_id . '",
                 "fileSizeLimit" : "' . (strlen($cfg->get('upload_size_limit')) ? (int) $cfg->get('upload_size_limit') : CFG_SERVER_UPLOAD_MAX_FILESIZE) . 'MB",
@@ -195,7 +218,8 @@ class fieldtype_attachments
     {
         global $app_changed_fields;
 
-
+        $cfg = new settings($options['field']['configuration']);
+        
         if(is_array($options['value']))
         {
             $attachments = [];
@@ -254,6 +278,11 @@ class fieldtype_attachments
         db_query("delete from app_attachments where date_added!='" . date('Y-m-d') . "'");
 
         $options['value'] = implode(',', $attachments);
+                
+        if($cfg->get('allow_sort_order')=='sorting_by_filename')
+        {
+           $options['value'] = $this->sorting_by_filename($options['value']);                      
+        }
 
 
         //notify when changed
@@ -276,13 +305,32 @@ class fieldtype_attachments
         return $options['value'];
     }
 
+    function sorting_by_filename($value)
+    {
+        $files = [];
+        foreach(explode(',', $value) as $k=>$v)
+        {
+            $file = attachments::parse_filename($v);
+            $files[$file['name'] . $k] = $v;
+        }
+        
+        ksort($files);
+        
+        return implode(',',$files);
+    }
+    
     function output($options)
     {
         $options_cfg = new fields_types_options_cfg($options);
+        $cfg = new fields_types_cfg((isset($options['field']['configuration']) ? $options['field']['configuration'] : ''));
 
-        if(strlen($options['value']) > 0)
-        {
-
+        if(strlen($options['value']??'') > 0)
+        {            
+            if($cfg->get('allow_sort_order')=='sorting_by_filename')
+            {
+               $options['value'] = $this->sorting_by_filename($options['value']); 
+            }
+            
             $use_file_storage = false;
 
             //check if field using file storage
@@ -326,10 +374,30 @@ class fieldtype_attachments
 
                         $link = link_to($file['name'], url_for('ext/ipages/view', 'id=' . $options['is_ipages'] . '&action=preview_attachment_image&file=' . urlencode(base64_encode($filename))), array('class' => $fancybox_css_class, 'title' => $file['name'], 'data-fancybox-group' => 'gallery'));
                     }
+                    elseif(is_google_doc($file['file_path']) and strlen(CFG_SERVICE_DOCX_PREVIEW))
+                    {                            
+                        $link = link_to($file['name'], url_for('ext/ipages/attachment_preview_doc', 'id=' . $options['is_ipages'] . '&file=' . urlencode(base64_encode($filename))), array('title'=>$file['name'],'target' => '_blank','class'=> (CFG_SERVICE_DOCX_PREVIEW!='docs.yandex.ru' ? 'fancybox-ajax':'') ));
+                    }
+                    elseif($file['is_text'])
+                    {
+                        $link = link_to($file['name'], url_for('ext/ipages/attachment_preview_text', 'id=' . $options['is_ipages'] . '&file=' . urlencode(base64_encode($filename))), array('title'=>$file['name'],'target' => '_blank','class'=>'fancybox-ajax'));
+                    }
+                    elseif($file['is_audio'])
+                    {
+                        $link = link_to($file['name'], url_for('ext/ipages/attachment_preview_audio', 'id=' . $options['is_ipages'] . '&file=' . urlencode(base64_encode($filename))), array('title'=>$file['name'],'target' => '_blank','class'=>'fancybox-ajax'));
+                    }
+                    elseif($file['is_video'])
+                    {
+                        $link = link_to($file['name'], url_for('ext/ipages/attachment_preview_video', 'id=' . $options['is_ipages'] . '&file=' . urlencode(base64_encode($filename))), array('title'=>$file['name'],'target' => '_blank','class'=>'fancybox-ajax'));
+                    }
                     elseif($file['is_pdf'])
                     {
-                        $link = link_to($file['name'], url_for('ext/ipages/view', 'id=' . $options['is_ipages'] . '&action=download_attachment&preview=1&file=' . urlencode(base64_encode($filename))), array('target' => '_blank'));
+                        $link = link_to($file['name'], url_for('ext/ipages/attachment_preview_pdf', 'id=' . $options['is_ipages'] . '&file=' . urlencode(base64_encode($filename))), array('target' => '_blank','class'=>'fancybox-ajax'));
                     }
+                    /*elseif($file['is_pdf'])
+                    {
+                        $link = link_to($file['name'], url_for('ext/ipages/view', 'id=' . $options['is_ipages'] . '&action=download_attachment&preview=1&file=' . urlencode(base64_encode($filename))), array('target' => '_blank'));
+                    }*/
                     else
                     {
                         $link = link_to($file['name'], url_for('ext/ipages/view', 'id=' . $options['is_ipages'] . '&action=download_attachment&file=' . urlencode(base64_encode($filename))));

@@ -71,7 +71,7 @@ while($v = db_fetch_array($fields_query)):
 	<td style="white-space: nowrap;" align="center"><?php echo button_icon_edit(url_for('entities/fields_form_internal','id=' . $v['id']. '&entities_id=' . $_GET['entities_id'])) ?></td>
 	<td><?php echo (in_array($v['type'],fields_types::get_reserved_types()) ? tooltip_icon('[' . str_replace('fieldtype_','',$v['type']). ']') : $v['id']) ?></td>
 	<td></td>
-	<td><?php echo (strlen($v['name']) ? $v['name']:fields_types::get_title($v['type'])) . $heading_note ?></td>
+	<td><?php echo (strlen($v['name']??'') ? $v['name']:fields_types::get_title($v['type']??'')) . $heading_note ?></td>
 	<td><?php echo $v['short_name']?></td>
 	<td></td>	
 	<td><?php echo render_bool_value(1,true) ?></td>

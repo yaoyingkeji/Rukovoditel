@@ -9782,7 +9782,7 @@ Layer.include({
 	// necessary event listeners. If a `Function` is passed it will receive
 	// the layer as the first argument and should return a `String` or `HTMLElement`.
 	bindPopup: function (content, options) {
-
+                
 		if (content instanceof Popup) {
 			setOptions(content, options);
 			this._popup = content;

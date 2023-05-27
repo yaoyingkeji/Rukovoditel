@@ -2,6 +2,9 @@
 UploadiFive 1.2.2
 Copyright (c) 2012 Reactive Apps, Ronnie Garcia
 Released under the UploadiFive Standard License <http://www.uploadify.com/uploadifive-standard-license>
+
+CUSTOM MODIFICCATION
+    added app_form_name option
 */
 ;(function($) {
 
@@ -301,9 +304,9 @@ Released under the UploadiFive Standard License <http://www.uploadify.com/upload
                     var v = 0;
                     
                     //allow type by file extension if mime type is not detected
-                    if(file.type.length==0 && settings.fileTypeExtra.length>0)
-                    {                    	                    	                    	
-                    	if(settings.fileTypeExtra.split(',').indexOf(file.name.split('.').pop()))
+                    if(settings.fileTypeExtra.length>0)
+                    {                                                 
+                    	if(settings.fileTypeExtra.split(',').indexOf(file.name.split('.').pop())!=-1)
                     	{
                     		v += 1;
                     	}                    	
@@ -414,6 +417,12 @@ Released under the UploadiFive Standard License <http://www.uploadify.com/upload
                             // Add the rest of the formData
                             for (i in settings.formData) {
                                 formData.append(i, settings.formData[i]);
+                            }
+                            
+                            //send json str with form data
+                            if(formData.has('app_form_name'))
+                            {                                   
+                                formData.append('form_data', JSON.stringify($('#'+formData.get('app_form_name')).serializeArray()));                                                               
                             }
 
                             // Open the AJAX call
@@ -830,7 +839,7 @@ Released under the UploadiFive Standard License <http://www.uploadify.com/upload
                                 $data.uploadFile(_file, true);
                             }
                         });
-                        if ($('#' + settings.queueID).find('.uploadifive-queue-item').not('.error, .complete').size() == 0) {
+                        if ($('#' + settings.queueID).find('.uploadifive-queue-item').not('.error, .complete').length == 0) {
                             $data.queueComplete();
                         }
                     } else {

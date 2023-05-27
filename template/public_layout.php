@@ -38,18 +38,18 @@
 <link href="js/chosen/chosen.css" rel="stylesheet" media="screen">
 <link rel="stylesheet" type="text/css" href="template/plugins/jquery-nestable/jquery.nestable.css"/>
 <link rel="stylesheet" type="text/css" href="js/select2/dist/css/select2.min.css" />
-<link rel="stylesheet" type="text/css" href="js/xdsoft_datetimepicker/2.5.21/jquery.datetimepicker.css">
+<link rel="stylesheet" type="text/css" href="js/xdsoft_datetimepicker/2.5.22/jquery.datetimepicker.css">
 
 <?php require('js/mapbbcode-master/includes.css.php'); ?>
 
 <link href="css/skins/<?php echo $app_skin ?>" rel="stylesheet" type="text/css" />
 
-<script src="template/plugins/jquery-1.10.2.min.js" type="text/javascript"></script>   
+<script src="<?= CFG_PATH_TO_JQUERY ?>" type="text/javascript"></script>   
 
 <script src="js/jquery.ui.touch-punch/jquery.ui.touch-punch.min.js" type="text/javascript"></script>
 
-<script type="text/javascript" src="js/validation/jquery.validate.min.js"></script>
-<script type="text/javascript" src="js/validation/additional-methods.min.js"></script>
+<script type="text/javascript" src="<?= CFG_PATH_TO_JQUERY_VALIDATION ?>"></script>
+<script type="text/javascript" src="<?= CFG_PATH_TO_JQUERY_VALIDATION_METHODS ?>"></script>
 <?php require('js/validation/validator_messages.php'); ?> 
 
 <!--izoAutocomplete-->
@@ -71,6 +71,7 @@
   var app_cfg_ckeditor_images = '<?php echo url_for("dashboard/ckeditor_image")?>';
   var app_language_text_direction = '<?php echo APP_LANGUAGE_TEXT_DIRECTION ?>'
   var app_cfg_drop_down_menu_on_hover = <?php echo CFG_DROP_DOWN_MENU_ON_HOVER ?>;
+  var app_ckeditor_contents_css = <?= (is_file('css/skins/' . $app_skin_dir . '/ckeditor.css') ? "'css/skins/{$app_skin_dir}/ckeditor.css'":"'template/plugins/ckeditor/4.21.0/contents.css'") ?>;
 
   function keep_session()
 	{
@@ -173,20 +174,20 @@
 <script src="template/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
 <!-- END CORE PLUGINS -->
 <!-- BEGIN PAGE LEVEL PLUGINS -->
-<script type="text/javascript" src="template/plugins/ckeditor/4.16.2/ckeditor.js"></script>
+<script type="text/javascript" src="<?= CFG_PATH_TO_CKEDITOR ?>ckeditor.js"></script>
+<script type="text/javascript" src="<?= CFG_PATH_TO_CKEDITOR ?>plugins/codesnippet/lib/highlight/highlight.pack.js"></script>
 <script type="text/javascript" src="template/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
 <script type="text/javascript" src="template/plugins/bootstrap-datetimepicker-master/js/bootstrap-datetimepicker.js"></script>
 <script type="text/javascript" src="template/plugins/bootstrap-modal/js/bootstrap-modalmanager.js" type="text/javascript"></script>
 <script type="text/javascript" src="template/plugins/bootstrap-modal/js/bootstrap-modal.js" type="text/javascript"></script>
 <script type="text/javascript" src="template/plugins/jquery-nestable/jquery.nestable.js"></script>
 <script type="text/javascript" src="template/plugins/bootstrap-wizard/jquery.bootstrap.wizard.js"></script>
-<script type="text/javascript" src="js/uploadifive/jquery.uploadifive.min.js?v=1.2.2"></script>
+<script type="text/javascript" src="js/uploadifive/jquery.uploadifive.js?v=1.2.2"></script>
 <script type="text/javascript" src="js/chosen/chosen.jquery.min.js"></script>
 <script type="text/javascript" src="js/chosen/jquery-chosen-sortable.min.js"></script>
 <script type="text/javascript" src="js/maskedinput/jquery.maskedinput.js"></script>
 <script type="text/javascript" src="js/totop/jquery.ui.totop.js" ></script>
 <script type="text/javascript" src="js/jquery-number-master/jquery.number.min.js" ></script>
-<script type="text/javascript" src="template/plugins/ckeditor/4.16.2/plugins/codesnippet/lib/highlight/highlight.pack.js"></script>
 <script type="text/javascript" src="js/select2/dist/js/select2.full.js" ></script>
 <script type="text/javascript" src="js/jquery.taboverride-master/build/taboverride.min.js" ></script>
 <script type="text/javascript" src="js/jquery.taboverride-master/build/jquery.taboverride.min.js" ></script>
@@ -194,7 +195,7 @@
 <script type="text/javascript" src="js/inputmask/5.0.5/jquery.inputmask.min.js" ></script>
 <script type="text/javascript" src="js/izoColorPicker/1.0/izoColorPicker.js"></script>
 <script type="text/javascript" src="js/treetable-master/jquery-treetable.js" ></script>
-<script type="text/javascript" src="js/xdsoft_datetimepicker/2.5.21/jquery.datetimepicker.full.js" ></script>
+<script type="text/javascript" src="js/xdsoft_datetimepicker/2.5.22/jquery.datetimepicker.full.js" ></script>
 <script type="text/javascript" src="js/jquery.zeninput/jquery.zeninput.js" ></script>
 <!-- END PAGE LEVEL PLUGINS -->
 
@@ -208,7 +209,7 @@
 ?>
 
 <!-- BEGIN PAGE LEVEL SCRIPTS -->
-<script src="template/scripts/app.js" type="text/javascript"></script>
+<script src="template/scripts/app.js?v=<?php echo PROJECT_VERSION ?>" type="text/javascript"></script>
 <!-- END PAGE LEVEL SCRIPTS -->
 
 <script>

@@ -39,18 +39,18 @@ class nested_entities_menu
                 
                 $path = implode('/', $this->path_to_item) . '/' . $id;
 
-                $s[] = array('title' => (strlen($entity_cfg->get('menu_title')) > 0 ? $entity_cfg->get('menu_title') : entities::get_name_by_id($id)), 'url' => url_for('items/items', 'path=' . $path), 'selected_id' => $id);
+                $s[] = array('title' => (strlen($entity_cfg->get('menu_title')) > 0 ? $entity_cfg->get('menu_title') : entities::get_name_by_id($id)), 'url' => url_for('items/items', 'path=' . $path), 'selected_id' => $id,'menu_css'=>'navbar-nav-entity-' . $id);
             }
             
             $title = (strlen($v->icon) ? app_render_icon($v->icon, (strlen($v->icon_color) ? 'style="color:' . $v->icon_color . '"':'')) . ' ': '') . $v->name;
             
             if(count($s)==1)
             {
-                $menu[] = array('title' => $title,  'url' => $s[0]['url']);
+                $menu[] = array('title' => $title,  'url' => $s[0]['url'],'menu_css'=>'navbar-nav-entity-' . $v->entities);
             }
             elseif(count($s)>1)
             {
-                $menu[] = array('title' => $title,  'submenu' => $s);
+                $menu[] = array('title' => $title,  'submenu' => $s,'menu_css'=>'navbar-nav-entity-group-' . $v->id);
             }
         }
         

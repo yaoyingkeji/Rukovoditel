@@ -2,6 +2,13 @@
 
 class items_page
 {       
+    public $items_id;
+    public $entities_id;
+    public $entity_cfg;
+    public $fields_access_schema;
+    public $fields_display_rules;
+    public $item;
+        
     function __construct($entities_id, $items_id)
     {
         global $app_user,$current_item_info;

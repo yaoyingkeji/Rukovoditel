@@ -208,6 +208,23 @@ class records_visibility
                 $mysql_query = str_replace('[current_user_group_id]', $app_user['group_id'], $mysql_query);
                 $sql[] = $mysql_query;
             }
+            
+            if(strlen(trim($rules['php_code'])))
+            {
+                try
+                {                        
+                    eval($rules['php_code']);
+                }
+                catch (Error $e)
+                {
+                    echo alert_error(TEXT_ERROR . ' (' . TEXT_PHP_CODE. ') '.  TEXT_RECORDS_VISIBILITY . ' #' . $rules['ID'] . ' - '. $e->getMessage() . ' on line ' . $e->getLine());
+                }
+                
+                if(isset($output_value))
+                {
+                   $sql[] = $output_value;         
+                }
+            }
         }
 
         //print_r($sql);

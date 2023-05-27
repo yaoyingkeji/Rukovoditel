@@ -58,7 +58,7 @@ class fieldtype_tags
     $cfg = new fields_types_cfg($field['configuration']);
     
      
-    $add_empty = ($field['is_required']==1 ? false:true);
+    $add_empty = ($field['is_required']==1 and !strlen($cfg->get('default_text'))) ? false : true;
     
     $attributes = array('class'=>'form-control ' . $cfg->get('width') . ' field_' . $field['id'] . ($field['is_required']==1 ? ' required':''));
            
@@ -100,7 +100,7 @@ class fieldtype_tags
     $html .= '
     	<script>	
     	$(function(){
-                let is_form_row_' . $field['id'] . ' = $("#fields_' . $field['id'] . '").parents(".forms-rows").size();
+                let is_form_row_' . $field['id'] . ' = $("#fields_' . $field['id'] . '").parents(".forms-rows").length;
                     
 	    	$("#fields_' . $field['id'] . '").select2({
 		      tags: ' . $tags_flag . ',

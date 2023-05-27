@@ -93,13 +93,26 @@
         ?>
         
         <div class="row">
-            
+            <div class="col-md-12">
+                
             <form class="form-horizontal" role="form">
                 <div class="form-group">
                     <label class="col-md-3 control-label" ><?php echo tooltip_icon(TEXT_IS_HEADING_INFO) . TEXT_HEADING ?></label>
                     <div class="col-md-9">	
                         <?php echo select_tag('heading_field_id', $choices, fields::get_heading_id($_GET["entities_id"]), array('class' => 'form-control input-large')) ?>        
                         <?php echo tooltip_text(TEXT_SELECT_HEADING_FIELD) ?>
+                    </div>			
+                </div>
+                
+<?php
+    $choices = ['disallow_for_all'=>TEXT_DISABLE_FOR_ALL] + access_groups::get_choices();    
+?>
+                
+                <div class="form-group">
+                    <label class="col-md-3 control-label" ><?php echo  TEXT_DISABLE_LISTING_FIELDS_CONFIGURATION ?></label>
+                    <div class="col-md-9">	
+                        <?php echo select_tag('disable_listing_fields_configuration', $choices, $cfg->get('disable_listing_fields_configuration'), array('class' => 'form-control input-xlarge chosen-select','multiple'=>'multiple')) ?>                                
+                        <?= tooltip_text(TEXT_DISABLE_LISTING_FIELDS_CONFIGURATION_TIP) ?>
                     </div>			
                 </div>
                 
@@ -124,14 +137,15 @@
                     </div>    
                 </div>
             </form>
-                                    
+                
+            </div>                        
         </div>
 
 
         <br><br>
 
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-12">
                 <legend><?php echo TEXT_LISTING_HORISONTAL_SCROLL ?></legend>
 
                 <div><?php echo TEXT_LISTING_HORISONTAL_SCROLL_INFO ?></div>
@@ -183,6 +197,16 @@
                 data: {heading_width_based_content: $(this).val()}
             });
         })
+        
+        $("#disable_listing_fields_configuration").change(function ()
+        {
+            $.ajax({type: "POST",
+                url: '<?php echo url_for("entities/fields", "action=disable_listing_fields_configuration&entities_id=" . $_GET["entities_id"]) ?>',
+                data: {disable_listing_fields_configuration: $(this).val()}
+            });
+        })
+        
+        
 
         $("#change_col_width_in_listing").change(function ()
         {

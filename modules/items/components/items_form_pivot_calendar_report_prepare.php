@@ -4,23 +4,10 @@ $calendar_reports_query = db_query("select * from app_ext_pivot_calendars_entiti
 if($calendar_reports = db_fetch_array($calendar_reports_query))
 {
 		
-	$start_date_timestamp = ($_GET['start'])/1000;
-	$end_date_timestamp = ($_GET['end'])/1000;
+	$start_date_timestamp = strtotime($_GET['start']);
+        $end_date_timestamp = strtotime($_GET['end']);
 
-	$offset=date('Z');
-
-	if($offset<0)
-	{
-		$start_date_timestamp+=abs($offset);
-		$end_date_timestamp+=abs($offset);
-	}
-	else
-	{
-		$start_date_timestamp-=abs($offset);
-		$end_date_timestamp-=abs($offset);
-	}
-
-	if($_GET['view_name']=='month')
+	if($_GET['view_name']=='dayGridMonth')
 	{
 		$obj['field_' . $calendar_reports['start_date']] = $start_date_timestamp;
 		$obj['field_' . $calendar_reports['end_date']] = strtotime('-1 day',$end_date_timestamp);

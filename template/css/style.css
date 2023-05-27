@@ -1084,7 +1084,7 @@ Portlets
   background-color: #eee;
   border-radius: 4px 4px 0 0;
   padding:10px 10px 2px 10px;
-  height: 38px;
+  min-height: 38px;
 }
 
 .portlet > .portlet-title:after,
@@ -1108,6 +1108,7 @@ Portlets
   margin: 0;
   padding: 0;
   margin-top: 1px; 
+  max-width: 85%;
 }
 
 .portlet > .portlet-title > .caption > i {
@@ -1782,7 +1783,7 @@ Chats
   list-style: none;
   padding: 5px 0;
   margin: 10px auto;
-  font-size: 12px;
+  font-size: 13px;
 }
 
 .chats .body li,
@@ -1831,7 +1832,7 @@ Chats
 
 .chats li .message {
   display: block; 
-  padding: 5px;
+  padding: 7px 10px;
   position: relative;
 }
 
@@ -1844,8 +1845,9 @@ Chats
   background: #f5f5f5 
 }
 
-/*
-.chats li.in .message .arrow {
+
+.chats li.in .message .arrow,
+.chats li.out .message .arrow{
   display: block;
   position: absolute;
   top: 5px;
@@ -1858,6 +1860,7 @@ Chats
   border-right: 8px solid #ddd;  
 }
 
+/*
 .chats li.out .message .arrow {
   display: block;
   position: absolute;
@@ -1868,6 +1871,7 @@ Chats
   border-left: 8px solid #ddd;  
 }
 */
+
 
 .chats li.out .message {
   border: 1px solid #ddd;

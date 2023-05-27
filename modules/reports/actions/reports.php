@@ -39,7 +39,7 @@ switch($app_module_action)
             'in_dashboard_counter_color' => db_prepare_input($_POST['in_dashboard_counter_color']),
             'in_dashboard_counter_bg_color' => db_prepare_input($_POST['in_dashboard_counter_bg_color']),            
             'in_dashboard_counter_fields' => (isset($_POST['in_dashboard_counter_fields']) ? implode(',', $_POST['in_dashboard_counter_fields']) : ''),
-            'dashboard_counter_sum_by_field' => $_POST['dashboard_counter_sum_by_field'],
+            'dashboard_counter_sum_by_field' => $_POST['dashboard_counter_sum_by_field']??'',
             'dashboard_counter_hide_count' => (isset($_POST['dashboard_counter_hide_count']) ? 1 : 0),
             'dashboard_counter_hide_zero_count' => (isset($_POST['dashboard_counter_hide_zero_count']) ? 1 : 0),
             'in_header' => (isset($_POST['in_header']) ? $_POST['in_header'] : 0),

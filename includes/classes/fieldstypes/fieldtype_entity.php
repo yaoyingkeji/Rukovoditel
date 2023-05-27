@@ -33,6 +33,12 @@ class fieldtype_entity
             'type' => 'input',
             'tooltip' => TEXT_DEFAULT_TEXT_INFO,
             'params' => array('class' => 'form-control input-medium'));
+        
+        $cfg[] = array('title' => TEXT_DEFAULT_VALUE,
+            'name' => 'default_value',
+            'type' => 'input',
+            'tooltip' => TEXT_ENTER_RECORDS_ID_BY_COMMA,
+            'params' => array('class' => 'form-control input-medium'));
 
         $cfg[] = array('title' => TEXT_WIDHT,
             'name' => 'width',
@@ -99,7 +105,7 @@ class fieldtype_entity
         //add empty value if dispalys as dropdown and field is not requireed
         if ($cfg->get('display_as') == 'dropdown')
         {
-            $choices[''] = (strlen($cfg->get('default_text')) ? $cfg->get('default_text') : TEXT_NONE);
+            $choices[''] = (strlen($cfg->get('default_text')) ? $cfg->get('default_text') : '');
         }
 
         $listing_sql_query = 'e.id>0 ';
@@ -209,7 +215,13 @@ class fieldtype_entity
 
         //set value
         $value = (strlen($obj['field_' . $field['id']]) ? $obj['field_' . $field['id']] : '');
-
+        
+        //set default value for new record
+        if(isset($params['is_new_item']) and $params['is_new_item']==1 and strlen($cfg->get('default_value')))
+        {
+            $value = $cfg->get('default_value');
+        }
+        
         $parent_entity_item_is_the_same = false;
 
         $choices = self::get_choices($field, $params, $value, $parent_entity_item_is_the_same);
@@ -236,7 +248,7 @@ class fieldtype_entity
 
             $submodal_url = url_for('items/form', $url_params);
 
-            if(users::has_access_to_entity($cfg->get('entity_id'), 'update'))
+            if(users::has_access_to_entity($cfg->get('entity_id'), 'update') and $cfg->get('display_as') != 'dropdown_muliple')
             {
                 $button_add_html .= '<button type="button" id="btn_submodal_edit_item_' . $field['id'] . '" data-item-id=0 class="btn btn-default btn-submodal-open btn-submodal-open-chosen" data-parent-entity-item-id="' . $parent_entity_item_id . '" data-field-id="' . $field['id'] . '" data-submodal-url="' . $submodal_url . '"><i class="fa fa-edit" aria-hidden="true"></i></button>';
             }
@@ -250,7 +262,7 @@ class fieldtype_entity
 
         if ($cfg->get('display_as') == 'dropdown')
         {
-            $attributes = array('class' => 'form-control chosen-select ' . $cfg->get('width')  . ' field_' . $field['id'] . ($field['is_required'] == 1 ? ' required' : ''));
+            $attributes = array('class' => 'form-control chosen-select ' . (!strlen($button_add_html) ? $cfg->get('width'):'')  . ' field_' . $field['id'] . ($field['is_required'] == 1 ? ' required' : ''));
             
             if (strlen($button_add_html))
             {
@@ -312,7 +324,7 @@ class fieldtype_entity
         }
         elseif ($cfg->get('display_as') == 'dropdown_muliple')
         {
-            $attributes = array('class' => 'form-control chosen-select ' . $cfg->get('width') . ' field_' . $field['id'] . ($field['is_required'] == 1 ? ' required' : ''),
+            $attributes = array('class' => 'form-control chosen-select ' . (!strlen($button_add_html) ? $cfg->get('width'):'') . ' field_' . $field['id'] . ($field['is_required'] == 1 ? ' required' : ''),
                 'multiple' => 'multiple',
                 'data-placeholder' => (strlen($cfg->get('default_text')) ? $cfg->get('default_text') : TEXT_SELECT_SOME_VALUES));
                       

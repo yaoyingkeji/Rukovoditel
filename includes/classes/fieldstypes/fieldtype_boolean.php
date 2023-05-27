@@ -66,7 +66,7 @@ class fieldtype_boolean
     
     if(strlen($cfg->get('default_value'))) $default_id = $cfg->get('default_value');
                  
-    $value = (strlen($obj['field_' . $field['id']])>0 ? $obj['field_' . $field['id']] : $default_id); 
+    $value = (strlen($obj['field_' . $field['id']]??'')>0 ? $obj['field_' . $field['id']] : $default_id); 
     
     return select_tag('fields[' . $field['id'] . ']',$choices,$value,$attributes);
   }

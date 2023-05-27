@@ -249,7 +249,7 @@ function get_date_timestamp($date)
     if (strlen($date) > 0)
     {
         $v = date_parse($date);        
-        
+                        
         $timestamp = mktime((int)$v['hour'], (int)$v['minute'], (int)$v['second'], $v['month'], $v['day'], $v['year']);                
         
         return $timestamp;
@@ -391,7 +391,7 @@ function render_comments_search_form($entity_id, $listing_container)
 
 function tooltip_text($text)
 {
-    if (strlen($text) > 0)
+    if (isset($text) and strlen($text) > 0)
     {
         $text = ($text != strip_tags($text) ? $text : nl2br($text));
 
@@ -405,7 +405,7 @@ function tooltip_text($text)
 
 function tooltip_icon($text, $placement = 'right', $icon = 'fa-info-circle')
 {
-    if (strlen($text) > 0)
+    if (isset($text) and strlen($text) > 0)
     {
         $text = ($text != strip_tags($text) ? $text : nl2br($text));
 
@@ -1444,7 +1444,7 @@ function app_get_path_to_report($entities_id)
 
 function app_render_icon($icon, $params = '')
 {
-    $icon = trim($icon);
+    $icon = trim($icon??'');
 
     if (!strlen($icon))
         return '';
@@ -1531,6 +1531,7 @@ function app_include_codemirror_in_layout()
     $html = '
         <script src="js/codemirror/' . $versioin . '/lib/codemirror.js"></script>	        
         <link rel="stylesheet" href="js/codemirror/' . $versioin . '/lib/codemirror.css">
+        <link rel="stylesheet" href="js/codemirror/' . $versioin . '/theme/darcula.css">
         <link rel="stylesheet" href="js/codemirror/' . $versioin . '/addon/display/fullscreen.css">
         <script src="js/codemirror/' . $versioin . '/addon/display/fullscreen.js"></script>                
         <script src="js/codemirror/' . $versioin . '/addon/edit/matchbrackets.js"></script>
@@ -1677,7 +1678,7 @@ function app_truncate_text($text, $max_text_length = 60, $text_part_length = 25)
 {
     if(strlen($text) > 60)
     {
-        $text = substr($text, 0, $text_part_length) . '...' . substr($text, -$text_part_length);
+        $text = mb_substr($text, 0, $text_part_length) . '...' . mb_substr($text, -$text_part_length);
     }
     
     return $text;
@@ -1735,4 +1736,37 @@ function is_json($string)
 {
    json_decode($string);
    return json_last_error() === JSON_ERROR_NONE;
+}
+
+function truncated_text_block($text,$number_characters = 300)
+{
+    $html = '';
+    if(strlen(strip_tags($text)) > $number_characters)
+    {
+        $html = '
+            <div class="truncated-text-block">
+                <div class="truncated-text">' . mb_substr(strip_tags($text), 0, $number_characters) . '... <a href="#" class="truncated-text-expand">' . TEXT_READ_MORE . ' <i class="fa fa-angle-right"></i></a></div>
+                <div class="full-text hidden">' . auto_link_text($text) . ' <a href="#" class="truncated-text-collapse"><i class="fa fa-angle-left"></i> ' . TEXT_HIDE . '</a></div>
+            </div>
+        ';                  
+    }
+    else
+    {
+        $html = auto_link_text($text);
+    }
+    
+    return $html;
+}
+
+function app_clipboardjs_icon($value='',$css='clipboardjs-right')
+{  
+    $value = $value??'';
+    
+    if(!strlen(trim($value))) return '';
+    
+    return '
+        <a href="#" class="clipboardjs ' . $css . '"  title="' . TEXT_COPY_TO_CLIPBOARD . '" data-template="<div class=popover role=tooltip><div class=arrow></div><div class=popover-content></div></div>" data-trigger="manual" data-placement="bottom" data-content="' . TEXT_COPIED . '" data-clipboard-text="' . htmlspecialchars($value, ENT_QUOTES) . '">
+            <i class="fa fa-clipboard"></i>
+        </a>    
+        ';
 }

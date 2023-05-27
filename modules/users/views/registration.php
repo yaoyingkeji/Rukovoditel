@@ -27,8 +27,8 @@
           <div class="form-group">
           	<label class="col-md-3 control-label" for="password"><span class="required-label">*</span>' . TEXT_FIELDTYPE_USER_PASSWORD_TITLE . '</label>
             <div class="col-md-9">	
-          	  ' . input_password_tag('password',array('class'=>'form-control input-medium','autocomplete'=>'off')) . '
-              ' . tooltip_text(TEXT_FIELDTYPE_USER_PASSWORD_TOOLTIP) . '
+          	  ' . input_password_tag('password',array('class'=>'form-control input-medium ' . (CFG_PUBLIC_REGISTRATION_PWD_REQUIRED==1 ? 'required':''),'autocomplete'=>'off')) . '
+              ' . (CFG_PUBLIC_REGISTRATION_PWD_REQUIRED==0 ? tooltip_text(TEXT_FIELDTYPE_USER_PASSWORD_TOOLTIP):'') . '
             </div>			
           </div>        
         ';   

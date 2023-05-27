@@ -116,7 +116,7 @@ class fieldtype_process_button
             {
                 $check_buttons_filters = $processes->check_buttons_filters($buttons);                
                                 
-                $is_dialog = ((strlen($buttons['confirmation_text']) or $buttons['allow_comments']==1 or $buttons['preview_prcess_actions']==1 or $processes->has_enter_manually_fields($buttons['id'])) ? true:false);                 
+                $is_dialog = ((strlen($buttons['confirmation_text']??'') or $buttons['allow_comments']==1 or $buttons['preview_prcess_actions']==1 or $processes->has_enter_manually_fields($buttons['id'])) ? true:false);                 
                 $params = (!$is_dialog ? '&action=run':'') . ((isset($options['reports_id']) and isset($_POST['page'])) ? '&gotopage[' . $options['reports_id'] . ']=' . $_POST['page'] :'');
                 $css = (!$is_dialog ? ' prevent-double-click':'');
                 
@@ -128,7 +128,7 @@ class fieldtype_process_button
                                                 
                 if(substr($path,-strlen('-' . $options['item']['id']))!='-' . $options['item']['id']) 
                 {
-                    if(substr($path,-strlen('-' . $current_item_id))=='-' . $current_item_id)
+                    if(substr($path,-strlen('-' . $current_item_id))=='-' . $current_item_id and $current_item_id>0)
                     {                        
                         $path =  substr($path,0,-strlen('-' . $current_item_id)) . '-' . $options['item']['id'];
                     }
@@ -164,7 +164,7 @@ class fieldtype_process_button
                 }
                 
                 //buttons url
-                $url_color = (strlen($buttons['button_color']) ? 'style="color: ' . $buttons['button_color']  . '"': '');                                
+                $url_color = (strlen($buttons['button_color']??'') ? 'style="color: ' . $buttons['button_color']  . '"': '');                                
                 
                 //check buttons filters
                 if(!$check_buttons_filters)

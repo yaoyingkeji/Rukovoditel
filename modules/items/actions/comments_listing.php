@@ -30,7 +30,7 @@ $user_has_comments_access = (users::has_comments_access('update', $access_rules-
   <tr>
     <?php if($user_has_comments_access) echo '<th>' . '</th>' ?>    
     <?php if($entity_cfg->get('display_comments_id')==1) echo '<th>' . TEXT_ID . '</th>' ?>
-    <th width="100%"><?php echo TEXT_COMMENTS ?></th>
+    <th width="100%"><?php echo strlen($entity_cfg->get('comments_listing_heading')) ? $entity_cfg->get('comments_listing_heading') : TEXT_COMMENTS ?></th>
     <th><?php echo TEXT_DATE_ADDED ?></th>
   </tr>
 </thead>
@@ -96,13 +96,25 @@ while($item = db_fetch_array($items_query))
                           
   $attachments = fields_types::output($output_options);
 
-  if($entity_cfg->get('use_editor_in_comments')!=1)
+  if((int)$entity_cfg->get('use_editor_in_comments')==0)
   {
     $item['description'] = nl2br($item['description']);
   }
   
+  $description = auto_link_text($item['description']);
+  
+  if((int)$entity_cfg->get('number_characters_in_comments_list')>0 and strlen(strip_tags($description))>$entity_cfg->get('number_characters_in_comments_list'))
+  {
+      $description = '
+                    <div class="truncated-text-block">
+                        <div class="truncated-text">' . nl2br(mb_substr(strip_tags($description),0,$entity_cfg->get('number_characters_in_comments_list'))). '... <a href="#" class="truncated-text-expand">' . TEXT_READ_MORE. ' <i class="fa fa-angle-right"></i></a></div>
+                        <div class="full-text hidden">' . $description  . ' <a href="#" class="truncated-text-collapse"><i class="fa fa-angle-left"></i> ' . TEXT_HIDE. '</a></div>
+                    </div>
+                ';
+  }
+  
   $photo = '';
-  if($entity_cfg->get('disable_avatar_in_comments',0)!=1 and $item['created_by'])
+  if($entity_cfg->get('disable_avatar_in_comments',0)!=1 and $item['created_by'] and isset($app_users_cache[$item['created_by']]))
   {
       $photo = render_user_photo($app_users_cache[$item['created_by']]['photo']);
   }
@@ -112,13 +124,13 @@ while($item = db_fetch_array($items_query))
       ' . $html_action_column . ' 
       ' . ($entity_cfg->get('display_comments_id')==1 ? '<td>' . $item['id'] . '</td>':''). '   
       <td style="white-space: normal;">
-        			<div class="ckeditor-images-content-prepare"><div class="fieldtype_textarea_wysiwyg">' . auto_link_text($item['description'])  . '</div></div>' . 
+        			<div class="ckeditor-images-content-prepare"><div class="fieldtype_textarea_wysiwyg">' . $description  . '</div></div>' . 
         			$attachments . 
         			$html_fields .        			
       '</td>
       <td class="nowrap">' . 
            format_date_time($item['date_added']) . 
-           ($item['created_by']>0 ? '<br><span ' . users::render_publi_profile($app_users_cache[$item['created_by']],true). '>' . $app_users_cache[$item['created_by']]['name']. '</span><br>' . $photo : '') . '</td>
+           (($item['created_by']>0 and isset($app_users_cache[$item['created_by']])) ? '<br><span ' . users::render_publi_profile($app_users_cache[$item['created_by']],true). '>' . $app_users_cache[$item['created_by']]['name']. '</span><br>' . $photo : '') . '</td>
     </tr>
   '; 
 }

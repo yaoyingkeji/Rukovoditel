@@ -51,11 +51,24 @@
                     <?php echo input_tag('cfg[window_heading]', $cfg->get('window_heading'), array('class' => 'form-control input-large')); ?>       
                 </div>			
             </div>
+            
+            <?php
+                $choices = [
+                    '' => TEXT_AUTOMATIC, 
+                    'ajax-modal-width-790' => TEXT_WIDE . " (790 px)", 
+                    'ajax-modal-width-1100' => TEXT_XWIDE . " (1100 px)"
+                ];
+                
+                for($i=1200;$i<1800;$i+=100)
+                {
+                    $choices['ajax-modal-width-' . $i] = TEXT_XWIDE . " ({$i} px)"; 
+                }
+            ?>
 
             <div class="form-group">
                 <label class="col-md-3 control-label" for="cfg_window_width"><?php echo TEXT_WINDOW_WIDTH; ?></label>
                 <div class="col-md-9">	
-                    <?php echo select_tag('cfg[window_width]', ['' => TEXT_AUTOMATIC, 'ajax-modal-width-790' => TEXT_WIDE, 'ajax-modal-width-1100' => TEXT_XWIDE], $cfg->get('window_width'), array('class' => 'form-control input-medium')); ?>       
+                    <?php echo select_tag('cfg[window_width]', $choices, $cfg->get('window_width'), array('class' => 'form-control input-medium')); ?>       
                 </div>			
             </div>
             
@@ -138,73 +151,118 @@
                     <?php echo tooltip_text(TEXT_USE_COMMENTS_TOOLTIP) ?>
                 </div>			
             </div>
-
-            <div class="form-group">
-                <label class="col-md-3 control-label" for="cfg_use_comments"><?php echo TEXT_DISPLAY_COMMENTS_ID; ?></label>
-                <div class="col-md-9">	
-                    <?php echo select_tag('cfg[display_comments_id]', $default_selector, $cfg->get('display_comments_id'), array('class' => 'form-control input-small')); ?> 
-                    <?php echo tooltip_text(TEXT_DISPLAY_COMMENTS_TOOLTIP) ?>
-                </div>			
-            </div>
-
-            <div class="form-group">
-                <label class="col-md-3 control-label" for="cfg_use_comments"><?php echo TEXT_DISPLAY_LAST_COMMENT_IN_LISTING; ?></label>
-                <div class="col-md-9">	
-                    <?php echo select_tag('cfg[display_last_comment_in_listing]', $default_selector, $cfg->get('display_last_comment_in_listing', 1), array('class' => 'form-control input-small')); ?> 
-                    <?php echo tooltip_text(TEXT_DISPLAY_LAST_COMMENT_IN_LISTING_INFO) ?>
-                </div>			
-            </div>
-
-<?php
-    $choices = [
-        '0' => TEXT_NO,
-        '1' => TEXT_YES,
-        '2' => TEXT_YES . '. '. TEXT_TOOLBAR . ': ' . TEXT_IN_ONE_LINE
-    ];
-?>            
-            <div class="form-group">
-                <label class="col-md-3 control-label" for="cfg_use_comments"><?php echo TEXT_USE_EDITOR_IN_COMMENTS; ?></label>
-                <div class="col-md-9">	
-                    <?php echo select_tag('cfg[use_editor_in_comments]', $choices, $cfg->get('use_editor_in_comments'), array('class' => 'form-control input-large')); ?> 
-                    <?php echo tooltip_text(TEXT_USE_EDITOR_IN_COMMENTS_TOOLTIP) ?>
-                </div>			
-            </div>
-
-            <div class="form-group">
-                <label class="col-md-3 control-label" for="cfg_use_comments"><?php echo TEXT_DISABLE_ATTACHMENTS; ?></label>
-                <div class="col-md-9">	
-                    <?php echo select_tag('cfg[disable_attachments_in_comments]', $default_selector, $cfg->get('disable_attachments_in_comments'), array('class' => 'form-control input-small')); ?>       
-                </div>			
-            </div>
             
-            <div class="form-group">
-                <label class="col-md-3 control-label" for="cfg_use_comments"><?php echo TEXT_DISABLE_USER_AVATAR; ?></label>
-                <div class="col-md-9">	
-                    <?php echo select_tag('cfg[disable_avatar_in_comments]', $default_selector, $cfg->get('disable_avatar_in_comments',0), array('class' => 'form-control input-small')); ?>       
-                </div>			
-            </div>
+            <div form_display_rules="cfg_use_comments:1">                                
+                
+                <div class="form-group">
+                    <label class="col-md-3 control-label" for="cfg_comments_listing_type"><?php echo TEXT_LISTING_TYPE; ?></label>
+                    <div class="col-md-9">	
+                        <?php echo select_tag('cfg[comments_listing_type]', ['table'=>TEXT_TABLE,'list'=>TEXT_LIST], $cfg->get('comments_listing_type'), array('class' => 'form-control input-small')); ?>                     
+                    </div>			
+                </div>
+                
+                  
 
-            <div class="form-group">
-                <label class="col-md-3 control-label" for="cfg_image_preview_in_comments"><?php echo tooltip_icon(TEXT_USE_IMAGE_PREVIEW_TIP) . TEXT_USE_IMAGE_PREVIEW; ?></label>
-                <div class="col-md-9">	
-                    <?php echo select_tag('cfg[image_preview_in_comments]', $default_selector, $cfg->get('image_preview_in_comments', 0), array('class' => 'form-control input-small')); ?>       
-                </div>			
-            </div>    
+                <p class="form-section"><?= TEXT_HEADING ?></p>
+                
+                <div class="form-group" form_display_rules="cfg_comments_listing_type:table">
+                    <label class="col-md-3 control-label" for="cfg_comments_listing_heading"><?php echo TEXT_LISTING_HEADING; ?></label>
+                    <div class="col-md-9">	
+                        <?php echo input_tag('cfg[comments_listing_heading]', $cfg->get('comments_listing_heading'), array('class' => 'form-control input-large','placeholder'=>TEXT_DEFAULT . ': ' . TEXT_COMMENTS)); ?>       
+                    </div>			
+                </div>
 
-            <div class="form-group">
-                <label class="col-md-3 control-label" for="cfg_insert_button"><?php echo TEXT_EMAIL_SUBJECT_NEW_COMMENT; ?></label>
-                <div class="col-md-9">	
-                    <?php echo input_tag('cfg[email_subject_new_comment]', $cfg->get('email_subject_new_comment'), array('class' => 'form-control input-large')); ?> 
-                    <?php echo tooltip_text(TEXT_EMAIL_SUBJECT_NEW_COMMENT_TOOLTIP) ?>
-                </div>			
-            </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label" for="cfg_comments_insert_button"><?php echo  TEXT_INSERT_BUTTON_TITLE; ?></label>
+                    <div class="col-md-9">	
+                        <?php echo input_tag('cfg[comments_insert_button]', $cfg->get('comments_insert_button'), array('class' => 'form-control input-large','placeholder'=>TEXT_DEFAULT . ': ' . TEXT_BUTTON_ADD_COMMENT)); ?>       
+                    </div>			
+                </div>
+                
+                <div class="form-group">
+                    <label class="col-md-3 control-label" for="cfg_comments_window_heading"><?php echo  TEXT_WINDOW_HEADING; ?></label>
+                    <div class="col-md-9">	
+                        <?php echo input_tag('cfg[comments_window_heading]', $cfg->get('comments_window_heading'), array('class' => 'form-control input-large','placeholder'=>TEXT_DEFAULT . ': ' . TEXT_COMMENT)); ?>       
+                    </div>			
+                </div>
 
-            <div class="form-group">
-                <label class="col-md-3 control-label" for="cfg_send_notification_to_assigned"><?php echo TEXT_SEND_NOTIFICATION_TO_ASSIGNED_ONLY; ?></label>
-                <div class="col-md-9">	
-                    <?php echo select_tag('cfg[send_notification_to_assigned]', $default_selector, $cfg->get('send_notification_to_assigned', 0), array('class' => 'form-control input-small')); ?> 
-                    <?php echo tooltip_text(TEXT_SEND_COMMENTS_NOTIFICATION_TO_ASSIGNED_INFO) ?>
-                </div>			
+                <p class="form-section"><?= TEXT_DISPLAY ?></p>
+
+                <div class="form-group">
+                    <label class="col-md-3 control-label" for="cfg_use_comments"><?php echo tooltip_icon(TEXT_DISPLAY_COMMENTS_TOOLTIP) . TEXT_DISPLAY_COMMENTS_ID; ?></label>
+                    <div class="col-md-9">	
+                        <?php echo select_tag('cfg[display_comments_id]', $default_selector, $cfg->get('display_comments_id'), array('class' => 'form-control input-small')); ?>                     
+                    </div>			
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-3 control-label" for="cfg_use_comments"><?php echo tooltip_icon(TEXT_DISPLAY_LAST_COMMENT_IN_LISTING_INFO) . TEXT_DISPLAY_LAST_COMMENT_IN_LISTING; ?></label>
+                    <div class="col-md-9">	
+                        <?php echo select_tag('cfg[display_last_comment_in_listing]', $default_selector, $cfg->get('display_last_comment_in_listing', 1), array('class' => 'form-control input-small')); ?>                     
+                    </div>			
+                </div>
+
+
+                <div class="form-group">
+                    <label class="col-md-3 control-label" for="cfg_number_characters_in_list"><?php echo tooltip_icon(TEXT_NUMBER_DISPLAYED_CHARACTERS_IN_LIST_INFO) . TEXT_NUMBER_DISPLAYED_CHARACTERS_IN_LIST; ?></label>
+                    <div class="col-md-9">	
+                        <?php echo input_tag('cfg[number_characters_in_comments_list]', $cfg->get('number_characters_in_comments_list'), array('class' => 'form-control input-small','type'=>'number')); ?>                     
+                    </div>			
+                </div>
+
+
+
+    <?php
+        $choices = [
+            '0' => TEXT_NO,
+            '1' => TEXT_YES,
+            '2' => TEXT_YES . '. '. TEXT_TOOLBAR . ': ' . TEXT_IN_ONE_LINE
+        ];
+    ?>            
+                <div class="form-group">
+                    <label class="col-md-3 control-label" for="cfg_use_comments"><?php echo tooltip_icon(TEXT_USE_EDITOR_IN_COMMENTS_TOOLTIP) . TEXT_USE_EDITOR_IN_COMMENTS; ?></label>
+                    <div class="col-md-9">	
+                        <?php echo select_tag('cfg[use_editor_in_comments]', $choices, $cfg->get('use_editor_in_comments'), array('class' => 'form-control input-large')); ?>                     
+                    </div>			
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-3 control-label" for="cfg_use_comments"><?php echo TEXT_DISABLE_ATTACHMENTS; ?></label>
+                    <div class="col-md-9">	
+                        <?php echo select_tag('cfg[disable_attachments_in_comments]', $default_selector, $cfg->get('disable_attachments_in_comments'), array('class' => 'form-control input-small')); ?>       
+                    </div>			
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-3 control-label" for="cfg_use_comments"><?php echo TEXT_DISABLE_USER_AVATAR; ?></label>
+                    <div class="col-md-9">	
+                        <?php echo select_tag('cfg[disable_avatar_in_comments]', $default_selector, $cfg->get('disable_avatar_in_comments',0), array('class' => 'form-control input-small')); ?>       
+                    </div>			
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-3 control-label" for="cfg_image_preview_in_comments"><?php echo tooltip_icon(TEXT_USE_IMAGE_PREVIEW_TIP) . TEXT_USE_IMAGE_PREVIEW; ?></label>
+                    <div class="col-md-9">	
+                        <?php echo select_tag('cfg[image_preview_in_comments]', $default_selector, $cfg->get('image_preview_in_comments', 0), array('class' => 'form-control input-small')); ?>       
+                    </div>			
+                </div>    
+
+                <p class="form-section"><?= TEXT_NOTIFICATION ?></p>
+
+                <div class="form-group">
+                    <label class="col-md-3 control-label" for="cfg_insert_button"><?php echo tooltip_icon(TEXT_EMAIL_SUBJECT_NEW_COMMENT_TOOLTIP) . TEXT_EMAIL_SUBJECT_NEW_COMMENT; ?></label>
+                    <div class="col-md-9">	
+                        <?php echo input_tag('cfg[email_subject_new_comment]', $cfg->get('email_subject_new_comment'), array('class' => 'form-control input-large')); ?>                     
+                    </div>			
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-3 control-label" for="cfg_send_notification_to_assigned"><?php echo tooltip_icon(TEXT_SEND_COMMENTS_NOTIFICATION_TO_ASSIGNED_INFO) . TEXT_SEND_NOTIFICATION_TO_ASSIGNED_ONLY; ?></label>
+                    <div class="col-md-9">	
+                        <?php echo select_tag('cfg[send_notification_to_assigned]', $default_selector, $cfg->get('send_notification_to_assigned', 0), array('class' => 'form-control input-small')); ?>                     
+                    </div>			
+                </div>
+            
             </div>
 
         </div>

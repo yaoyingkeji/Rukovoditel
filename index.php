@@ -1,35 +1,42 @@
 <?php
-      
-  require('includes/application_top.php');
-    
+
+require('includes/application_top.php');
+
 //include available plugins
-  require('includes/plugins.php');  
-  
+require('includes/plugins.php');
+
 //include overall action for whole module        
-  if(is_file($path = $app_plugin_path . 'modules/' . $app_module . '/module_top.php'))
-  {
+if(is_file($path = $app_plugin_path . 'modules/' . $app_module . '/module_top.php'))
+{
     require($path);
-  }
-  
+}
+
 //include plugins menu  
-  require('includes/plugins_menu.php'); 
-    
+require('includes/plugins_menu.php');
+
 //include module action      
-  if(is_file($path = $app_plugin_path . 'modules/' . $app_module . '/actions/' . $app_action . '.php'))
-  {
+if(is_file($path = $app_plugin_path . 'modules/' . $app_module . '/actions/' . $app_action . '.php'))
+{
     require($path);
-  }
-  
-  if(IS_AJAX)
-  {
+}
+
+if(IS_AJAX)
+{
     if(is_file($path = $app_plugin_path . 'modules/' . $app_module . '/views/' . $app_action . '.php'))
-    {    
-      require($path);
+    {
+        require($path);
     }
-  }
-  else
-  {
-    require('template/' . $app_layout);
-  }
-        
-  require('includes/application_bottom.php');
+}
+else
+{
+    if(substr($app_layout, 0, 8) === 'plugins/')
+    {
+        require($app_layout);
+    }
+    else
+    {
+        require('template/' . $app_layout);
+    }
+}
+
+require('includes/application_bottom.php');

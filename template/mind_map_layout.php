@@ -9,7 +9,7 @@
 		
 		<?php echo i18n_js() ?>
 		
-		<script src="template/plugins/jquery-1.10.2.min.js" type="text/javascript"></script>
+		<script src="<?= CFG_PATH_TO_JQUERY ?>" type="text/javascript"></script>
 		
 		<?php 
 		if($mind_map->is_report())
@@ -30,9 +30,18 @@
 		<link rel="stylesheet" href="js/mindmap-master/css/style.css" />		
 		<link rel="stylesheet" href="js/mindmap-master/css/print.css" media="print" />
 		<link href="template/plugins/font-awesome/css/font-awesome.min.css?v=4.7.0" rel="stylesheet" type="text/css"/>
+                
+                <?php
+                if(is_file('css/skins/' . $app_skin_dir . '/mindmap.css'))
+                {
+                    echo '<link rel="stylesheet" href="css/skins/' . $app_skin_dir . '/mindmap.css" />';
+                }
+                ?>
 				
 		
-		
+		<script>
+                    var app_cfg_drop_down_menu_on_hover = <?php echo CFG_DROP_DOWN_MENU_ON_HOVER ?>;
+                </script>
 				
 	</head>
 	<body>

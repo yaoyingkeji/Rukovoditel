@@ -25,7 +25,7 @@ foreach($buttons_list as $buttons)
 {
     $check_buttons_filters = $processes->check_buttons_filters($buttons);   
             
-    $is_dialog = ((strlen($buttons['confirmation_text']) or $buttons['allow_comments']==1 or $buttons['preview_prcess_actions']==1 or $processes->has_enter_manually_fields($buttons['id'])) ? true:false);                 
+    $is_dialog = ((strlen($buttons['confirmation_text']??'') or $buttons['allow_comments']==1 or $buttons['preview_prcess_actions']==1 or $processes->has_enter_manually_fields($buttons['id'])) ? true:false);                 
     $params = (!$is_dialog ? '&action=run':'') . ((isset($_GET['page']) and $_GET['page']>1) ? '&gotopage[' . $reports_id . ']=' . $_GET['page'] :'');
     $css = (!$is_dialog ? ' prevent-double-click':'');
 
@@ -46,7 +46,7 @@ foreach($buttons_list as $buttons)
     }
 
     //buttons url
-    $url_color = (strlen($buttons['button_color']) ? 'style="color: ' . $buttons['button_color']  . '"': '');                                
+    $url_color = (strlen($buttons['button_color']??'') ? 'style="color: ' . $buttons['button_color']  . '"': '');                                
 
     //check buttons filters
     if(!$check_buttons_filters)

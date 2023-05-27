@@ -9,6 +9,7 @@ class items_copy
     private $copy_comments, $copy_related_items, $copy_sub_entities;
     private $new_item_id;
     private $sql_data;
+    private $copy_nested_items;
 
     function __construct($entities_id, $items_id, $settings = [])
     {
@@ -284,6 +285,10 @@ class items_copy
                 $copy_process = new items_copy($entities['id'], $items['id']);
                 $copy_process->set_parent_item_id($new_item_id);
                 $copy_item_id = $copy_process->copy_item($items);
+                
+                //run actions after item insert
+                $processes = new processes($entities['id']);
+                $processes->run_after_insert($copy_item_id);
                 
                 //copy nested
                 $copy_process->copy_nested_items($copy_item_id);

@@ -183,7 +183,7 @@ class filters_preivew
 
         $html = '      
         <div class="btn-group">
-  				<button title="' . htmlspecialchars(TEXT_BUTTON_ADD_NEW_REPORT_FILTER) . '" class="btn dropdown-toggle btn-users-filters" type="button" data-toggle="dropdown" data-hover="dropdown"><i class="fa fa-plus"></i></button>
+  				<button title="' . htmlspecialchars(TEXT_BUTTON_ADD_NEW_REPORT_FILTER) . '" class="btn btn-default dropdown-toggle btn-users-filters" type="button" data-toggle="dropdown" data-hover="dropdown"><i class="fa fa-plus"></i></button>
   				<ul class="dropdown-menu" role="menu">
   					' . $dropdown_html . '
   				</ul>
@@ -239,7 +239,7 @@ class filters_preivew
 
         $html = '      
         <div class="btn-group">
-  				<button class="btn dropdown-toggle btn-users-filters" type="button" data-toggle="dropdown" data-hover="dropdown"><i class="fa fa-angle-down"></i></button>
+  				<button class="btn btn-default dropdown-toggle btn-users-filters" type="button" data-toggle="dropdown" data-hover="dropdown"><i class="fa fa-angle-down"></i></button>
   				<ul class="dropdown-menu" role="menu">
   					' . $filters_html . '
   				</ul>

@@ -79,7 +79,11 @@ switch($app_module_action)
 
         $fields_id = _get::int('fields_id');
 
-        $field_info = db_find('app_fields', $fields_id);
+        $field_info_query = db_query("select * from app_fields where id={$fields_id}");
+        if(!$field_info = db_fetch_array($field_info_query))
+        {
+            exit();
+        }
 
         $exclude_choices = array();
         $rules_query = db_query("select * from app_forms_fields_rules where fields_id='" . $fields_id . "'" . (isset($_GET['id']) ? " and id!='" . $_GET['id'] . "'" : ''));

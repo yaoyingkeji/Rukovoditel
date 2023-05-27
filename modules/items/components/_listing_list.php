@@ -48,7 +48,7 @@ foreach($listing_type['sections'] as $section)
 	}
 	
 	$html .= '
-      <th ' . $listing_order_action . ' ' . $listing_order_css_class . (strlen($section['width']) ? ' style="width: ' . $section['width'] . '; min-width: ' . $section['width'] . '"':'') . '><div>' . $section['name'] . '</div></th>
+      <th ' . $listing_order_action . ' ' . $listing_order_css_class . (strlen($section['width']??'') ? ' style="width: ' . $section['width'] . '; min-width: ' . $section['width'] . '"':'') . '><div>' . $section['name'] . '</div></th>
   ';
 }
 
@@ -103,7 +103,7 @@ while($item = db_fetch_array($items_query))
 	
 	foreach($listing_type['sections'] as $section)
 	{
-		$html .= '<td class="listing-section-align-' . $section['align'] . '" ' . (strlen($section['width']) ? ' style="white-space:normal"':''). '>';
+		$html .= '<td class="listing-section-align-' . $section['align'] . '" ' . (strlen($section['width']??'') ? ' style="white-space:normal"':''). '>';
 		
 		$section_fields = [];
 		
@@ -188,7 +188,7 @@ while($item = db_fetch_array($items_query))
 				
 				$html .= '
 						<tr>
-							' . ($section['display_field_names'] ? '<th ' . (strlen($field['short_name']) ? 'title="' . htmlspecialchars($field['long_name']) . '"':'' ) . '>' . $field['name'] . ': </th>' : '') . '
+							' . ($section['display_field_names'] ? '<th ' . (strlen($field['short_name']??'') ? 'title="' . htmlspecialchars($field['long_name']) . '"':'' ) . '>' . $field['name'] . ': </th>' : '') . '
 							<td ' . $style . ' class="' . ($section['display_field_names'] ? 'with_th' : '') . '">' . $field['value'] . '</td>
 						</tr>
 						';
@@ -243,7 +243,7 @@ $html .= '
 
 //add pager
 $html .= '
-<div class="row">
+<div class="row listing-split-page">
   <div class="col-md-4 col-sm-12">' . $listing_split->display_count() . '</div>
   <div class="col-md-8 col-sm-12">' . $listing_split->display_links(). '</div>
 </div>

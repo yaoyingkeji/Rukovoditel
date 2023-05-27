@@ -130,7 +130,7 @@ class fieldtype_formula
                     $reports_info = db_fetch_array($reports_info_query);
                 }
 
-                if(!strlen($reports_info['listing_type']))
+                if(!strlen($reports_info['listing_type']??''))
                 {
                     $reports_info['listing_type'] = listing_types::get_default($entities_id);
                 }

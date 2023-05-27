@@ -77,7 +77,7 @@
               
       $html_tab_content[$tabs['id']] = '
         <div class="tab-pane fade" id="form_tab_' . $tabs['id'] . '">
-      ' . (strlen($tabs['description']) ? '<p>' . $tabs['description'] . '</p>' : '');
+      ' . ((isset($tabs['description']) and strlen($tabs['description'])) ? '<p>' . $tabs['description'] . '</p>' : '');
                   
       $count_fields = 0;
       $fields_query = db_query("select f.*, t.name as tab_name from app_fields f, app_forms_tabs t where f.type not in (" . fields_types::get_type_list_excluded_in_form() . ") and  f.entities_id='" . db_input($current_entity_id) . "' and f.forms_tabs_id=t.id and f.forms_tabs_id='" . db_input($tabs['id']) . "'  and length(f.forms_rows_position)=0 order by t.sort_order, t.name, f.sort_order, f.name");
@@ -168,7 +168,7 @@
     $tabs_query = db_fetch_all('app_forms_tabs',"entities_id='" . db_input($current_entity_id) . "' order by  sort_order, name");
     $tabs = db_fetch_array($tabs_query);
     
-    if(strlen($tabs['description']))
+    if(isset($tabs['description']) and strlen($tabs['description']))
     {
     	$html .= '<p>' . $tabs['description'] . '</p>';
     }

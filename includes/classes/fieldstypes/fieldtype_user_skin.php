@@ -11,7 +11,7 @@ class fieldtype_user_skin
   
   function render($field,$obj,$params = array())
   {
-      if(strlen(CFG_APP_SKIN))
+      if(!is_null(CFG_APP_SKIN) and strlen(CFG_APP_SKIN))
       {
           return '<p class="form-control-static">' . CFG_APP_SKIN . '</p>';
       }

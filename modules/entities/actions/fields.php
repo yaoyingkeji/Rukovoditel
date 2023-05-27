@@ -15,6 +15,11 @@ switch($app_module_action)
         entities::set_cfg('heading_width_based_content', $_POST['heading_width_based_content'], $_GET['entities_id']);
         exit();
         break;
+    case 'disable_listing_fields_configuration':
+        $value = is_array($_POST['disable_listing_fields_configuration']) ? implode(',',$_POST['disable_listing_fields_configuration']):'';
+        entities::set_cfg('disable_listing_fields_configuration', $value, $_GET['entities_id']);
+        exit();
+        break;
     case 'set_number_fixed_field_in_listing':
         entities::set_cfg('number_fixed_field_in_listing', $_POST['number_fields'], $_GET['entities_id']);
         exit();

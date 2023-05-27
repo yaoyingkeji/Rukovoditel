@@ -60,7 +60,7 @@ while($v = db_fetch_array($fields_query))
     {
         $html .= '
 	      <th ' . $listing_order_action . ' ' . $listing_order_css_class . ' data-field-id="' . $v['id'] . '" ' . $listing->get_listing_col_width($v['id']) . '>
-	      		<div ' . (strlen($v['short_name']) ? 'title="' . htmlspecialchars($v['long_name']) . '"' : '' ) . '>' . fields_types::get_option($v['type'], 'name', $v['name']) . '</div>
+	      		<div ' . (isset($v['short_name']) and strlen($v['short_name']) ? 'title="' . htmlspecialchars($v['long_name']) . '"' : '' ) . '>' . fields_types::get_option($v['type'], 'name', $v['name']) . '</div>
 	      </th>
 	  ';
     }
@@ -238,7 +238,7 @@ $html .= '
 
 //add pager
 $html .= '
-<div class="row">
+<div class="row listing-split-page">
   <div class="col-md-5 col-sm-12">' . $listing_split->display_count() . '</div>
   <div class="col-md-7 col-sm-12">' . $listing_split->display_links() . '</div>
 </div>

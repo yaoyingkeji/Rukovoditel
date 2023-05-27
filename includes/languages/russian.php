@@ -1652,7 +1652,7 @@ define('TEXT_FIELDTYPE_INPUT_ENCRYPTED_TITLE','Зашифрованное пол
 define('TEXT_HIDE_VALUE','Скрыть значение');
 define('TEXT_FIELDTYPE_INPUT_ENCRYPTED_TOOLTIP','Введенное значение хранится в базе в зашифрованном виде. Данные шифруются с помощью специального ключа.');
 define('TEXT_ENCRYPTION_KEY','Ключ шифрования');
-define('TEXT_ENCRYPTION_KEY_INFO','Чтобы добавить ключ шифрования откройте <code>config/server.php</code> файл и <br>
+define('TEXT_ENCRYPTION_KEY_INFO','Чтобы добавить ключ шифрования откройте <code>config/database.php</code> файл и <br>
 вставьте следующую строку в конце файла: <code>define(\'DB_ENCRYPTION_KEY\',\'my_key\');</code><br>
 Вместо <code>my_key</code> введите ваш ключ.<br>
 <b>Внимание:</b> нельзя изменять ключ для существующих данных. Это приведет к потере данных.');
@@ -1935,6 +1935,67 @@ define('TEXT_DOCS_PREVIEW','Предварительный просмотр до
 define('TEXT_DOCS_PREVIEW_INFO','Пользователи смогут просмотреть документы во вложении через выбранный сервис, без скачивания их на диск.');
 define('TEXT_IGNORE_CURRENT_DAY','Не учитывать текущий день');
 define('TEXT_SENDER','Отправитель');
+
+//new defines for version 3.4
+define('TEXT_NUMBER_DISPLAYED_CHARACTERS_IN_LIST','Количество отображаемых символов в списке');
+define('TEXT_NUMBER_DISPLAYED_CHARACTERS_IN_LIST_INFO','Если задано, длинный текст будет обрезан и будет добавлена ссылка "Подробнее".');
+define('TEXT_READ_MORE','Подробнее');
+define('TEXT_FIELDTYPE_RELATED_MAIL_TITLE','Связанные письма');
+define('TEXT_FIELDTYPE_RELATED_MAIL_TOOLTIP','Если вы используете функцию <a href="https://docs.rukovoditel.net.ru/index.php?p=32" target="_balnk">интеграции с почтой</a>, с этим типом поля вы можете отображать связанные письма в списке записей. <a href="https://docs.rukovoditel.net.ru/index.php?p=147" target="_blank"><u>Подробнее.</u></a>');
+define('TEXT_COUNT_RELATED_EMAILS','Количество связанных писем ');
+define('TEXT_LIST_RELATED_EMAILS','Список связанных писем ');
+define('TEXT_UNREAD_EMAILS_ONLY','Только непрочитанные письма');
+define('TEXT_HAS_RELATED_EMALS','Есть связанные письма');
+define('TEXT_HAS_UNREAD_RELATED_EMALS','Есть непрочитанные письма');
+define('TEXT_NO_RELATED_EMALS','Нет связанных писем');
+define('TEXT_DO_NOT_APPLY_RECORD_VISIBILITY_RULES','Не применять правила видимости записей');
+define('TEXT_DO_NOT_APPLY_RECORD_VISIBILITY_RULES_INFO','Правила видимости записей не будут включены в sql-запрос для выбора записей');
+define('TEXT_ALLOW_SORT_ORDER','Разрешить сортировку');
+define('TEXT_ALLOW_SORT_ORDER_ATTACHMENTS_TIP','На странице записи появится возможность сортировать вложения');
+define('TEXT_DYNAMIC_MASK','Динамическая маска');
+define('TEXT_FORM_ADD_IN','Форма "Добавить в"');
+define('TEXT_FORM_ADD_IN_FILTERS_TIP','Форма "Добавить в" отображается если родительская запись явно не указана. Настройте фильтры для выпадающего списка записей из родительской сущности.');
+define('TEXT_DISABLE_TIME_BY_QUERY','Отключенное время по SQL запросу');
+define('TEXT_RECORDS_VISIBILITY_PHP_CODE_INFO','Добавьте свой собственный php-код для выбора записей, которые будут видны пользователям.');
+define('TEXT_DISABLE_LISTING_FIELDS_CONFIGURATION','Отключить настройку полей в списке');
+define('TEXT_DISABLE_FOR_ALL','Отключить для всех');
+define('TEXT_DISABLE_LISTING_FIELDS_CONFIGURATION_TIP','По умолчанию каждый пользователь может настроить собственные столбцы в списке. Если отключено, то будут использоваться стандартные настройки.');
+define('TEXT_VIEW_ALL_RECORDS','Просмотр всех записей');
+define('TEXT_FILENAME_TEMPLATE','Шаблон для имени файла');
+define('TEXT_FIELDTYPE_ATTACHMENTS_FILENAME_TEMPLATE_NOTE','Применяется если: Ограничение загрузки = 1');
+define('TEXT_YOU_CAN_USE','Вы можете использовать');
+define('TEXT_FIELDTYPE_3DVIEWER_TITLE','Поле для загрузки 3D моделей');
+define('TEXT_FIELDTYPE_3DVIEWER_TOOLTIP','Загружайте и просматривайте 3D-модели в форматах .obj, .fbx, .stl, .gltf');
+define('TEXT_VIEW_3D_MODEL_ON_RECORD_PAGE','Просмотр 3D-модели на странице записи');
+define('TEXT_VIEWPORT_HEIGHT','Высота области просмотра');
+define('TEXT_SELECT_FILE','Выберите файл');
+define('TEXT_LOADING','Загрузка...');
+define('TEXT_OBJECT_COLOR','Цвет объекта');
+define('TEXT_HIDE_NAME_ON_PRINT_PAGE','Скрыть имя на странице печати');
+define('TEXT_ENTER_PASSWORD_MANDATORY','Ввод пароля обязателен');
+define('TEXT_LISTING_TYPE','Тип списка');
+define('TEXT_RECORD_INFO_COLLAPSED_BY_DEFAULT','Информация о записи свернута по умолчанию');
+define('TEXT_HIDE_FIELD_NAMES','Скрыть название полей');
+define('TEXT_HIDE_FIELD_NAMES_TIP','В целях экономии места, вы можете скрыть название полей на странице записи.');
+define('DISPLAY_QR_CODE_ON_ITEM_PAGE','Отобразить  QR код на странице записи');
+define('TEXT_ENTER_RECORDS_ID_BY_COMMA','Введите ID записей через запятую');
+define('TEXT_LISTING_HIGHLIGHT_NUMERIC_FIELDS_TOOLTIP','Также вы можете сравнить значения из текущей записи, например: <code> >0&<[552]</code>');
+define('TEXT_GRID_ELEMENT_WILL_BE_CLICKABLE','Элемент сетки будет кликабельным и перенаправит на страницу информации о записи');
+define('TEXT_ATTACHMENTS_SORT_ORDER','Сортировка вложений');
+define('TEXT_BY_DATE_UPLOAD','По дате загрузки');
+define('TEXT_BY_FILENAME','По имени файла');
+define('TEXT_MANUAL_SORTING','Ручная сортировка');
+define('TEXT_ALLOW_ACCESS_FOR_ALL_USERS','Разрешить доступ всем пользователям');
+define('TEXT_DISPLAY_FILTER_PANEL','Отображать панель фильтров');
+define('TEXT_DISPLAY_COPY_TO_CLIPBOARD_ICON','Отобразить значок копирования в буфер обмена');
+define('TEXT_ICON_WILL_DISPLAYED_ON_RECORD_PAGE','Значок будет отображаться на странице записи.');
+define('TEXT_COPIED','Скопировано');
+define('TEXT_COPY_TO_CLIPBOARD','Скопировать в буфер обмена');
+define('TEXT_DISPLAY_INPUT_FIELD_ENTER_PERSON_NAME','Отобразить поле ввода для ввода имени пользователя');
+define('TEXT_DISPLAY','Отображение');
+define('TEXT_PAGINATION','Разбиение на страницы');
+define('TEXT_FILTER_BY_ENTITY','Фильтр по сущности');
+define('TEXT_FILTER_BY_GLOBAL_LIST','Фильтр по глобальному списку');
 
 
 

@@ -13,7 +13,15 @@
     <div class="col-md-1 align-right noprint">
         <a href="javascript: window.print()" class="btn btn-default"><i class="fa fa-print"></i></a>
     </div>
-</div>    
+</div>   
+<style>
+@media print
+{    
+    body{
+        background-color: #fff !important;
+    }   
+}
+</style>
 
 <?php 
     $filters = new report_page\report_filters($report_page);

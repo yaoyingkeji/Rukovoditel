@@ -1,36 +1,45 @@
 <?php require(component_path('items/navigation')) ?>
 
 <?php
+
+$help_pages = new help_pages($current_entity_id);
+echo $help_pages->render_announcements('info', $current_item_id);
+
 $current_item_info = [];
 $item_page_columns = explode('-', $entity_cfg -> get('item_page_columns_size', '8-4'));
 ?>
 
 <!-- include form fields display rules in info page  -->
-<?php require(component_path('items/forms_fields_rules.js')); ?>
+<?php 
+$forms_fields_rules = new forms_fields_rules($current_entity_id);                    
+echo $forms_fields_rules->apply();
+?>
 
 <div class="row">
 
     <!-- First Column  -->
     <div class="col-md-<?php echo $item_page_columns[0] ?> project-info">
 
-        <?php $portlets = new portlets('item_info_' . $current_item_id) ?>
+        <?php $portlets = new portlets('item_info_' . $current_item_id, ($entity_cfg->get('record_info_collapsed')==1 ? true:false)) ?>
         <div class="portlet portlet-item-description">
             <div class="portlet-title">
-                <div class="caption">        
+                <div class="caption" >        
                     <?php echo $app_breadcrumb[count($app_breadcrumb) - 1]['title'] ?>             
                 </div>
+                
                 <div class="tools">
                     <?php
                     
                     $favorites = new favorites($current_entity_id,$current_item_id);
                     echo $favorites->render_icon();
                     
-                    $help_pages = new help_pages($current_entity_id);
+                    
                     echo $help_pages -> render_icon('info');                                        
                     ?>
 
                     <a href="javascript:;" class="<?php echo $portlets->button_css() ?>"></a>
-                </div>
+                </div>    
+                
             </div>
             <div class="portlet-body" <?php echo $portlets->render_body() ?>>
 
@@ -173,7 +182,7 @@ $item_page_columns = explode('-', $entity_cfg -> get('item_page_columns_size', '
 
                 <!-- Inlucde timer from Extension -->          
                 <?php
-                if(class_exists('timer'))
+                if(is_ext_installed())
                 {
                     echo $timer -> render();
                 }
@@ -295,6 +304,8 @@ $item_page_columns = explode('-', $entity_cfg -> get('item_page_columns_size', '
     $(function ()
     {
         ckeditor_images_content_prepare();
+        
+        handleFieldtype3dviewer()
     })
 </script>
 

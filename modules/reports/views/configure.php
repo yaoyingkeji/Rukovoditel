@@ -39,7 +39,7 @@
 
 <div class="modal-body">
 
-<?php if(in_array($listing->get_listing_type(),['table','tree_table'])): ?>    
+<?php if(in_array($listing->get_listing_type(),['table','tree_table']) and $listing->is_listing_fields_configuration()): ?>    
 <div><?php echo TEXT_LISTING_CFG_INFO ?></div>
 
 <table width="100%">

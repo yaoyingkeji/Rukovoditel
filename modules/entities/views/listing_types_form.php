@@ -6,6 +6,9 @@
     <div class="form-body ajax-modal-width-790">
 
         <?php
+        
+        $settings = new settings($obj['settings']);
+        
         if($obj['type'] == 'table')
         {
             echo input_hidden_tag('is_active', 1);
@@ -29,9 +32,18 @@
                 </div>			
             </div>  
         <?php endif ?>
+        
+        <?php if($obj['type'] == 'grid' or $obj['type'] == 'mobile'): ?>
+            <div class="form-group">
+                <label class="col-md-3 control-label" ><?php echo TEXT_DISPLAY_AS_LINK ?></label>
+                <div class="col-md-9">	
+                    <?php echo select_tag('settings[display_as_link]', array('1' => TEXT_YES, '0' => TEXT_NO), (int)$settings->get('display_as_link'), array('class' => 'form-control input-small')) ?>                    
+                    <?= tooltip_text(TEXT_GRID_ELEMENT_WILL_BE_CLICKABLE) ?>
+                </div>			
+            </div>        
+        <?php endif ?>
 
-        <?php if($obj['type'] == 'grid'): ?>
-
+        <?php if($obj['type'] == 'grid'): ?>           
             <div class="form-group">
                 <label class="col-md-3 control-label" for="sort_order"><?php echo TEXT_WIDHT ?> (px)</label>
                 <div class="col-md-9">	
@@ -46,8 +58,7 @@
         <?php 
         if($obj['type'] == 'tree_table')
         {
-            $settings = new settings($obj['settings']);
-                                
+                                            
             $fields_choices = [];
             $fields_query = fields::get_query(_GET('entities_id'));
             while($v = db_fetch_array($fields_query))

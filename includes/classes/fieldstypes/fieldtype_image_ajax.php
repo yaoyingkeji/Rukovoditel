@@ -26,6 +26,9 @@ class fieldtype_image_ajax
             'png'=>'png',
         ];
         $cfg[] = array('title' => TEXT_ALLOWED_EXTENSIONS, 'name' => 'allowed_extensions', 'type' => 'dropdown','choices'=>$choices, 'params' => array('class' => 'form-control chosen-select input-large','multiple'=>'multiple'));
+        
+        $tooltip = TEXT_ENTER_TEXT_PATTERN_INFO_SHORT . '<br>' . TEXT_EXAMPLE . ': <code>myfile_[221]_[current_date_time]</code>';
+        $cfg[] = array('title' => TEXT_FILENAME_TEMPLATE, 'name' => 'filename_template', 'type' => 'input', 'params' => array('class' => 'form-control input-larege'),'tooltip'=>$tooltip);
 
         return $cfg;
     }
@@ -116,7 +119,8 @@ function uploadifive_oncomplate_filed_' . $field_id . '()
     $("#uploadifive_queue_list_' . $field_id . '").html("");
 }
 
-$(function(){
+$(function(){            
+        
     $("#uploadifive_attachments_upload_' . $field['id'] . '").uploadifive({
         auto             : true,  
         dnd              : false, 
@@ -127,7 +131,9 @@ $(function(){
         formData       :  {
                                 "timestamp" : ' . $timestamp . ',
                                 "token"     : "' .  $form_token . '",
-                                "form_session_token" : "' . $app_session_token. '"		
+                                "form_session_token" : "' . $app_session_token. '",
+                                "app_form_name": "' . $app_items_form_name . '",                                
+                                "filename_template": "' . addslashes($cfg->get('filename_template')) . '"    
                             },    
         queueID          : "uploadifive_queue_list_' . $field_id . '",
         fileSizeLimit : "' . (strlen($cfg->get('upload_size_limit')) ? (int)$cfg->get('upload_size_limit') : CFG_SERVER_UPLOAD_MAX_FILESIZE) . 'MB",
@@ -150,7 +156,7 @@ $(function(){
             
         }
     });
-})        
+})    
 </script>    
         ';
 

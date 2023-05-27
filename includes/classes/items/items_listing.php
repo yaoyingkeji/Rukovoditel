@@ -10,6 +10,8 @@ class items_listing
     public $report_type;
     public $entity_cfg;
     public $reports_info;
+    public $listing_type;
+    public $settings;
 
     function __construct($reports_id, $entity_cfg = false)
     {
@@ -17,7 +19,7 @@ class items_listing
 
         $this->reports_info = $reports_info;
 
-        $this->fields_in_listing = $reports_info['fields_in_listing'];
+        $this->fields_in_listing = $reports_info['fields_in_listing']??'';
 
         $this->entities_id = $reports_info['entities_id'];
 
@@ -26,10 +28,19 @@ class items_listing
         $this->force_access_query = $reports_info['displays_assigned_only'];
 
         $this->report_type = $reports_info['reports_type'];
+        
+        if(!$entity_cfg)
+        {
+            $this->entity_cfg = new entities_cfg($reports_info['entities_id']);
+        }
+        else
+        {
+            $this->entity_cfg = $entity_cfg;
+        }
 
         //set listing type
         $choices = listing_types::get_choices($this->entities_id);
-        $this->listing_type = ((strlen($reports_info['listing_type']) and isset($choices[$reports_info['listing_type']])) ? $reports_info['listing_type'] : listing_types::get_default($this->entities_id));
+        $this->listing_type = ((isset($reports_info['listing_type']) and strlen($reports_info['listing_type']) and isset($choices[$reports_info['listing_type']])) ? $reports_info['listing_type'] : listing_types::get_default($this->entities_id));
                 
         $listing_types_query = db_query("select settings from app_listing_types where  type='" . $this->listing_type . "' and entities_id='" . $this->entities_id . "' and is_active=1");
         if($listing_types = db_fetch_array($listing_types_query))
@@ -46,16 +57,27 @@ class items_listing
             $this->fields_in_listing = implode(',', $this->settings->get('fields_in_listing'));            
         }
         
+                
+        if(!$this->is_listing_fields_configuration())
+        {
+            $this->fields_in_listing = '';            
+        }                       
+    }
+    
+    function is_listing_fields_configuration()
+    {
+        global $app_user;
+                
+        if(strlen($this->entity_cfg->get('disable_listing_fields_configuration')))
+        {            
+            if(in_array($app_user['group_id'],explode(',',$this->entity_cfg->get('disable_listing_fields_configuration'))) or $this->entity_cfg->get('disable_listing_fields_configuration')=='disallow_for_all')
+            {
+                return false;
+            }
+        }
         
-
-        if(!$entity_cfg)
-        {
-            $this->entity_cfg = new entities_cfg($reports_info['entities_id']);
-        }
-        else
-        {
-            $this->entity_cfg = $entity_cfg;
-        }
+        return true;
+        
     }
 
     function get_fields_query()
@@ -144,7 +166,7 @@ class items_listing
         if(!$this->is_resizable())
             return '';
 
-        if(strlen($this->reports_info['listing_col_width']))
+        if(strlen($this->reports_info['listing_col_width']??''))
         {
             $listing_col_width = json_decode($this->reports_info['listing_col_width'], true);
 
@@ -173,7 +195,7 @@ class items_listing
             return '';
 
         $html = '';
-        if(strlen($this->reports_info['listing_col_width']))
+        if(strlen($this->reports_info['listing_col_width']??''))
         {
             $listing_col_width = json_decode($this->reports_info['listing_col_width'], true);
 

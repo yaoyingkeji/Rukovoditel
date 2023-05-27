@@ -121,7 +121,7 @@ class geliossoft_objects
                     label: obj.name
                 }
                 
-                if(obj.unit_icon.length>0)
+                if(obj.unit_icon && obj.unit_icon.length>0)
                 {
                     options.icon = obj.unit_icon                    
                 }
@@ -163,6 +163,7 @@ class geliossoft_objects
     
     apply_yandex(data)
     {
+                
         for(const obj of data)
         {
             //console.log(obj)
@@ -174,7 +175,7 @@ class geliossoft_objects
                     preset:"islands#circleDotIcon"
                 }
                 
-                if(obj.unit_icon.length>0)
+                if(obj.unit_icon && obj.unit_icon.length>0)
                 {
                     options.iconLayout = 'default#image'
                     options.iconImageHref = obj.unit_icon

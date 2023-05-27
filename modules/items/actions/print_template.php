@@ -331,7 +331,7 @@ switch ($app_module_action)
                 
                 if ($count_items > 1 and $count_items != $count and $template_info['split_into_pages'] == 1)
                 {
-                    $print_template .= ($app_module_action == 'export_word' ? '<br style="clear: both; page-break-before: always">' : '<p style="clear: both; page-break-after: always;"></p>');
+                    $print_template .= ($app_module_action == 'export_word' ? '<br style="clear: both; page-break-before: always">' : '<p style="clear: both; page-break-after: always; margin:0; padding:0;"></p>');
                 }
                 
                 $count++;
@@ -347,7 +347,7 @@ switch ($app_module_action)
                 {
                     $print_template .= export_templates::get_template_extra($selected_items_array, $template_info, 'template_footer');
 
-                    $print_template .= ($app_module_action == 'export_word' ? '<br style="page-break-before: always">' : '<p style="page-break-after: always;"></p>');
+                    $print_template .= ($app_module_action == 'export_word' ? '<br style="page-break-before: always">' : '<p style="page-break-after: always; margin:0; padding:0;"></p>');
 
                     $print_template .= export_templates::get_template_extra($selected_items_array, $template_info, 'template_header');
                 }

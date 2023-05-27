@@ -303,6 +303,82 @@ class attachments
             'file' => (CFG_ENCRYPT_FILE_NAME == 1 ? sha1(time() . '_' . $filename) : time() . '_' . $filename),
             'folder' => date('Y') . '/' . date('m') . '/' . date('d'));
     }
+    
+    public static function get_filename_by_template($filename_template,$form_data, $original_name)
+    {
+        if(!strlen($form_data)) return $original_name;
+        
+        $form_data = json_decode($form_data,true);
+        
+        //print_rr($_POST);
+                 
+        $filename = $filename_template;
+        
+        $filename = str_replace('[current_date]', format_date(time()), $filename);
+        $filename = str_replace('[current_date_time]', format_date_time(time()), $filename);
+                        
+        if(preg_match_all('/\[(\d+)\]/', $filename, $matches))
+        {
+            //print_rr($matches);
+            foreach($matches[1] as $matches_key => $field_id)
+            {
+                $value = '';                
+                foreach($form_data as $data)
+                {
+                    if($data['name']=='fields[' . $field_id . ']')
+                    {
+                        $field_query = db_query("select id, name, type, configuration, entities_id from app_fields where id={$field_id}");
+                        if($field = db_fetch_array($field_query))
+                        {
+                            $cfg = new settings($field['configuration']);
+                            
+                            switch($field['type'])
+                            {
+                                case 'fieldtype_dropdown':
+                                case 'fieldtype_color':
+                                case 'fieldtype_autostatus': 
+                                case 'fieldtype_radioboxes': 
+                                    if($cfg->get('use_global_list')>0)
+                                    {
+                                      $value = global_lists::render_value($data['value']);
+                                    }
+                                    else
+                                    {    
+                                      $value = fields_choices::render_value($data['value']);
+                                    }
+                                    break;
+                                case 'fieldtype_input_date':
+                                case 'fieldtype_input_date_extra': 
+                                case 'fieldtype_input_datetime': 
+                                      $value = $data['value'];
+                                    break;
+                                case 'fieldtype_entity':
+                                case 'fieldtype_entity_ajax': 
+                                case 'fieldtype_entity_multilevel': 
+                                case 'fieldtype_users': 
+                                case 'fieldtype_users_ajax': 
+                                    if(strlen($data['value']) and is_numeric($data['value']))
+                                    {
+                                        $entity_id = strlen($cfg->get('entity_id')) ? $cfg->get('entity_id') : 1;
+                                        $value = items::get_heading_field($entity_id, $data['value']);
+                                    }
+                                    break;
+                                default:
+                                    $value = $data['value'];
+                                    break;
+                            }                            
+                        }                        
+                    }
+                }
+                
+                $filename = str_replace('[' . $field_id . ']',$value,$filename);
+            }
+        }
+        
+        $filename = preg_replace('/-+/', '-', preg_replace('/[^\w_-]+/u', '-', preg_replace('/\s+/', '-', trim(strip_tags($filename)))));  
+        
+        return strlen($filename) ? $filename : $original_name;
+    }
 
     public static function parse_filename($filename)
     {

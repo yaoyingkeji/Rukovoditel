@@ -16,6 +16,12 @@ if(!$current_path)
     redirect_to('dashboard/');
 }
 
+//reset calendar reminder session
+if(isset($_GET['reset_calendar_reminder']))
+{
+    $app_calendar_reminder->reset();
+}
+
 $current_path_array = explode('/', $current_path);
 $current_item_array = explode('-', $current_path_array[count($current_path_array) - 1]);
 
@@ -81,9 +87,10 @@ if(count($current_path_array) > 1)
     if($current_item_id == 0)
     {
         $path_info = items::get_path_info($v[0], $v[1]);
+        $full_path = $path_info['full_path'] . '/' . $current_entity_id;
 
-        if($current_path != $path_info['full_path'] . '/' . $current_entity_id)
-        {
+        if($current_path != $path_info['full_path'] . '/' . $current_entity_id and $app_redirect_to != 'parent_modal' and $app_module_path!='items/render_field_value' and strlen($app_module_action)==0)                        
+        {            
             redirect_to('items/items', 'path=' . $path_info['full_path'] . '/' . $current_entity_id);
         }
 

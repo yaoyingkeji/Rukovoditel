@@ -1,1 +1,0 @@
-https://xdsoft.net/jqplugins/datetimepicker/

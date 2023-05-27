@@ -17,7 +17,7 @@
     <link rel="stylesheet" type="text/css" href="js/signature_pad-master/css/ie9.css">
   <![endif]-->
   
-  <script src="template/plugins/jquery-1.10.2.min.js" type="text/javascript"></script>
+  <script src="<?= CFG_PATH_TO_JQUERY ?>" type="text/javascript"></script>
 
 
 </head>

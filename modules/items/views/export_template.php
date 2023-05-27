@@ -17,7 +17,7 @@ else
     $filename = $template_info['name'] . '_' . $current_item_id;
 }
 
-if($template_info['type'] == 'docx')
+if(in_array($template_info['type'],['docx']))
 {
     echo '
     <div class="modal-body ajax-modal-width-790">
@@ -59,12 +59,35 @@ if($template_info['type'] == 'docx')
 
     echo ajax_modal_template_footer('hide-save-button', $buttons_html);
 }
+elseif(in_array($template_info['type'],['xlsx']))
+{
+    
+    echo '
+    <div class="modal-body ajax-modal-width-790">
+        <div class="form-group">
+            <label class="col-md-3 control-label">' . TEXT_FILENAME . '</label>
+			<div class="col-md-9">
+                <div class="input-group input-xlarge">
+            		' . input_tag('filename', $filename, ['class' => 'form-control required']) . '
+            		<span class="input-group-addon">
+            			.xlsx
+            		</span>
+            	</div>
+                <label id="filename-error" class="error" for="filename"></label>
+            </div>
+        </div>  
+    </div>
+    ';
+    
+    $buttons_html = '<button type="button" class="btn btn-primary btn-template-export"><i class="fa fa-download" aria-hidden="true"></i> ' . TEXT_DOWNLOAD . '</button>';
+    echo ajax_modal_template_footer('hide-save-button', $buttons_html);
+}
 else
 {
     ?>
 
 
-    <div class="modal-body ajax-modal-width-790">    
+    <div class="modal-body ajax-modal-width-1100">    
 
         <div id="export_templates_preview">	
             <style>

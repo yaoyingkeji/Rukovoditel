@@ -40,6 +40,7 @@ class fieldtype_items_by_query
             'params'=>array('class'=>'form-control input-medium'));
         
         $cfg[TEXT_DISPLAY_AS][] = array('title'=>tooltip_icon(TEXT_DISPLAY_NAME_AS_LINK_INFO) . TEXT_DISPLAY_NAME_AS_LINK, 'name'=>'display_as_link','type'=>'checkbox');
+        $cfg[TEXT_DISPLAY_AS][] = array('title' => TEXT_HIDE_FIELD_IF_EMPTY, 'name' => 'hide_field_if_empty', 'type' => 'checkbox', 'tooltip_icon' => TEXT_HIDE_FIELD_IF_EMPTY_TIP);
                         
         $cfg[TEXT_DISPLAY_AS][] = array('title'=>TEXT_DEFAULT_TEXT, 'name'=>'default_text', 'type'=>'input', 'tooltip'=>TEXT_DEFAULT . ': ' . TEXT_TOTAL . ' (#)', 'params'=>array('class'=>'form-control input-medium'));
                         

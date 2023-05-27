@@ -323,9 +323,11 @@ function db_input_in($value)
         
         $value = explode(',',$value);
     }
-    
-    $value = array_filter($value);
-    
+        
+    $value = array_filter($value,function($v){
+        return strlen($v) ? true : false;
+    });
+            
     $value = array_map(function($v){
         return is_numeric($v) ? $v : "'{$v}'";                    
     }, $value);
@@ -352,7 +354,7 @@ function db_input($string, $link = 'db_link')
     }
 
     if(function_exists('mysqli_real_escape_string'))
-    {
+    {                
         return mysqli_real_escape_string($$link, $string);
     }
     elseif(function_exists('mysqli_escape_string'))

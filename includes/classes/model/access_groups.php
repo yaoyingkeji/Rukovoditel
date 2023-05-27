@@ -59,7 +59,7 @@ class access_groups
     {
         $choices = array(
             '' => TEXT_NO,
-            'view' => TEXT_VIEW_ACCESS,
+            'view' => TEXT_VIEW_ALL_RECORDS,
             'view_assigned' => TEXT_VIEW_ASSIGNED_ACCESS,
             'action_with_assigned' => TEXT_VIEW_ALL_ACTION_WIDHT_ASSIGNED_ACCESS,
         );

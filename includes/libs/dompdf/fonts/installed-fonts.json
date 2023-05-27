@@ -82,5 +82,8 @@
         "italic": "includes\/libs\/dompdf\/fonts\/\/arial_italic",
         "bold": "includes\/libs\/dompdf\/fonts\/\/arial_bold",
         "bold_italic": "includes\/libs\/dompdf\/fonts\/\/arial_bold_italic"
+    },
+    "glyphicons halflings": {
+        "normal": "glyphicons_halflings_normal_c843ba9231c49a9401ce1f9632cda569"
     }
 }

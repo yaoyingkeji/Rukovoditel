@@ -202,7 +202,7 @@ class fields_choices
                 {
                     $html .= (strlen($html) == 0 ? $app_choices_cache[$id]['name'] : ', ' . $app_choices_cache[$id]['name']);
                 }
-                elseif(strlen($app_choices_cache[$id]['bg_color']) > 0)
+                elseif(isset($app_choices_cache[$id]['bg_color']) and strlen($app_choices_cache[$id]['bg_color']) > 0)
                 {
                     $html .= render_bg_color_block($app_choices_cache[$id]['bg_color'], $app_choices_cache[$id]['name']);
                 }

@@ -51,10 +51,10 @@ class comments
     $items_query = db_query($comments_query_sql);
     if($item = db_fetch_array($items_query))
     {              
-      $descripttion = htmlspecialchars(strlen($description = strip_tags($item['description']))>255 ? substr($description,0,255) . '...' : $description);
+      $descripttion = htmlspecialchars(strlen($description = strip_tags($item['description']??''))>255 ? substr($description,0,255) . '...' : $description);
       
       //include attachments
-      if(strlen($item['attachments']))
+      if(strlen($item['attachments']??''))
       {
       	$descripttion .= "<ul style='padding: 7px 0 0 0'>";
       	foreach( explode(',', $item['attachments']) as $row  )

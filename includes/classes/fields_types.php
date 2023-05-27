@@ -108,6 +108,7 @@ class fields_types
             'fieldtype_jalali_calendar',
             'fieldtype_nested_calculations',
             'fieldtype_color',
+            'fieldtype_related_mail',
         );
     }
 
@@ -123,6 +124,7 @@ class fields_types
             'fieldtype_id',
             'fieldtype_image',
             'fieldtype_image_ajax',
+            'fieldtype_3dviewer',
             'fieldtype_input_email',
             'fieldtype_input_file',
             'fieldtype_input_masked',
@@ -172,6 +174,7 @@ class fields_types
             'fieldtype_php_code',
             'fieldtype_process_button',
             'fieldtype_nested_calculations',
+            'fieldtype_related_mail',
         );
     }
 
@@ -197,7 +200,8 @@ class fields_types
             'fieldtype_section',
             'fieldtype_signature',
             'fieldtype_subentity_form',
-            'fieldtype_user_skin',            
+            'fieldtype_user_skin',   
+            'fieldtype_related_mail',
         );
     }
 
@@ -214,6 +218,7 @@ class fields_types
             'fieldtype_google_map',
             'fieldtype_google_map_directions',
             'fieldtype_google_nested',
+            'fieldtype_related_mail',
         );
     }
 
@@ -544,6 +549,12 @@ class fields_types
             case 'fieldtype_google_map_nested':
                 $tooltip = TEXT_FIELDTYPE_GOOGLE_MAP_NESTED_TOOLTIP;
                 break;
+            case 'fieldtype_related_mail':
+                $tooltip = TEXT_FIELDTYPE_RELATED_MAIL_TOOLTIP;
+                break;
+            case 'fieldtype_3dviewer':
+                $tooltip = TEXT_FIELDTYPE_3DVIEWER_TOOLTIP;
+                break;
         }
 
         return $tooltip;
@@ -602,6 +613,7 @@ class fields_types
             'fieldtype_input_file',
             'fieldtype_image',
             'fieldtype_image_ajax',
+            'fieldtype_3dviewer',
         );
 
         $fieldtypes[TEXT_FIELDS_TYPES_GROUP_LIST] = array(
@@ -656,6 +668,7 @@ class fields_types
             'fieldtype_auto_increment',
             'fieldtype_autostatus',
             'fieldtype_stages',
+            'fieldtype_related_mail',
             'fieldtype_todo_list',
             'fieldtype_process_button',
             'fieldtype_input_vpic',
@@ -880,6 +893,7 @@ class fields_types
                             autofocus:true,
                             lineWrapping: true,
                             matchBrackets: true,
+                            theme: app_skin_dir=="Dark_Mode" ? "darcula":"default",
                             extraKeys: {
                     		     "F11": function(cm) {
                     		       cm.setOption("fullScreen", !cm.getOption("fullScreen"));
@@ -898,10 +912,10 @@ class fields_types
                         else
                         {                                                 
                             $("#' . $tab_id . '_link").click(function(){
-                                if(!$(this).hasClass("acitve-codemirror"))
+                                if(!$(this).hasClass("acitve-codemirror-' . $v['name'] . '"))
                                 {
                                     setTimeout('  . $v['name'] . '_code, 300);
-                                    $(this).addClass("acitve-codemirror")
+                                    $(this).addClass("acitve-codemirror-' . $v['name'] . '")
                                 }		
                             })
 
@@ -968,7 +982,7 @@ class fields_types
 
     public static function parse_configuration($v)
     {
-        if (strlen($v) > 0)
+        if (isset($v) and strlen($v) > 0)
         {
             return json_decode($v, true);
         } else
@@ -1018,7 +1032,7 @@ class fields_types
 
         $fieldtype = new $class;
 
-        if ($key == 'name' and strlen($default) > 0)
+        if ($key == 'name' and isset($default) and strlen($default) > 0)
         {
             return $default;
         } elseif (isset($fieldtype->options[$key]))

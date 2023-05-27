@@ -6,6 +6,7 @@
 <p><?php echo TEXT_FORM_CONFIG_INFO ?></p>
 
 <?php
+$entities_id = $_GET['entities_id'];
 $entity_cfg = new entities_cfg($_GET['entities_id']);
 $hidden_form_fields = $entity_cfg->get('hidden_form_fields');
 $count_hidden_form_fields = strlen($hidden_form_fields) ? count(explode(',',$hidden_form_fields)) : 0;
@@ -21,7 +22,14 @@ $count_hidden_form_fields = strlen($hidden_form_fields) ? count(explode(',',$hid
         </li>
         <li>
             <?php echo link_to(TEXT_TAB_GROUPS,url_for('forms_tabs/groups','entities_id=' . $_GET['entities_id'])) ?>
-        </li>        
+        </li>  
+<?php
+    if(($parent_id = $app_entities_cache[$entities_id]['parent_id'])>0)
+    {
+        $reports_id = default_filters::get_reports_id($parent_id, 'form_add_in' . $entities_id, false);
+        echo '<li>' . link_to(TEXT_FORM_ADD_IN,url_for('default_filters/filters', 'reports_id=' . $reports_id . '&redirect_to=form_add_in' . $entities_id)) . '</li>';
+    }
+?>
     </ul>
 </div>
 

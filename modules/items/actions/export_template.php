@@ -1,5 +1,9 @@
 <?php
 
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+use PhpOffice\PhpSpreadsheet\IOFactory;
+
 if(!export_templates::has_users_access($current_entity_id,_get::int('templates_id')))
 {
   redirect_to('dashboard/access_forbidden');
@@ -37,13 +41,23 @@ if($template_info['type']=='docx' and in_array($app_module_action,['export','exp
     exit();
 }
 
+if($template_info['type']=='xlsx' and $app_module_action=='export')
+{
+    require(CFG_PATH_TO_PHPSPREADSHEET);
+    require('includes/libs/PHPStep/0.2/vendor/autoload.php');
+        
+    $xlsx = new export_templates_xlsx($template_info);
+    $xlsx->prepare_template_file($current_entity_id, $current_item_id);    
+    $xlsx->download();
+        
+    exit();
+}
+
 
 
 //hande current dates
-$template_info['template_header'] = str_replace('{#current_date}',format_date(time()),$template_info['template_header']);
-$template_info['template_header'] = str_replace('{#current_date_time}',format_date_time(time()),$template_info['template_header']);
-$template_info['template_footer'] = str_replace('{#current_date}',format_date(time()),$template_info['template_footer']);
-$template_info['template_footer'] = str_replace('{#current_date_time}',format_date_time(time()),$template_info['template_footer']);
+$template_info['template_header'] = export_templates::get_template_extra([$current_item_id], $template_info, 'template_header');
+$template_info['template_footer'] = export_templates::get_template_extra([$current_item_id], $template_info, 'template_footer');
 
 switch($app_module_action)
 {

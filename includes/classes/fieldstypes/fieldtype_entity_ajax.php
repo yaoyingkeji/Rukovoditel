@@ -37,6 +37,12 @@ class fieldtype_entity_ajax
             'params' => array('class' => 'form-control input-xlarge'));
 
         $cfg[TEXT_SETTINGS][] = array('title' => TEXT_DEFAULT_TEXT, 'name' => 'default_text', 'type' => 'input', 'tooltip_icon' => TEXT_DEFAULT_TEXT_INFO, 'params' => array('class' => 'form-control input-medium'));                
+        
+        $cfg[TEXT_SETTINGS][] = array('title' => TEXT_DEFAULT_VALUE,
+            'name' => 'default_value',
+            'type' => 'input',
+            'tooltip' => TEXT_ENTER_RECORDS_ID_BY_COMMA,
+            'params' => array('class' => 'form-control input-medium'));
 
         $cfg[TEXT_SETTINGS][] = array('title' => TEXT_DISPLAY_ONLY_ASSIGNED_RECORDS, 'tooltip_icon' => TEXT_DISPLAY_ONLY_ASSIGNED_RECORDS_INFO, 'name' => 'display_assigned_records_only', 'type' => 'checkbox');
 
@@ -146,6 +152,12 @@ class fieldtype_entity_ajax
         $choices = [];
 
         $value = ($obj['field_' . $field['id']] > 0 ? $obj['field_' . $field['id']] : '');
+        
+        //set default value for new record
+        if(isset($params['is_new_item']) and $params['is_new_item']==1 and strlen($cfg->get('default_value')))
+        {
+            $value = $cfg->get('default_value');
+        }
 
         $html_on_change = '';
 
@@ -295,7 +307,7 @@ class fieldtype_entity_ajax
         
                 prepare_add_edit_button_' . $field['id'] . '()
     		
-                let is_form_row_' . $field['id'] . ' = $("#fields_' . $field['id'] . '").parents(".forms-rows").size();
+                let is_form_row_' . $field['id'] . ' = $("#fields_' . $field['id'] . '").parents(".forms-rows").length;
                 
 	    	$("#fields_' . $field['id'] . '").select2({		      
 		      width: (is_form_row_' . $field['id'] . '==0 ? ' . self::get_select2_width_by_class($cfg->get('width'), (strlen($button_add_html) ? true : false)) . ':"100%"),                          
@@ -531,6 +543,8 @@ class fieldtype_entity_ajax
 
         if ($parent_entity_item_id > 0 and $app_entities_cache[$field['entities_id']]['parent_id'] > 0)
         {
+            $mysql_query_where = str_replace('[parent_item_id]', $parent_entity_item_id, $mysql_query_where);
+            
             $item_info_query = db_query("select * from app_entity_" . $app_entities_cache[$field['entities_id']]['parent_id'] . " where id=" . $parent_entity_item_id);
             if ($item_info = db_fetch_array($item_info_query))
             {
@@ -557,18 +571,44 @@ class fieldtype_entity_ajax
                 }
             }
         }
-
+        
         $mysql_query_where = str_replace('[current_user_id]', $app_user['id'], $mysql_query_where);
         $mysql_query_where = str_replace('[TODAY]', get_date_timestamp(date('Y-m-d')), $mysql_query_where);
 
         if (isset($_POST['form_data']))
         {
             if (is_array($_POST['form_data']))
-                foreach ($_POST['form_data'] as $k => $v)
-                {
-                    $key = str_replace(['fields[', ']'], '', $v['name']);
-                    $mysql_query_where = str_replace('[' . $key . ']', $v['value'], $mysql_query_where);
+            {
+                $form_data = $_POST['form_data'];
+                
+                //check if data is array
+                foreach ($form_data as $k => $v)
+                { 
+                    if(strstr($v['name'],'[]'))
+                    {
+                        $key = str_replace(['fields[', ']','['], '', $v['name']); 
+                        $form_data[$key]['name'] =  $key;
+                        if(!isset($form_data[$key]['value']))
+                        {
+                            $form_data[$key]['value'] = [];
+                        }
+                        $form_data[$key]['value'][] = $v['value'];
+                        
+                        unset($form_data[$k]);
+                    }
+                   
                 }
+                
+                
+                //print_rr($form_data);
+                
+                foreach ($form_data as $k => $v)
+                {           
+                    $value = is_array($v['value']) ? implode(',',$v['value']) : $v['value'];
+                    $key = str_replace(['fields[', ']'], '', $v['name']);
+                    $mysql_query_where = str_replace('[' . $key . ']', $value, $mysql_query_where);
+                }
+            }
         }
         
         //check if all fiels replaces and skip query if not

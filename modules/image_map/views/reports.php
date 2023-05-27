@@ -29,15 +29,15 @@
   <?php echo image_map::render_markers_color($reports['fields_id']) ?>
   		
   		
-  <script src="js/image-map/common/js/jquery-1.11.3.min.js"></script>	
-	<script src="js/image-map/common/js/bootstrap.js"></script>
-	<script src="js/image-map/common/js/bootstrap-adds.js"></script>
-	<script src="js/image-map/common/js/leaflet.js"></script>	
-	<script src="js/image-map/admin/js/jquery.validate.min.js"></script>
-		
-	<script src="js/image-map/common/js/common_custom.js?v=4"></script>	
-	<script src="js/image-map/admin/js/plugins_custom.js?v=4"></script>	
-	<script src="js/image-map/admin/js/admin_custom.js?v=4"></script>
+    <script src="js/image-map/common/js/jquery-1.11.3.min.js"></script>	
+    <script src="js/image-map/common/js/bootstrap.js"></script>
+    <script src="js/image-map/common/js/bootstrap-adds.js"></script>
+    <script src="js/image-map/common/js/leaflet.js"></script>	
+    <script src="js/image-map/admin/js/jquery.validate.min.js"></script>
+
+    <script src="js/image-map/common/js/common_custom.js?v=4"></script>	
+    <script src="js/image-map/admin/js/plugins_custom.js?v=4"></script>	
+    <script src="js/image-map/admin/js/admin_custom.js?v=4"></script>
 	   
   <script>
 	$(function(){

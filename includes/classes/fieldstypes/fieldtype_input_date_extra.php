@@ -12,6 +12,8 @@ class fieldtype_input_date_extra
 
     function get_configuration()
     {
+        global $app_entities_cache;
+        
         $cfg = array();
 
         $cfg[TEXT_SETTINGS][] = array('title' => TEXT_NOTIFY_WHEN_CHANGED, 'name' => 'notify_when_changed', 'type' => 'checkbox', 'tooltip_icon' => TEXT_NOTIFY_WHEN_CHANGED_TIP);
@@ -122,6 +124,22 @@ class fieldtype_input_date_extra
             'params' => array('class' => 'form-control input-xlarge '),
             'form_group' => ['form_display_rules' => 'fields_configuration_timepicker:1']);
         
+        if(isset($_POST['id']) and $_POST['id']>0)
+        {
+            $field_id = $_POST['id'];
+            $entities_id = $_POST['entities_id'];
+            $tooltip = TEXT_EXAMPLE . " 1: <code>select field_{$field_id} from app_entity_{$entities_id} where date_format(FROM_UNIXTIME(field_{$field_id}),'%Y-%m-%d')=[TODAY]</code>";
+            $tooltip .= '<br>' . TEXT_EXAMPLE . " 2: <code>select field_{$field_id} as time_from, (field_{$field_id}+3600) as time_to from app_entity_{$entities_id} where date_format(FROM_UNIXTIME(field_{$field_id}),'%Y-%m-%d')=[TODAY]</code>";
+            
+            $cfg[TEXT_TIME][] = array(
+                'title' => TEXT_DISABLE_TIME_BY_QUERY,
+                'name' => 'disable_time_by_query',
+                'type' => 'textarea',
+                'tooltip' => $tooltip,
+                'params' => array('class' => 'form-control code '),
+                'form_group' => ['form_display_rules' => 'fields_configuration_timepicker:1']);
+        }
+        
 
         $cfg[TEXT_COLOR][] = array('title' => TEXT_OVERDUE_DATES,
             'name' => 'background',
@@ -174,14 +192,30 @@ class fieldtype_input_date_extra
             
             $field_id = $_POST['id'];
             $entities_id = $_POST['entities_id'];
-            $tooltip = TEXT_EXAMPLE . ": <code>select field_{$field_id} from app_entity_{$entities_id} where field_{$field_id}>UNIX_TIMESTAMP()</code>";
-            
+            $tooltip = TEXT_EXAMPLE . " : <code>select field_{$field_id} from app_entity_{$entities_id} where field_{$field_id}>UNIX_TIMESTAMP()</code>";
+                                    
             $cfg[TEXT_DISABLED_DATES][] = array(
                 'title' => TEXT_DISABLED_DATES_BY_QUERY, 
                 'name' => 'disabledDatesQuery', 
-                'type' => 'code_small',  
+                'type' => 'textarea',  
                 'tooltip' => $tooltip, 
-                'params' => array('class' => 'form-control code','mode'=>'sql'));
+                'params' => array('class' => 'form-control code'));
+            
+            $tooltip = TEXT_EXAMPLE . " : <code>select field_X from app_entity_Y where id=[parent_item_id]</code>";
+            
+            $cfg[TEXT_DISABLED_DATES][] = array(
+                'title' => TEXT_MIN_DATE, 
+                'name' => 'min_date_by_query', 
+                'type' => 'textarea',  
+                'tooltip' => $tooltip, 
+                'params' => array('class' => 'form-control code'));
+            
+            $cfg[TEXT_DISABLED_DATES][] = array(
+                'title' => TEXT_MAX_DATE, 
+                'name' => 'max_date_by_query', 
+                'type' => 'textarea',  
+                'tooltip' => $tooltip, 
+                'params' => array('class' => 'form-control code'));
         }
         return $cfg;
     }
@@ -313,11 +347,13 @@ class fieldtype_input_date_extra
         $settings = self::get_data_settings($cfg);
         
         //print_rr($params);
-                                
-        if(strlen($cfg->get('disabledDatesQuery')))
+               
+        //allowed dates by query
+        if(strlen($sql = $cfg->get('disabledDatesQuery')))
         {
+            $sql = str_replace('[parent_item_id]',$params['parent_entity_item_id']??0,$sql); 
             $disabledDates = [];            
-            $disabled_dates_query = db_query($cfg->get('disabledDatesQuery'));
+            $disabled_dates_query = db_query($sql);
             while($disabled_dates = db_fetch_array($disabled_dates_query))
             {
                 $disabled_date = $disabled_dates['field_' . $field['id']]??0;
@@ -333,10 +369,45 @@ class fieldtype_input_date_extra
             }            
         }
         
-        //print_rr($settings);
         
-            
-
+        //disable time        
+        if(strlen($sql = $cfg->get('disable_time_by_query')) and $cfg->get('timepicker')==1)
+        {
+            $settings['disabledTime'] = url_for('dashboard/xdsoft_datetimepicker','action=disabledTime&entity_id=' . $field['entities_id'] . '&field_id=' . $field['id'] . '&item_id=' . ($obj['id']??'') . '&parent_item_id=' . $params['parent_entity_item_id']??0);                                             
+        }
+        
+        //min date by query
+        if(strlen($sql = $cfg->get('min_date_by_query')))
+        {            
+            $sql = str_replace('[parent_item_id]',$params['parent_entity_item_id']??0,$sql); 
+            $date_query = db_query($sql);
+            if($date = db_fetch_array($date_query))
+            {                
+                 $minDate = current($date);
+                 if($minDate>0)
+                 {
+                    $settings['minDate'] = date('Y-m-d',$minDate);
+                 }
+            }
+        }
+        
+        //max date by query
+        if(strlen($sql = $cfg->get('max_date_by_query')))
+        {            
+            $sql = str_replace('[parent_item_id]',$params['parent_entity_item_id']??0,$sql); 
+            $date_query = db_query($sql);
+            if($date = db_fetch_array($date_query))
+            {                
+                 $maxDate = current($date);
+                 if($maxDate>0)
+                 {
+                    $settings['maxDate'] = date('Y-m-d',$maxDate);
+                 }
+            }
+        }
+        
+        //print_rr($settings);
+                    
         if(strlen($cfg->get('min_date')) 
                 or strlen($cfg->get('max_date'))
                 or strlen($cfg->get('disabledDatesQuery'))

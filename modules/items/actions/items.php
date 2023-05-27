@@ -240,7 +240,7 @@ switch ($app_module_action)
         }
 
         //log changeds
-        if (class_exists('track_changes'))
+        if (is_ext_installed())
         {
             $log = new track_changes($current_entity_id, $item_id);
             $log->log_prepare(isset($_GET['id']), $item_info);
@@ -611,10 +611,17 @@ switch ($app_module_action)
         break;
     case 'attachments_upload':
         $verifyToken = md5($app_user['id'] . $_POST['timestamp']);
-
+                        
         if (strlen($_FILES['Filedata']['tmp_name']) and $_POST['token'] == $verifyToken)
         {
-            $file = attachments::prepare_filename($_FILES['Filedata']['name']);
+            $name = $_FILES['Filedata']['name'];
+            
+            if(isset($_POST['filename_template']) and strlen($_POST['filename_template']) and isset($_POST['form_data']))
+            {
+                $name = attachments::get_filename_by_template($_POST['filename_template'],$_POST['form_data'],$name);
+            }
+            
+            $file = attachments::prepare_filename($name);                        
 
             if (move_uploaded_file($_FILES['Filedata']['tmp_name'], DIR_WS_ATTACHMENTS . $file['folder'] . '/' . $file['file']))
             {
@@ -626,7 +633,7 @@ switch ($app_module_action)
                 db_perform('app_attachments', $sql_data);
 
                 //add file to queue
-                if (class_exists('file_storage'))
+                if (is_ext_installed())
                 {
                     $file_storage = new file_storage();
                     $file_storage->add_to_queue($_GET['field_id'], $file['name']);

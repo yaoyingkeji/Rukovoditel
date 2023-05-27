@@ -31,7 +31,7 @@
     $acess_info_query = db_query("select access_schema from app_entities_access where entities_id='" . db_input($_GET['entities_id']) . "' and access_groups_id='" . $v['id']. "'");
     if($acess_info = db_fetch_array($acess_info_query))
     {
-      $access_schema = explode(',',$acess_info['access_schema']);                          
+      $access_schema = explode(',',$acess_info['access_schema']??'');                          
     }
                        
     echo '

@@ -4,7 +4,7 @@
 <?php
 $error_list = array();
 
-if (!version_compare(phpversion(), '7.2', '>='))
+if (!version_compare(phpversion(), '7.4', '>='))
 {
     $error_list[] = sprintf(TEXT_ERROR_PHP_VERSION, phpversion());
 }

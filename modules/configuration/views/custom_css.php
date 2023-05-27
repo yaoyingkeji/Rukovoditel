@@ -20,7 +20,7 @@
         
         echo form_tag('custom_css_form',url_for('configuration/custom_css','action=save')) . 
              textarea_tag('custom_css',$custom_css) .
-             tooltip_text(TEXT_FILE_PATH . ': ' . DIR_FS_CATALOG . 'css/custom.css') . '<br>' .
+             tooltip_text(TEXT_FILE_PATH . ': ' . DIR_WS_CUSTOM_CSS_FILE) . '<br>' .
              '<div id="custom_css_submit">' . submit_tag(TEXT_SAVE) . ' 
                  <i class="fa fa-check" style="display:none" aria-hidden="true"></i>                
                  <div class="fa fa-spinner fa-spin primary-modal-action-loading"></div>                 
@@ -39,6 +39,7 @@ $(function(){
     	  autofocus:true,
           matchBrackets: true,
     	  height: 600,
+          theme: app_skin_dir=='Dark_Mode' ? 'darcula':'default',
     	  extraKeys: {
     		     "F11": function(cm) {
     		       cm.setOption("fullScreen", !cm.getOption("fullScreen"));

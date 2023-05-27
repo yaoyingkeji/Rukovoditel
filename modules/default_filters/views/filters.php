@@ -1,6 +1,8 @@
 <?php
     $entity_info = db_find('app_entities',$current_reports_info['entities_id']);
 
+    $page_description = '';
+    
     switch(true)
     {
         case strstr($app_redirect_to,'pivot_tables'):
@@ -30,6 +32,24 @@
         case strstr($app_redirect_to,'email_notification'):
             require(component_path('default_filters/email_notification_breadcrumb'));
             break;
+        case strstr($app_redirect_to,'templates_xlsx_block'):
+            require(component_path('default_filters/templates_xlsx_breadcrumb'));
+            break;
+        case strstr($app_redirect_to,'calendar_reminder_pivot'):
+            require(component_path('default_filters/calendar_reminder_pivot_breadcrumb'));
+            break;
+        case strstr($app_redirect_to,'calendar_reminder'):
+            require(component_path('default_filters/calendar_reminder_breadcrumb'));
+            break;
+        case strstr($app_redirect_to,'public_form_add_in'):
+            require(component_path('default_filters/public_form_add_in_breadcrumb'));
+            break;
+        case strstr($app_redirect_to,'form_add_in'):
+            require(component_path('default_filters/form_add_in_breadcrumb'));
+            break;
+        case strstr($app_redirect_to,'help_pages'):
+            require(component_path('default_filters/help_pages_breadcrumb'));
+            break;
     }	
 ?>
 
@@ -38,6 +58,8 @@
 </ul>
 
 <?php 
+
+echo strlen($page_description) ? '<p>' . $page_description . '</p>':'';
 
 $reports_list[] = $current_reports_info['id'];
 $reports_list = reports::get_parent_reports($current_reports_info['id'],$reports_list);
@@ -125,6 +147,24 @@ switch(true)
     
     case strstr($app_redirect_to,'email_notification'):        
         echo link_to(TEXT_BUTTON_BACK, url_for('ext/email_notification/rules','entities_id=' . $notification_rules['entities_id']),array('class'=>'btn btn-default'));
+        break;  
+    case strstr($app_redirect_to,'calendar_reminder_pivot'):
+        echo link_to(TEXT_BUTTON_BACK, url_for('ext/pivot_calendars/entities','calendars_id=' . $pivot_calendar_report_info['calendars_id']),array('class'=>'btn btn-default'));
+        break; 
+    case strstr($app_redirect_to,'calendar_reminder'):
+        echo link_to(TEXT_BUTTON_BACK, url_for('ext/calendar/configuration_reports'),array('class'=>'btn btn-default'));
+        break;       
+    case strstr($app_redirect_to,'templates_xlsx_block'):        
+        echo link_to(TEXT_BUTTON_BACK, url_for('ext/templates_xlsx/blocks','templates_id=' . $block_report_info['id']),array('class'=>'btn btn-default'));
+        break;  
+    case strstr($app_redirect_to,'public_form_add_in'):        
+        echo link_to(TEXT_BUTTON_BACK, url_for('ext/public_forms/public_forms'),array('class'=>'btn btn-default'));
+        break;
+    case strstr($app_redirect_to,'form_add_in'):        
+        echo link_to(TEXT_BUTTON_BACK, url_for('entities/forms','entities_id=' . $form_entity['id']),array('class'=>'btn btn-default'));
+        break;
+    case strstr($app_redirect_to,'help_pages'):        
+        echo link_to(TEXT_BUTTON_BACK, url_for('help_pages/pages','entities_id=' . $report_info['entities_id']),array('class'=>'btn btn-default'));
         break;
     
 }

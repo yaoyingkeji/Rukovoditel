@@ -56,6 +56,13 @@
   	$id = str_replace('email_notification','',$app_redirect_to);
   	$redirect_url =  url_for('ext/email_notification/rules','entities_id=' . $reports_info['entities_id']);
   }
+  elseif(strstr($app_redirect_to,'templates_xlsx_block'))
+  {
+  	$id = str_replace('templates_xlsx_block','',$app_redirect_to);
+        $block_info_query = db_query("select templates_id from app_ext_items_export_templates_blocks where id='{$id}'");
+        $block_info = db_fetch_array($block_info_query);
+  	$redirect_url =  url_for('ext/templates_xlsx/blocks','templates_id=' . ($block_info['templates_id']??0));
+  }
   elseif(isset($_GET['path']))
   {
     $redirect_url =  url_for('items/','path=' . $_GET['path']);

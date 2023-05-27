@@ -7,6 +7,7 @@ class backup
     public $is_export;
     public $filename;
     public $backup_dir;
+    public $is_auto;
 
     function __construct($is_auto = false)
     {

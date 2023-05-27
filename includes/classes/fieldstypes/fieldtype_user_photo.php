@@ -14,7 +14,7 @@ class fieldtype_user_photo
     {
         global $app_module_path;
         
-        $filename = $obj['field_' . $field['id']];
+        $filename = $obj['field_' . $field['id']]??'';
 
         $html = '<div class="user-photo-preview">';
         if(strlen($filename) > 0)

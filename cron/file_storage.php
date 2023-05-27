@@ -7,11 +7,6 @@ define('IS_CRON',true);
 //load core
 require('includes/application_core.php');
 
-//load ext core if installed
-if(is_file($v = 'plugins/ext/application_core.php'))
-{
-	require($v);
-}
 
 //load app lang
 if(is_file($v = 'includes/languages/' . CFG_APP_LANGUAGE))

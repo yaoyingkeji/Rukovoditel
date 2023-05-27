@@ -2,6 +2,16 @@
 
 class editable_listing
 {
+    public $entity_id;
+    public $item;
+    public $field;
+    public $report_id;
+    public $page;
+    public $listing_type;
+    public $entity_cfg;
+    public $fields_access_schema;
+    public $enabled;
+    
     function __construct($entity_id, $item, $field, $fields_access_schema, $report_id, $page, $listing_type)
     {
         $this->entity_id = $entity_id;

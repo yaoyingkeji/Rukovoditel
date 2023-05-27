@@ -137,13 +137,18 @@ class items
         }
     }
 
-    public static function get_choices($entity_id, $add_empty = false, $empty_text = '')
+    public static function get_choices($entity_id, $add_empty = false, $empty_text = '',$reports_id=false)
     {
         $listing_sql_query = '';
         $listing_sql_query_join = '';
 
         //check view assigned only access
         $listing_sql_query = items::add_access_query($entity_id, $listing_sql_query);
+        
+        if($reports_id)
+        {
+            $listing_sql_query = reports::add_filters_query($reports_id, $listing_sql_query);
+        }
 
         //include access to parent records
         $listing_sql_query .= items::add_access_query_for_parent_entities($entity_id);
@@ -272,6 +277,7 @@ class items
                 case 'fieldtype_parent_value':                    
                     return self::get_heading_field($app_entities_cache[$field_info['entities_id']]['parent_id'],$item_info['parent_item_id']);
                     break;
+                case 'fieldtype_auto_increment':
                 case 'fieldtype_input_ip':
                     $output_options = array('class' => $field_info['type'],
                         'value' => $heading_field_value,
@@ -529,10 +535,10 @@ class items
 
             if (users::has_users_access_to_entity($entity_id))
             {
-                $menu[] = array('title' => (strlen($parent_entity_cfg->get('window_heading')) > 0 ? $parent_entity_cfg->get('window_heading') : TEXT_INFO), 'url' => url_for('items/info', 'path=' . implode('/', $path_to_item)), 'selected_id' => $entity_id);
+                $menu[] = array('title' => (strlen($parent_entity_cfg->get('window_heading')) > 0 ? $parent_entity_cfg->get('window_heading') : TEXT_INFO), 'url' => url_for('items/info', 'path=' . implode('/', $path_to_item)), 'selected_id' => $entity_id,'menu_css'=>'navbar-nav-entity-' . $entity_id);
             } else
             {
-                $menu[] = array('title' => (strlen($parent_entity_cfg->get('window_heading')) > 0 ? $parent_entity_cfg->get('window_heading') : TEXT_INFO));
+                $menu[] = array('title' => (strlen($parent_entity_cfg->get('window_heading')) > 0 ? $parent_entity_cfg->get('window_heading') : TEXT_INFO),'menu_css'=>'navbar-nav-entity-' . $entity_id);
             }
 
             $entities_query = db_query("select e.*, (select count(*) from app_nested_entities_menu m where find_in_set(e.id,m.entities) and is_active=1) is_used from app_entities e where parent_id='" . db_input($entity_id) . "' having is_used=0 order by e.sort_order, e.name");
@@ -554,7 +560,7 @@ class items
 
                 $path = implode('/', $path_to_item) . '/' . $entities['id'];
 
-                $menu[] = array('title' => (strlen($entity_cfg->get('menu_title')) > 0 ? $entity_cfg->get('menu_title') : $entities['name']), 'url' => url_for('items/items', 'path=' . $path), 'selected_id' => $entities['id']);
+                $menu[] = array('title' => (strlen($entity_cfg->get('menu_title')) > 0 ? $entity_cfg->get('menu_title') : $entities['name']), 'url' => url_for('items/items', 'path=' . $path), 'selected_id' => $entities['id'],'menu_css'=>'navbar-nav-entity-' . $entities['id']);
             }
             
             $nested_entities_menu = new nested_entities_menu($entity_id,$item_id,$path_to_item);
@@ -569,7 +575,7 @@ class items
 
             if (count($s) > 0)
             {
-                $menu[] = array('title' => TEXT_REPORTS, 'submenu' => $s);
+                $menu[] = array('title' => TEXT_REPORTS, 'submenu' => $s,'menu_css'=>'navbar-nav-entity-reports');
             }
         }
 
@@ -639,7 +645,7 @@ class items
          */
         if ($exclude_fields_types == true)
         {
-            $exclude_fields_types = ",'fieldtype_image_map_nested','fieldtype_textarea_encrypted','fieldtype_video','fieldtype_iframe','fieldtype_google_map_directions','fieldtype_google_map','fieldtype_yandex_map','fieldtype_yandex_map_nested','fieldtype_yandex_map_directions','fieldtype_mind_map','fieldtype_image_map','fieldtype_todo_list','fieldtype_textarea','fieldtype_textarea_wysiwyg','fieldtype_attachments','fieldtype_image','fieldtype_image_ajax','fieldtype_related_records','fieldtype_parent_item_id','fieldtype_mapbbcode'";
+            $exclude_fields_types = ",'fieldtype_image_map_nested','fieldtype_textarea_encrypted','fieldtype_video','fieldtype_iframe','fieldtype_google_map_directions','fieldtype_google_map','fieldtype_yandex_map','fieldtype_yandex_map_nested','fieldtype_yandex_map_directions','fieldtype_mind_map','fieldtype_image_map','fieldtype_todo_list','fieldtype_textarea','fieldtype_textarea_wysiwyg','fieldtype_attachments','fieldtype_image','fieldtype_image_ajax','fieldtype_3dviewer','fieldtype_related_records','fieldtype_parent_item_id','fieldtype_mapbbcode'";
         } else
         {
             $exclude_fields_types = ",'fieldtype_related_records','fieldtype_parent_item_id'";
@@ -655,7 +661,7 @@ class items
             
             $html_fields = '';
 
-            $fields_query = db_query("select f.*, fr.sort_order as form_rows_sort_order,right(f.forms_rows_position,1) as forms_rows_pos, t.name as tab_name, if(f.type in ('fieldtype_id','fieldtype_date_added','fieldtype_date_updated','fieldtype_created_by'),-1,t.sort_order) as tab_sort_order from app_fields f left join app_forms_rows fr on fr.id=LEFT(f.forms_rows_position,length(f.forms_rows_position)-2), app_forms_tabs t where f.type not in ('fieldtype_action','fieldtype_subentity_form' {$exclude_fields_types} )  and f.entities_id='" . db_input($entity_id) . "' and f.forms_tabs_id=t.id and f.forms_tabs_id='" . db_input($tabs['id']) . "' order by tab_sort_order, t.name, form_rows_sort_order, forms_rows_pos, f.sort_order, f.name", false);
+            $fields_query = db_query("select f.*, fr.sort_order as form_rows_sort_order,right(f.forms_rows_position,1) as forms_rows_pos, t.name as tab_name, if(f.type in ('fieldtype_id','fieldtype_date_added','fieldtype_date_updated','fieldtype_created_by'),-1,t.sort_order) as tab_sort_order from app_fields f left join app_forms_rows fr on fr.id=LEFT(f.forms_rows_position,length(f.forms_rows_position)-2), app_forms_tabs t where f.type not in ('fieldtype_action', 'fieldtype_related_mail','fieldtype_subentity_form' {$exclude_fields_types} )  and f.entities_id='" . db_input($entity_id) . "' and f.forms_tabs_id=t.id and f.forms_tabs_id='" . db_input($tabs['id']) . "' order by tab_sort_order, t.name, form_rows_sort_order, forms_rows_pos, f.sort_order, f.name", false);
             while ($field = db_fetch_array($fields_query))
             {
                 //print_rr($field);
@@ -681,6 +687,7 @@ class items
                     'item' => $item,
                     'display_user_photo' => true,
                     'path' => $current_path,
+                    'is_item_page' => true,
                 );
 
                 if ($is_email)
@@ -746,40 +753,49 @@ class items
                 if ($field['type'] == 'fieldtype_section')
                 {
                     $html_fields .= '
-            <tr class="form-group form-group-' . $field['id'] . '">
-              <th colspan="2" class="section-heading">' . $field_name . '</th>
-            </tr>
-          ';
-                } elseif ($field['type'] == 'fieldtype_dropdown_multilevel')
+                            <tr class="form-group form-group-' . $field['id'] . '">
+                              <th colspan="2" class="section-heading">' . $field_name . '</th>
+                            </tr>
+                          ';
+                } 
+                elseif ($field['type'] == 'fieldtype_dropdown_multilevel')
                 {
                     $html_fields .= fieldtype_dropdown_multilevel::output_info_box($output_options);
                 }
                 //hide field name to save space to display value
-                elseif ($cfg->get('hide_field_name') == 1)
+                elseif ($cfg->get('hide_field_name') == 1 or in_array($field['id'], explode(',',$entity_cfg->get('item_page_hidden_field_names'))))
+                {
+                    $field_value = fields_types::output($output_options);
+                    $clipboard_html = '';
+                    if(in_array($field['id'], explode(',',$entity_cfg->get('item_page_copy_to_clipboard_fields'))))
+                    {
+                        $clipboard_html = app_clipboardjs_icon(strip_tags($field_value));
+                    }
+                    
+                    $html_fields .= '
+                                    <tr class="form-group form-group-' . $field['id'] . '">                          
+                                      <td colspan="2">' . $field_value  . $clipboard_html . '</td>
+                                    </tr>
+                                  ';
+                } 
+                elseif ($field['type'] == 'fieldtype_users')
                 {
                     $html_fields .= '
-            <tr class="form-group form-group-' . $field['id'] . '">                          
-              <td colspan="2">' . fields_types::output($output_options) . '</td>
-            </tr>
-          ';
-                } elseif ($field['type'] == 'fieldtype_users')
-                {
-                    $html_fields .= '
-            <tr class="form-group form-group-' . $field['id'] . '">
-              <th colspan="2" ' . (strlen($field_name) > 25 ? 'class="white-space-normal"' : '') . '>' . $field_name . '</th>
-        	  </tr>
-        	  <tr class="form-group-' . $field['id'] . '">            		
-              <td colspan="2">' . fields_types::output($output_options) . '</td>
-            </tr>
-          ';
+                        <tr class="form-group form-group-' . $field['id'] . '">
+                          <th colspan="2" ' . (strlen($field_name) > 25 ? 'class="white-space-normal"' : '') . '>' . $field_name . '</th>
+                              </tr>
+                              <tr class="form-group-' . $field['id'] . '">            		
+                          <td colspan="2">' . fields_types::output($output_options) . '</td>
+                        </tr>
+                      ';
                 } elseif ($field['type'] == 'fieldtype_mapbbcode')
                 {
                     $html_fields .= '
-            <tr class="form-group form-group-' . $field['id'] . '">
-            	<th ' . (strlen($field_name) > 25 ? 'class="white-space-normal"' : '') . '>' . $field_name . '</th>
-              <td style="width: 100%">' . fields_types::output($output_options) . '</td>
-            </tr>
-          ';
+                        <tr class="form-group form-group-' . $field['id'] . '">
+                            <th ' . (strlen($field_name) > 25 ? 'class="white-space-normal"' : '') . '>' . $field_name . '</th>
+                          <td style="width: 100%">' . fields_types::output($output_options) . '</td>
+                        </tr>
+                      ';
                 } else
                 {
 
@@ -789,16 +805,28 @@ class items
                     if ($field['type'] == 'fieldtype_attachments' and count(explode(',', $value)) > 1)
                     {
                         $field_name_html = '<br><span class="download-all-attachments"><a style="margin-left: 0; font-weight: normal" href="' . url_for('items/info', 'action=download_all_attachments&id=' . $field['id'] . '&path=' . $current_path) . '"><i class="fa fa-download"></i> ' . TEXT_DOWNLOAD_ALL_ATTACHMENTS . '</a></span>';
+                        
+                        if($cfg->get('allow_sort_order')=='manual_sorting' and users::has_access('update'))
+                        {
+                            $field_name_html .= '<span class="download-all-attachments">' . link_to_modalbox('<i class="fa fa-sort-amount-asc"></i> ' . TEXT_SORT, url_for('items/attachments_sort','field_id=' . $field['id'] . '&path=' . $current_path),['style'=>'font-weight: normal']). '</span>';
+                        }
+                    }
+                    
+                    $field_value = fields_types::output($output_options);
+                    $clipboard_html = '';
+                    if(in_array($field['id'], explode(',',$entity_cfg->get('item_page_copy_to_clipboard_fields'))))
+                    {
+                        $clipboard_html = app_clipboardjs_icon(strip_tags($field_value));
                     }
 
                     $html_fields .= '
-            <tr class="form-group form-group-' . $field['id'] . '">            
-              <th ' . (strlen($field_name) > 25 ? 'class="white-space-normal"' : '') . '>' .
-                            $field_name . $field_name_html .
-                            '</th>
-              <td>' . fields_types::output($output_options) . '</td>
-            </tr>
-          ';
+                        <tr class="form-group form-group-' . $field['id'] . '">            
+                          <th ' . (strlen($field_name) > 25 ? 'class="white-space-normal"' : '') . '>' .
+                                        $field_name . $field_name_html .
+                                        '</th>
+                          <td>' . $field_value .  $clipboard_html . '</td>
+                        </tr>
+                      ';
                 }
             }
 
@@ -851,7 +879,7 @@ class items
         $count = 0;
 
         $html = '';
-        $fields_query = db_query("select f.*, fr.sort_order as form_rows_sort_order,right(f.forms_rows_position,1) as forms_rows_pos from app_fields f left join app_forms_rows fr on fr.id=LEFT(f.forms_rows_position,length(f.forms_rows_position)-2), app_forms_tabs t where f.type in ('fieldtype_image_map_nested','fieldtype_textarea_encrypted','fieldtype_video','fieldtype_iframe','fieldtype_google_map_directions','fieldtype_google_map','fieldtype_yandex_map','fieldtype_yandex_map_nested','fieldtype_yandex_map_directions','fieldtype_mind_map','fieldtype_image_map','fieldtype_todo_list','fieldtype_textarea','fieldtype_textarea_wysiwyg','fieldtype_attachments','fieldtype_image','fieldtype_image_ajax','fieldtype_mapbbcode') and  f.entities_id='" . db_input($entity_id) . "' and f.forms_tabs_id=t.id order by t.sort_order, t.name, form_rows_sort_order, forms_rows_pos,  f.sort_order, f.name");
+        $fields_query = db_query("select f.*, fr.sort_order as form_rows_sort_order,right(f.forms_rows_position,1) as forms_rows_pos from app_fields f left join app_forms_rows fr on fr.id=LEFT(f.forms_rows_position,length(f.forms_rows_position)-2), app_forms_tabs t where f.type in ('fieldtype_image_map_nested','fieldtype_textarea_encrypted','fieldtype_video','fieldtype_iframe','fieldtype_google_map_directions','fieldtype_google_map','fieldtype_yandex_map','fieldtype_yandex_map_nested','fieldtype_yandex_map_directions','fieldtype_mind_map','fieldtype_image_map','fieldtype_todo_list','fieldtype_textarea','fieldtype_textarea_wysiwyg','fieldtype_attachments','fieldtype_image','fieldtype_image_ajax','fieldtype_3dviewer','fieldtype_mapbbcode') and  f.entities_id='" . db_input($entity_id) . "' and f.forms_tabs_id=t.id order by t.sort_order, t.name, form_rows_sort_order, forms_rows_pos,  f.sort_order, f.name");
         while ($field = db_fetch_array($fields_query))
         {
             //exclude fields in email
@@ -883,6 +911,7 @@ class items
                 'value' => $value,
                 'field' => $field,
                 'item' => $item,
+                'is_item_page' => true,
                 'path' => $current_path);
 
             if ($is_email)
@@ -902,11 +931,16 @@ class items
                 if ($field['type'] == 'fieldtype_attachments' and count(explode(',', $value_original)) > 1)
                 {
                     $field_name_html .= '<span class="download-all-attachments"><a href="' . url_for('items/info', 'action=download_all_attachments&id=' . $field['id'] . '&path=' . $current_path) . '"><i class="fa fa-download"></i> ' . TEXT_DOWNLOAD_ALL_ATTACHMENTS . '</a></span>';
+                    
+                    if($cfg->get('allow_sort_order')=='manual_sorting' and users::has_access('update'))
+                    {
+                        $field_name_html .= '<span class="download-all-attachments">' . link_to_modalbox('<i class="fa fa-sort-amount-asc"></i> ' . TEXT_SORT, url_for('items/attachments_sort','field_id=' . $field['id'] . '&path=' . $current_path)). '</span>';
+                    }
                 }
 
                 $html .= '
         	<div  class="form-group-' . $field['id'] . '">	
-        	    ' . ($cfg->get('hide_field_name') != 1 ? '<div class="content_box_heading"><h4 class="media-heading">' . $field['name'] . $field_name_html . '</h4></div>' : '') . '
+        	    ' . (($cfg->get('hide_field_name') != 1 and !in_array($field['id'], explode(',',$entity_cfg->get('item_page_hidden_field_names'))) ) ? '<div class="content_box_heading"><h4 class="media-heading">' . $field['name'] . $field_name_html . '</h4></div>' : '') . '
         	    <div class="content_box_content ' . $field['type'] . '">' . $value . '</div>
             </div>
         ';
@@ -1165,7 +1199,7 @@ class items
         foreach ($users_entities_tree as $v)
         {
             $users_entities[] = $v['id'];
-        }
+        }                
 
         //force check users entities tree access
         if (in_array($current_entity_id, $users_entities) and users::has_access('view_assigned', $access_schema) and $app_user['group_id'] > 0)
@@ -1668,7 +1702,7 @@ class items
             $processes->run_after_insert($item_id);
         }
 
-        return true;
+        return $item_id;
     }    
     
     static function count_by_reports_id($entity_id, $report_id)

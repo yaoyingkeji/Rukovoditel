@@ -90,7 +90,10 @@ switch($app_module_action)
         
        
         //add visibility access query
-        $listing_sql_query .= records_visibility::add_access_query(1);
+        if($cfg->get('disable_record_visibility')!=1)
+        {
+            $listing_sql_query .= records_visibility::add_access_query(1);
+        }
         
         
         $listing_sql_query .= fieldtype_entity_ajax::mysql_query_where($cfg,$field,$parent_entity_item_id);

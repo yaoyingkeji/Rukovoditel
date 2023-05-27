@@ -121,7 +121,7 @@
                 data: $("#' . $app_items_form_name . '").serializeArray() 
                 }).done(function() {
                   $("#ajax-modal").modal("hide")
-                  $("#calendar' . str_replace('calendarreport','',$app_redirect_to) . '").fullCalendar("refetchEvents");
+                  ' . $app_redirect_to . '.refetchEvents()                  
                 });
             ';
           }
@@ -136,7 +136,7 @@
                 data: $("#' . $app_items_form_name . '").serializeArray()
                 }).done(function() {
                   $("#ajax-modal").modal("hide")
-                  $("#calendar' .  $calendar_id . '").fullCalendar("refetchEvents");
+                  pivot_calendars' . $calendar_id . '.refetchEvents() 
                 });
             ';
           }
@@ -150,7 +150,7 @@
                 data: $("#' . $app_items_form_name . '").serializeArray()
                 }).done(function() {
                   $("#ajax-modal").modal("hide")
-                  $("#resource_timeline' .  $calendar_id . '").fullCalendar("refetchEvents");
+                  resource_timeline' . $calendar_id . '.refetchEvents() 
                 });
             ';
           }
@@ -332,7 +332,12 @@
 
 
 <!-- include form fields display rules  -->
-<?php require(component_path('items/forms_fields_rules.js')); ?>
+<?php 
+    //require(component_path('items/forms_fields_rules.js')); 
+    $forms_fields_rules = new forms_fields_rules($current_entity_id,$app_items_form_name);
+    echo $forms_fields_rules->apply();
+
+?>
 
 <?php
 //insert custom javascript code

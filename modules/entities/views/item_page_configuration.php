@@ -7,9 +7,7 @@
 <?php echo form_tag('cfg', url_for('entities/item_page_configuration', 'action=save&entities_id=' . $_GET['entities_id']), array('class' => 'form-horizontal')) ?>
 
 <style>
-    .tab-content{
-        background: white;
-    }
+    
     .nav-tabs, .nav-pills {
         margin-bottom: 0px;
     }
@@ -63,20 +61,71 @@
         </div>  
 
         <?php
-        $choices = array();
-        $fields_query = db_query("select f.*, t.name as tab_name from app_fields f, app_forms_tabs t where f.is_heading!=1 and f.entities_id='" . db_input(_get::int('entities_id')) . "' and f.forms_tabs_id=t.id order by t.sort_order, t.name, f.sort_order, f.name");
+        $choices = [''=>TEXT_NONE];
+                
+        $fields_query = fields::get_query(_get::int('entities_id'), "and f.is_heading!=1 and f.type not in ('fieldtype_action','fieldtype_parent_item_id')");
         while($fields = db_fetch_array($fields_query))
         {
-            $choices[$fields['tab_name']][$fields['id']] = $fields['name'];
+            $choices[$fields['tab_name']][$fields['id']] = fields::get_name($fields);
         }
         ?>
         <div class="form-group">
-            <label class="col-md-3 control-label" for="cfg_menu_title"><?php echo TEXT_HIDEN_FIELDS; ?></label>
+            <label class="col-md-3 control-label" for="cfg_menu_title"><?php echo tooltip_icon(TEXT_ITEM_HIDDEN_PAGE_INFO) . TEXT_HIDEN_FIELDS; ?></label>
             <div class="col-md-9">	
-                <?php echo select_tag('cfg[item_page_hidden_fields][]', $choices, $cfg->get('item_page_hidden_fields', ''), array('class' => 'form-control input-xlarge chosen-select', 'multiple' => 'multiple')); ?> 
-                <?php echo tooltip_text(TEXT_ITEM_HIDDEN_PAGE_INFO) ?>
+                <?php echo select_tag('cfg[item_page_hidden_fields][]', $choices, $cfg->get('item_page_hidden_fields', ''), array('class' => 'form-control input-xlarge chosen-select', 'multiple' => 'multiple')); ?>                 
             </div>			
         </div>  
+        
+        <div class="form-group">
+            <label class="col-md-3 control-label" for="cfg_menu_title"><?php echo tooltip_icon(TEXT_HIDE_FIELD_NAMES_TIP) . TEXT_HIDE_FIELD_NAMES; ?></label>
+            <div class="col-md-9">	
+                <?php echo select_tag('cfg[item_page_hidden_field_names][]', $choices, $cfg->get('item_page_hidden_field_names', ''), array('class' => 'form-control input-xlarge chosen-select', 'multiple' => 'multiple')); ?>                 
+            </div>			
+        </div> 
+        
+        
+        <?php
+        $choices = [''=>TEXT_NONE];
+        
+        $allowed_types = [
+            'fieldtype_input_numeric',
+            'fieldtype_input_numeric_comments',
+            'fieldtype_formula',
+            'fieldtype_js_formula',
+            'fieldtype_mysql_query',
+            'fieldtype_ajax_request',
+            'fieldtype_barcode',
+            'fieldtype_input_email',            
+            'fieldtype_input_file',
+            'fieldtype_input_masked',            
+            'fieldtype_input_vpic',
+            'fieldtype_input',
+            'fieldtype_phone',
+            'fieldtype_random_value',
+            'fieldtype_text_pattern_static',
+            'fieldtype_textarea_wysiwyg',
+            'fieldtype_textarea',
+            'fieldtype_todo_list',
+            'fieldtype_input_encrypted',            
+            'fieldtype_textarea_encrypted',
+            'fieldtype_input_ip',
+            'fieldtype_input_dynamic_mask',
+            'fieldtype_tags',
+            'fieldtype_php_code',
+        ];
+        
+        $fields_query = fields::get_query(_get::int('entities_id'), "and f.is_heading!=1 and f.type  in (" . implode(',',array_map(function($v){ return "'{$v}'"; },$allowed_types)) . ")");
+        while($fields = db_fetch_array($fields_query))
+        {
+            $choices[$fields['tab_name']][$fields['id']] = fields::get_name($fields);
+        }
+        ?>
+        <div class="form-group">
+            <label class="col-md-3 control-label" for="cfg_menu_title"><?php echo tooltip_icon(TEXT_ICON_WILL_DISPLAYED_ON_RECORD_PAGE) . TEXT_DISPLAY_COPY_TO_CLIPBOARD_ICON; ?></label>
+            <div class="col-md-9">	
+                <?php echo select_tag('cfg[item_page_copy_to_clipboard_fields][]', $choices, $cfg->get('item_page_copy_to_clipboard_fields', ''), array('class' => 'form-control input-xlarge chosen-select', 'multiple' => 'multiple')); ?>                 
+            </div>			
+        </div> 
 
         <?php
         $choices = array();
@@ -97,6 +146,13 @@
                 <?php echo tooltip_text(TEXT_ADD_RECORDS_TO_FAVORITES_TIP) ?>
             </div>			
         </div>  
+        
+        <div class="form-group">
+            <label class="col-md-3 control-label" for="cfg_menu_title"><?php echo TEXT_RECORD_INFO_COLLAPSED_BY_DEFAULT; ?></label>
+            <div class="col-md-9">	
+                <?php echo select_tag('cfg[record_info_collapsed]', $default_selector, $cfg->get('record_info_collapsed', 0), array('class' => 'form-control input-small')); ?>                 
+            </div>			
+        </div> 
 
 
     </div>
@@ -134,7 +190,8 @@
                 var myCodeMirror2 = CodeMirror.fromTextArea(document.getElementById('cfg_javascript_in_item_page'), {
                     lineNumbers: true,
                     lineWrapping: true,
-                    matchBrackets: true
+                    matchBrackets: true,
+                    theme: app_skin_dir=='Dark_Mode' ? 'darcula':'default',
                 });
             }, 300);
 
@@ -155,7 +212,8 @@
                     },                    
                     lineNumbers: true,
                     lineWrapping: true,
-                    matchBrackets: true
+                    matchBrackets: true,
+                    theme: app_skin_dir=='Dark_Mode' ? 'darcula':'default',
                 });
             }, 300);
 
@@ -214,7 +272,11 @@ if(db_num_rows($entities_query))
                 <div class="form-group">
                     <label class="col-md-3 control-label" for="cfg_menu_title">' . TEXT_COLLAPSED . '</label>
                     <div class="col-md-9">
-                        ' . select_tag('cfg[collapsed_subentity' . $entities['id'] . ']', $default_selector, $cfg->get('collapsed_subentity' . $entities['id']), array('class' => 'form-control input-msmall')) . '
+                        <ul class="list-inline">
+                            <li>' . select_tag('cfg[collapsed_subentity' . $entities['id'] . ']', $default_selector, $cfg->get('collapsed_subentity' . $entities['id']), array('class' => 'form-control input-msmall')) . '</li>
+                            <li>' . TEXT_DISPLAY_FILTER_PANEL . ' </li>
+                            <li>' . select_tag('cfg[display_filter_panel_subentity' . $entities['id'] . ']', $default_selector, $cfg->get('display_filter_panel_subentity' . $entities['id']), array('class' => 'form-control input-msmall')) . '</li>
+                        </ul>        
                     </div>			
                 </div>
                 <hr>

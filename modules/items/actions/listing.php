@@ -83,6 +83,14 @@ if($reports_info['reports_type']=='common')
     }
 }
 
+if(isset($_POST['force_item_page_subentity_filters']) and $_POST['force_item_page_subentity_filters']==1)
+{    
+    if($fiters_panel_reports_id = reports::get_reports_id_by_type($reports_info['entities_id'],'item_page_subentity_filters' . $reports_info['id'],true))
+    {       
+       $listing_sql_query = reports::add_filters_query($fiters_panel_reports_id,$listing_sql_query); 
+    }
+}
+
 
 //prepare having query for formula fields
 if(isset($sql_query_having[$current_entity_id]))
@@ -199,7 +207,12 @@ switch($listing -> get_listing_type())
     case 'grid':
         require(component_path('items/_listing_grid'));
         break;
-    case 'mobile':
+    case 'mobile':        
+        $listing_types_query = db_query("select settings from app_listing_types where  type='mobile' and entities_id='" . $current_entity_id . "'");
+        if($listing_types = db_fetch_array($listing_types_query))
+        {            
+            $listing->settings = new settings($listing_types['settings']);
+        }
         require(component_path('items/_listing_mobile'));
         break;
     case 'table':

@@ -36,6 +36,14 @@ class fieldtype_textarea_encrypted
         
         $cfg[] = array('title'=>TEXT_HIDE_FIELD_IF_EMPTY, 'name'=>'hide_field_if_empty','type'=>'checkbox','tooltip_icon'=>TEXT_HIDE_FIELD_IF_EMPTY_TIP);
         
+        $cfg[] = array(
+            'title' => TEXT_NUMBER_DISPLAYED_CHARACTERS_IN_LIST, 
+            'name' => 'number_characters_in_list', 
+            'type' => 'input', 
+            'tooltip_icon' => TEXT_NUMBER_DISPLAYED_CHARACTERS_IN_LIST_INFO,
+            'params' => array('class' => 'form-control input-small','type'=>'number')
+            );
+        
         return $cfg;
     }
     
@@ -70,13 +78,29 @@ class fieldtype_textarea_encrypted
     
     function output($options)
     {
+        $cfg = new fields_types_cfg($options['field']['configuration']);
+        
         if(isset($options['is_export']))
         {
             return (!isset($options['is_print']) ? str_replace(array('&lt;','&gt;'),array('<','>'),$options['value']) : nl2br($options['value']));
         }
         else
         {
-            return auto_link_text(nl2br($options['value']));
+            if(isset($options['is_listing']) and $options['is_listing']==1 and $cfg->get('number_characters_in_list')>0 and strlen(strip_tags($options['value']))>$cfg->get('number_characters_in_list'))
+            {
+                $html = '
+                        <div class="truncated-text-block">
+                            <div class="truncated-text">' . mb_substr(strip_tags($options['value']),0,$cfg->get('number_characters_in_list')). '... <a href="#" class="truncated-text-expand">' . TEXT_READ_MORE. ' <i class="fa fa-angle-right"></i></a></div>
+                            <div class="full-text hidden">' . auto_link_text(nl2br($options['value'])) . ' <a href="#" class="truncated-text-collapse"><i class="fa fa-angle-left"></i> ' . TEXT_HIDE. '</a></div>
+                        </div>
+                    ';
+                
+                return $html;
+            }
+            else
+            {
+                return auto_link_text(nl2br($options['value']));
+            }
         }
     }
 }

@@ -251,7 +251,7 @@ class fieldtype_entity_multilevel
             }
 
             $script .= '
-                let is_form_row_' . $field_id . ' = $("#' . $field_id . '").parents(".forms-rows").size();
+                let is_form_row_' . $field_id . ' = $("#' . $field_id . '").parents(".forms-rows").length;
                     
     		$("#' . $field_id . '").select2({		      
 		      width: (is_form_row_' . $field_id . '==0 ? ' . self::get_select2_width_by_class($cfg->get('width'), (strlen($button_add_html) ? true : false)) . ':"100%"),		      
@@ -417,10 +417,10 @@ class fieldtype_entity_multilevel
                 }
     		else
     		{
-    			$("#btn_submodal_open' . $field['id'] . '").addClass("hidden")		
-  			}
+                    $("#btn_submodal_open' . $field['id'] . '").addClass("hidden")		
+  		}                                
     				
-  		}
+        }
     					
     		
     	$(function(){

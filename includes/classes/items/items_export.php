@@ -10,20 +10,46 @@ class items_export
 {
     public $filename;
     
+    private $template_filepath;
+    
     function __construct($filename)
     {
         $this->filename = app_remove_special_characters($filename);
+        $this->template_filepath = '';
+    }
+    
+    function set_template_filepath($filepath)
+    {
+        if(is_file($filepath))
+        {
+            $this->template_filepath = $filepath;
+        }
+        else
+        {
+            die(TEXT_FILE_NOT_FOUD . ' ' . $filepath);
+        }
     }
     
     function xlsx_from_array($export_data)
     {
         global $app_user;
         
-        //create Spreadsheet
-        $spreadsheet = new Spreadsheet();
-        
-        // Set document properties
-        $spreadsheet->getProperties()->setCreator($app_user['name']);
+        //load file from template
+        if(strlen($this->template_filepath))
+        {
+            $reader = PhpOffice\PhpSpreadsheet\IOFactory::createReader('Xlsx');
+            $spreadsheet = $reader->load($this->template_filepath);
+            $spreadsheet->setActiveSheetIndex(0);
+        }
+        else
+        {        
+            //create Spreadsheet
+            $spreadsheet = new Spreadsheet();
+
+            // Set document properties
+            $spreadsheet->getProperties()->setCreator($app_user['name']);
+            $spreadsheet->getActiveSheet()->setTitle(TEXT_LIST);    
+        }
         
         // Add some data
         $spreadsheet->getActiveSheet()->fromArray($export_data, null, 'A1');
@@ -41,7 +67,7 @@ class items_export
         $spreadsheet->getActiveSheet()->getStyle($highest_column.'1')->getFont()->setBold(true);
         
         // Rename worksheet
-        $spreadsheet->getActiveSheet()->setTitle(TEXT_LIST);        
+        
         
         // Redirect output to a client’s web browser (Xlsx)
         header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');

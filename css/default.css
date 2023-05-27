@@ -132,7 +132,9 @@ input.error, textarea.error{
 }
 
 .entity_items_listing td.fieldtype_textarea,
-.entity_items_listing td.fieldtype_textarea_encrypted{
+.entity_items_listing td.fieldtype_textarea_wysiwyg,
+.entity_items_listing td.fieldtype_textarea_encrypted,
+.entity_items_listing td.fieldtype_related_mail{
   white-space: normal !important;
   min-width: 280px;
 }
@@ -1252,6 +1254,10 @@ div.timeline-navigation.ui-state-highlight{
 
 @media print
 {    
+    body{
+        background-color: #fff !important;
+    }
+    
     .noprint
     {
         display: none !important;
@@ -1278,6 +1284,11 @@ div.timeline-navigation.ui-state-highlight{
 	.fc-public .fc-title{
 		color: white !important;
 	}
+        
+        .fc-button-group,
+        .fc-today-button{
+            display: none !important;
+        }
 	
 	.page-content{
 	  	padding: 0;
@@ -1298,9 +1309,12 @@ textarea.fieldtype_mapbbcode{
 	font-weight: bold;
 }
 
-.fc-icon-fa {
-  font-family: FontAwesome;
-}
+.fc-icon.fc-icon-fa { 
+    font-family: "FontAwesome" !important;     
+} 
+.fc .fc-button .fc-icon.fc-icon-fa{
+    font-size: 1.2em;
+} 
 
 .content.content-registration, .content.content-registration_success{
 	width: 790px;	
@@ -1702,6 +1716,18 @@ select.gantt-control {
 	font-size: 12px;	
 }
 
+.kanban-heading-block-transform .kanban-heading{
+    background: #fafafa;
+}
+
+.kanban-heading-loading{
+    color: #bfbfbf;
+}
+
+.ul-kanban-hover{
+    background: #e6e6e6;
+}
+
 .todo-list .checked{
 	text-decoration: line-through;
 }
@@ -1991,7 +2017,9 @@ ul.listing-mobile .item_heading_link{
   }
 }
 
-.holiday .fc-day-number, .holiday span{
+.holiday .fc-daygrid-day-number,
+.holiday .fc-col-header-cell-cushion,
+.holiday .fc-list-day-text{
 	color: red;
 	cursor: pointer;
 }
@@ -2665,6 +2693,35 @@ textarea.code, input.code{
     .hidden-in-mobile{
         display: none !important;
     }
+    
+   
+}
+
+@media (max-width: 360px){
+    .table-item-details td,
+    .table-item-details th{
+        display: block;
+        width: 100%;
+    }
+    
+    .table-item-details td{
+        padding-left: 15px !important;
+        border: 0 !important;        
+    }
+    
+    .listing-split-page td{
+        display: block;
+        width: 100%;
+        text-align: center;
+    }
+    
+    .listing-split-page div{
+        text-align: center;
+    }
+    
+    .listing-split-page div.dataTables_paginate{
+        float:none;
+    }
 }
 
 @media (min-width: 768px){
@@ -3124,7 +3181,71 @@ tr.form-group{
     width: 1200px;
     height: 450px;
 }
- 
+
+.truncated-text .truncated-text-expand,
+.truncated-text .truncated-text-collapse{
+    white-space: nowrap;
+}
+
+li.unread-email{
+    font-weight: bold;
+}
+
+.calendar_remidner_popup{
+    width: 600px;
+}
+
+.calendar_remidner_popup #remind_later{
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+    width: 75px;
+}
+
+.calendar_remidner_popup .btn,
+.calendar_remidner_popup input{
+    margin-bottom: 5px;
+}
+
+.calendar_remidner_popup hr{
+    margin: 15px 0;
+}
+
+@media (max-width: 768px){
+    .calendar_remidner_popup{
+        width: 280px;
+    }
+}
+
+.fc-event-resizer.fc-event-resizer-start{
+    display: none !important;
+}
+
+.gantt_grid_head_cell {
+    text-align: left !important;
+}
+
+.fieldtype_3dviewer_iframe{
+    border: 1px solid #acacac;	    
+}
+
+.chats li.in .message.message-margin,
+.chats li.out .message.message-margin{
+    margin-left: 60px;
+}
+
+#items_comments_listing blockquote{
+    font-size: 13px;
+    margin-bottom: 10px;
+}
+
+.clipboardjs-right{
+    float:right;
+}
+
+
+
+
 
 
 

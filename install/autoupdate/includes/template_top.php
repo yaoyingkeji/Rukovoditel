@@ -71,10 +71,10 @@
 }
 </style>
 
-<script src="../../template/plugins/jquery-1.10.2.min.js" type="text/javascript"></script>
+<script src="js/jquery/3.6.4/jquery-3.6.4.min.js" type="text/javascript"></script>
 
-<script type="text/javascript" src="../../js/validation/jquery.validate.min.js"></script>
-<script type="text/javascript" src="../../js/validation/additional-methods.min.js"></script>
+<script type="text/javascript" src="js/validation/1.9.5/jquery.validate.min.js"></script>
+<script type="text/javascript" src="js/validation/1.9.5/additional-methods.min.js"></script>
  
 <link rel="stylesheet" type="text/css" href="../../css/default.css"/>
 

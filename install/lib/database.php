@@ -17,19 +17,24 @@
         db_error('Setting MYSQLI_INIT_COMMAND failed',$params);
     }
     
-    if(strlen($port))
+    try 
     {
-    	if (!@mysqli_real_connect($$link, $server, $username, $password, $database, $port)) {
-    		db_error('Error: (' . mysqli_connect_errno() . ') ' . mysqli_connect_error(),$params);
-    	}
+        if(strlen($port))
+        {
+            mysqli_real_connect($$link, $server, $username, $password, $database, $port);
+        }
+        else
+        {
+            mysqli_real_connect($$link, $server, $username, $password, $database);
+        }
     }
-    else
+    catch (mysqli_sql_exception $e) 
     {
-	    if (!@mysqli_real_connect($$link, $server, $username, $password, $database)) {
-	        db_error('Error: (' . mysqli_connect_errno() . ') ' . mysqli_connect_error(),$params);
-	    }
+        $error = 'Database Error: ' . $e->getCode() . ' - ' . htmlspecialchars($e->getMessage());
+        header('Location: index.php?step=database_config&db_error=' . urlencode($error) . '&lng=' .(isset($params['lng']) ? $params['lng']:''). '&params=' . base64_encode(json_encode($params)));
+        exit();
     }
-    
+           
     db_query("SET sql_mode = ''");
 
     return $$link;    

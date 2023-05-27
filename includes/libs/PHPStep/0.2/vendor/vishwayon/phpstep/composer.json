@@ -1,0 +1,21 @@
+{
+    "name": "vishwayon/phpstep",
+    "description": "PHP Spreadsheet Template Engine",
+    "keywords": ["step", "framework", "PHPSpreadsheet"],
+    "homepage": "http://www.vishwayon.com/",
+    "type": "library",
+    "license": "MIT",
+    "minimum-stability": "stable",
+    "require": {
+        "php": ">=7.4.0",
+        "phpoffice/phpspreadsheet": "^1.14"
+    },
+    "config": {
+        "process-timeout": 1800
+    },
+    "autoload": {
+        "psr-4" : {
+            "PhpStep\\": "src/"
+        }
+    }
+}

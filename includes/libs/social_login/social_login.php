@@ -90,7 +90,7 @@ class social_login
                     }
                     
                     $sql_data = [
-                        'date_added'=>0,
+                        'date_added'=>time(),
                         'created_by'=>0,
                         'parent_item_id'=>0,
                         'field_6' => (int)CFG_SOCAL_LOGIN_USER_GROUP,

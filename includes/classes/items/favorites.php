@@ -2,6 +2,11 @@
 
 class favorites
 {
+    public $entities_id;
+    public $entity_cfg;
+    public $item_id;
+    public $is_in_list;
+            
     function __construct($entities_id, $item_id)
     {
         $this->entities_id = $entities_id;

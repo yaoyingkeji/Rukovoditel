@@ -5,6 +5,9 @@ var smartystreets = false;
 var is_resizable_process = false;
 var app_code_mirror = {}
 
+//using in all calendars report to set popover timeout 
+var calendar_popover_timeout
+
 function isset(v)
 {
     return typeof v === 'undefined' ? false : true
@@ -170,7 +173,7 @@ function use_editor(id, is_focus, height, toolbar)
 		
 	  CKEDITOR.config.baseFloatZIndex = 20000;
 	  CKEDITOR.config.height = height;
-	  CKEDITOR_holders[id] = CKEDITOR.replace(id,{startupFocus:is_focus,language: app_language_short_code, toolbar: toolbar});//
+	  CKEDITOR_holders[id] = CKEDITOR.replace(id,{startupFocus:is_focus,language: app_language_short_code, toolbar: toolbar,contentsCss: app_ckeditor_contents_css});//
 	
 	  CKEDITOR_holders[id].on("instanceReady",function() {
 	    jQuery(window).resize();
@@ -196,7 +199,7 @@ function use_editor_full(id,is_focus, height)
 		
 		CKEDITOR.config.baseFloatZIndex = 20000;
 		
-	  CKEDITOR_holders[id] = CKEDITOR.replace(id,{height:height, startupFocus:is_focus,language: app_language_short_code,toolbar: (app_language_text_direction=='rtl' ? 'RtlFull':'Full')});
+	  CKEDITOR_holders[id] = CKEDITOR.replace(id,{height:height, startupFocus:is_focus,language: app_language_short_code,toolbar: (app_language_text_direction=='rtl' ? 'RtlFull':'Full'),contentsCss: app_ckeditor_contents_css});
 	  
 	  CKEDITOR_holders[id].on("instanceReady",function() {
 	    jQuery(window).resize();
@@ -238,13 +241,18 @@ function xdsoft_datetimepicker_init()
             {
                 options.disabledDates = options.disabledDates.split(',').map(s=>s.trim())                
             }
-                        
+                                               
             
             options.onSelectDate = function(ct,$i){
                 if($i.hasClass('is-unique'))
                 {
                     $i.focusout()
                 }
+                                
+            }
+            
+            options.onShow = function(ct,$i){
+                
             }
                                     
             //console.log(options)
@@ -252,8 +260,7 @@ function xdsoft_datetimepicker_init()
             $(this).xdatetimepicker(options)
         }   
     })
-    
-    
+        
     $('.xdatetimepicker').parents('.input-group').click(function(){ 
         if($(this).find('.xdatetimepicker').length==1)
         {
@@ -327,7 +334,7 @@ function rukovoditel_app_init()
       width = '100%';
 
       //check if field under form rows and if so then use 100% width;
-      is_form_row = $(this).parents(".forms-rows").size();
+      is_form_row = $(this).parents(".forms-rows").length;
             
       if(!is_mobile && is_form_row==0)
       {      	
@@ -342,7 +349,8 @@ function rukovoditel_app_init()
                       search_contains: true,
                       no_results_text:i18n['TEXT_NO_RESULTS_MATCH'],
                       placeholder_text_single:i18n['TEXT_SELECT_AN_OPTION'],
-                      placeholder_text_multiple:i18n['TEXT_SELECT_SOME_OPTIONS']
+                      placeholder_text_multiple:i18n['TEXT_SELECT_SOME_OPTIONS'],
+                      allow_single_deselect: true
                       }).chosenSortable();
    })
             
@@ -466,8 +474,26 @@ function rukovoditel_app_init()
   appHandleIzoColorPicker()
   
   appHandleDropdownAjax()
+  
+  appHandleClipboardJS()
           
 } 
+
+function appHandleClipboardJS()
+{
+    $('.clipboardjs').each(function(){       
+        new ClipboardJS(this);
+                
+        $(this).on('mouseout', ()=> {
+            $(this).popover('hide') 
+        })
+        
+        $(this).on('click', ()=> {
+            $(this).popover('show') 
+            return false
+        })                        
+    })
+}
 
 function resize_mind_map_iframe_field(field_id)
 {	
@@ -597,6 +623,30 @@ function open_dialog(url)
       {
       	width = 1100
       }
+      else if($('#ajax-modal div').hasClass('ajax-modal-width-1200'))
+      {
+      	width = 1200
+      }
+      else if($('#ajax-modal div').hasClass('ajax-modal-width-1300'))
+      {
+      	width = 1300
+      }
+      else if($('#ajax-modal div').hasClass('ajax-modal-width-1400'))
+      {
+      	width = 1400
+      }
+      else if($('#ajax-modal div').hasClass('ajax-modal-width-1500'))
+      {
+      	width = 1500
+      }
+      else if($('#ajax-modal div').hasClass('ajax-modal-width-1600'))
+      {
+      	width = 1600
+      }
+      else if($('#ajax-modal div').hasClass('ajax-modal-width-1700'))
+      {
+      	width = 1700
+      }
                 
       $modal.modal({width:width}); 
       
@@ -631,9 +681,9 @@ function open_dialog(url)
 function appHandleUniformInListing()
 {	
   var test = $("input[type=checkbox]:not(.toggle), input[type=radio]:not(.toggle, .star)");
-  if (test.size() > 0) {
+  if (test.length > 0) {
       test.each(function () {
-          if ($(this).parents(".checker").size() == 0) {
+          if ($(this).parents(".checker").length == 0) {
               $(this).show();
               $(this).uniform();
           }
@@ -641,6 +691,8 @@ function appHandleUniformInListing()
   }
       
   appHandlePopover();
+  
+  appHandleTruncatedText()
   
   appHandleDropdownAjax()
   
@@ -660,7 +712,9 @@ function appHandleUniformInListing()
         $(this).find('.dropdown-menu-in-table').removeClass('dropdown-menu-in-table').css({display:'',top:'', left: ''}).appendTo($(e.relatedTarget).parent());
     }); 
     
-    $('[data-toggle="tooltip"]').tooltip()       
+    $('[data-toggle="tooltip"]').tooltip()      
+    
+    $(".fancybox").fancybox();
       
 }  
 
@@ -678,6 +732,21 @@ function appHandleDropdownAjax()
             
             menu.load(ajax_url)
         }                
+    })
+}
+
+function appHandleTruncatedText()
+{
+    $('.truncated-text-block .truncated-text-expand').click(function(){
+        $(this).parent().addClass('hidden')
+        $(this).parents('.truncated-text-block').find('.full-text').removeClass('hidden')
+        return false
+    })
+    
+    $('.truncated-text-block .truncated-text-collapse').click(function(){
+        $(this).parent().addClass('hidden')
+        $(this).parents('.truncated-text-block').find('.truncated-text').removeClass('hidden')
+        return false
     })
 }
 
@@ -714,13 +783,15 @@ function appHandlePopover()
         return "top";
     }  
   })
+  
+  App.initFancybox()
 }
 
 function appHandleUniformCheckbox(){
   var test = $("input[type=checkbox]:not(.toggle)");
-  if (test.size() > 0) {
+  if (test.length > 0) {
       test.each(function () {
-          if ($(this).parents(".checker").size() == 0) {
+          if ($(this).parents(".checker").length == 0) {
               $(this).show();
               $(this).uniform();
           }
@@ -731,9 +802,9 @@ function appHandleUniformCheckbox(){
 function appHandleUniform()
 {
   var test = $("input[type=checkbox]:not(.toggle), input[type=radio]:not(.toggle, .star)");
-  if (test.size() > 0) {
+  if (test.length > 0) {
       test.each(function () {
-          if ($(this).parents(".checker").size() == 0) {
+          if ($(this).parents(".checker").length == 0) {
               $(this).show();
               $(this).uniform();
           }
@@ -873,7 +944,9 @@ function appHandleCalculator()
                 else
                 {
                     $('#'+calculate_input).val(value)
-                }                
+                }   
+                
+                $('#'+calculate_input).trigger('input')
             }
         });
     })
@@ -962,7 +1035,7 @@ function appHandleChosen()
       width = '100%';
       
       //check if field under form rows and if so then use 100% width;
-      is_form_row = $(this).parents(".forms-rows").size();
+      is_form_row = $(this).parents(".forms-rows").length;
             
       if(!is_mobile && is_form_row==0)
       {
@@ -977,7 +1050,8 @@ function appHandleChosen()
                       search_contains: true,
                       no_results_text:i18n['TEXT_NO_RESULTS_MATCH'],
                       placeholder_text_single:i18n['TEXT_SELECT_AN_OPTION'],
-                      placeholder_text_multiple:i18n['TEXT_SELECT_SOME_OPTIONS']
+                      placeholder_text_multiple:i18n['TEXT_SELECT_SOME_OPTIONS'],
+                      allow_single_deselect: true
                       }).chosenSortable();
    })
 }
@@ -1060,14 +1134,14 @@ function select_all_by_classname(id,class_name)
   if($('#'+id).attr('checked'))
   {      
     $('.'+class_name).each(function(){            
-      $(this).attr('checked',true)
+      $(this).prop('checked',true)
       $(this).parent().addClass('checked')      
     })
   }
   else
   {        
     $('.'+class_name).each(function(){      
-      $(this).attr('checked',false)
+      $(this).prop('checked',false)
       $(this).parent().removeClass('checked')      
     })
   } 
@@ -1650,18 +1724,22 @@ function getCookie(cname)
 
 function fc_calendar_button(calendar_id)
 {
-	$('.fc-calendarButton-button').datepicker({
-		rtl: App.isRTL(),
-		autoclose: true,
-		weekStart: app_cfg_first_day_of_week,
-		format: 'yyyy-mm-dd',						
-		startView: "months", 
-    minViewMode: "months"});
-	
-	$('.fc-calendarButton-button').on("changeDate", function() {					   
-	    var d = $('.fc-calendarButton-button').datepicker('getFormattedDate')					    
-		 	$('#'+calendar_id).fullCalendar('gotoDate', d );
-	});
+    $('#'+calendar_id+' .fc-calendarButton-button').datepicker({
+            rtl: App.isRTL(),
+            autoclose: true,
+            weekStart: app_cfg_first_day_of_week,
+            format: 'yyyy-mm-dd',						
+            startView: "months", 
+            minViewMode: "months"});
+
+    let obj;
+
+    eval('obj = '+calendar_id+';')
+
+    $('#'+calendar_id+' .fc-calendarButton-button').on("changeDate", function() {					   
+        var d = $('.fc-calendarButton-button').datepicker('getFormattedDate')					    		 	
+        obj.gotoDate(d)                        
+    });
 }
 
 function is_dialog()
@@ -2245,6 +2323,34 @@ function app_filters_preview_toggle()
     })
 }
 
+function handleFieldtype3dviewer()
+{
+    $('.fieldtype_3dviewer_content').each(function(){
+        let tab_pane = $(this).parents('.tab-pane')
+        let obj = $(this)
+        let data = obj.data()
+                        
+        if(tab_pane.length>0 && !tab_pane.hasClass("active-3dviewer"+obj.attr('id')) && !tab_pane.hasClass("active"))
+        {
+            tab_pane.addClass("active-3dviewer"+obj.attr('id'))
+
+            $('[href="#'+tab_pane.attr('id')+'"]').click(()=>{
+                setTimeout(function() { handleFieldtype3dviewer() },300)
+            })
+
+            return;
+        }
+        
+        if(!tab_pane.hasClass("active") && tab_pane.length>0) return;                        
+            
+        //check if codemire is active
+        if(obj.hasClass("acitve-3dviewer")) return false;
+        obj.addClass("acitve-3dviewer")
+        
+        obj.html('<iframe class="fieldtype_3dviewer_iframe" src="'+data.src +'" width="100%" height="'+data.height+'"></iframe>')
+    })
+}
+
 function appHandleCodeMirror()
 {            
     var code_mirror  = function () {
@@ -2252,16 +2358,20 @@ function appHandleCodeMirror()
             
             //handle CodeMirror in tab-pane
             let tab_pane = $(this).parents('.tab-pane')
-            
-            if(tab_pane.length>0 && !tab_pane.hasClass("active-codemirror") && !tab_pane.hasClass("active"))
+            let obj_id = $(this).attr('id')
+                        
+            if(tab_pane.length>0 && !tab_pane.hasClass("active-codemirror"+obj_id) && !tab_pane.hasClass("active"))
             {
-                tab_pane.addClass("active-codemirror")
-                
+                tab_pane.addClass("active-codemirror"+obj_id)
+                                                             
                 $('[href="#'+tab_pane.attr('id')+'"]').click(()=>{
                     setTimeout(function() { appHandleCodeMirror() },300)
                 })
-                return false;
+                
+                return;
             }
+            
+            if(!tab_pane.hasClass("active") && tab_pane.length>0) return;                        
             
             //check if codemire is active
             if($(this).hasClass("acitve-codemirror")) return false;
@@ -2286,6 +2396,7 @@ function appHandleCodeMirror()
             autofocus:true,
             lineWrapping: true,
             matchBrackets: true,
+            theme: app_skin_dir=='Dark_Mode' ? 'darcula':'default',
             extraKeys: {
                      "F11": function(cm) {
                        cm.setOption("fullScreen", !cm.getOption("fullScreen"));
@@ -2345,6 +2456,18 @@ function get_time_difference(start_date, end_date)
     oDiff.seconds = Math.floor(nTotalDiff / 1000);
     
     return oDiff;
+}
+
+function is_json(item)
+{
+  item = typeof item !== "string" ? JSON.stringify(item) : item;    
+  try { item = JSON.parse(item); } 
+  catch (e) { return false; }
+    
+  if (typeof item === "object" && item !== null) {
+     return true;
+  }    
+  return false;
 }
 
 

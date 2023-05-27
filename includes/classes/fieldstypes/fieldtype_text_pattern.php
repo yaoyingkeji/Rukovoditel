@@ -65,7 +65,7 @@ class fieldtype_text_pattern
                     ], [
                 ($app_user['name'] ?? ''),
                 ($app_user['id'] ?? ''),
-                $item['id'],
+                $item['id']??0,
                     ], $pattern);
 
             //handle date format ${Y-m-d}
@@ -156,7 +156,7 @@ class fieldtype_text_pattern
                                 }
                                 break;
                             default:
-                                $value = $item['field_' . $field['id']];
+                                $value = $item['field_' . $field['id']]??'';
                                 break;
                         }
 

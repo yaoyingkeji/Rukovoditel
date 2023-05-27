@@ -91,6 +91,23 @@ switch($app_module_action)
                     $listing_sql_query_having = reports::prepare_filters_having_query($sql_query_having[$current_entity_id]);
                 }
             }
+            
+            //add extra filters for common filters panel
+            if($reports_info['reports_type']=='common')
+            {
+                if($fiters_panel_reports_id = reports::get_reports_id_by_type($reports_info['entities_id'],'common_report_filters_panel_' . $reports_info['id'],true))
+                {
+                   $listing_sql_query = reports::add_filters_query($fiters_panel_reports_id,$listing_sql_query); 
+                }
+            }
+            
+            if(isset($_POST['force_item_page_subentity_filters']) and $_POST['force_item_page_subentity_filters']==1)
+            {    
+                if($fiters_panel_reports_id = reports::get_reports_id_by_type($reports_info['entities_id'],'item_page_subentity_filters' . $reports_info['id'],true))
+                {       
+                   $listing_sql_query = reports::add_filters_query($fiters_panel_reports_id,$listing_sql_query); 
+                }
+            }
 
             if($parent_entity_item_id > 0)
             {

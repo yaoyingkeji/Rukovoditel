@@ -1653,7 +1653,7 @@ define('TEXT_FIELDTYPE_INPUT_ENCRYPTED_TITLE','Encrypted input field');
 define('TEXT_HIDE_VALUE','Hide value');
 define('TEXT_FIELDTYPE_INPUT_ENCRYPTED_TOOLTIP','The entered value is stored encrypted in the database. Data is encrypted using a special key.');
 define('TEXT_ENCRYPTION_KEY','Encryption key');
-define('TEXT_ENCRYPTION_KEY_INFO','To add an encryption key open <code>config/server.php</code> file and <br>
+define('TEXT_ENCRYPTION_KEY_INFO','To add an encryption key open <code>config/database.php</code> file and <br>
 insert the following line at the end of the file: <code>define(\'DB_ENCRYPTION_KEY\',\'my_key\');</code><br>
 Instead of <code>my_key</code>, enter your key.<br>
 <b>Note:</b> you cannot change the key for existing data. This will result in data loss.');
@@ -1936,6 +1936,69 @@ define('TEXT_DOCS_PREVIEW','Document preview');
 define('TEXT_DOCS_PREVIEW_INFO','Users will be able to view the documents in the attachment through the selected service, without downloading them to disk.');
 define('TEXT_IGNORE_CURRENT_DAY','Ignore the current day');
 define('TEXT_SENDER','Sender');
+
+//new defines for version 3.4
+define('TEXT_NUMBER_DISPLAYED_CHARACTERS_IN_LIST','Number of displayed characters in listing');
+define('TEXT_NUMBER_DISPLAYED_CHARACTERS_IN_LIST_INFO','If set, long text will be truncated and a link "Read More" will be added.');
+define('TEXT_READ_MORE','Read More');
+define('TEXT_FIELDTYPE_RELATED_MAIL_TITLE','Related Emails');
+define('TEXT_FIELDTYPE_RELATED_MAIL_TOOLTIP','If you are using <a href="https://docs.rukovoditel.net/index.php?p=32" target="_blank">Mail Integration</a> feature, with this field type you can display related mails in list of records. <a href="https://docs.rukovoditel.net/index.php?p=147" target="_blank"><u>Read more.</u></a>');
+define('TEXT_COUNT_RELATED_EMAILS','Number of related emails');
+define('TEXT_LIST_RELATED_EMAILS','List of related emails');
+define('TEXT_UNREAD_EMAILS_ONLY','Only unread emails');
+define('TEXT_HAS_RELATED_EMALS','There are related emails');
+define('TEXT_HAS_UNREAD_RELATED_EMALS','There are unread emails');
+define('TEXT_NO_RELATED_EMALS','No related emails');
+define('TEXT_DO_NOT_APPLY_RECORD_VISIBILITY_RULES','Do not apply record visibility rules');
+define('TEXT_DO_NOT_APPLY_RECORD_VISIBILITY_RULES_INFO','Record visibility rules will not be included in the sql query to select records');
+define('TEXT_ALLOW_SORT_ORDER','Allow sorting');
+define('TEXT_ALLOW_SORT_ORDER_ATTACHMENTS_TIP','On the record page, you will be able to sort attachments');
+define('TEXT_DYNAMIC_MASK','Dynamic Mask');
+define('TEXT_FORM_ADD_IN','Form "Add in"');
+define('TEXT_FORM_ADD_IN_FILTERS_TIP','The "Add in" form is displayed if the parent record is not explicitly specified. Set up filters for the dropdown list of records from the parent entity.');
+define('TEXT_DISABLE_TIME_BY_QUERY','Disabled time by SQL query');
+define('TEXT_RECORDS_VISIBILITY_PHP_CODE_INFO','Add your own php code to select records which will be visible for users.');
+define('TEXT_DISABLE_LISTING_FIELDS_CONFIGURATION','Disable configuration of fields in listing');
+define('TEXT_DISABLE_FOR_ALL','Disallow for all');
+define('TEXT_DISABLE_LISTING_FIELDS_CONFIGURATION_TIP','By default each user can configure own columns in listing. If disabled then use standard settings will be using.');
+define('TEXT_VIEW_ALL_RECORDS','View all records');
+define('TEXT_FILENAME_TEMPLATE','Filename template');
+define('TEXT_FIELDTYPE_ATTACHMENTS_FILENAME_TEMPLATE_NOTE','Applies if: Upload Limit = 1');
+define('TEXT_YOU_CAN_USE','You can use');
+define('TEXT_FIELDTYPE_3DVIEWER_TITLE','3D models');
+define('TEXT_FIELDTYPE_3DVIEWER_TOOLTIP','Upload and preview 3D models in .obj, .fbx, .stl, .gltf formats');
+define('TEXT_VIEW_3D_MODEL_ON_RECORD_PAGE','View the 3D model on the entry page');
+define('TEXT_VIEWPORT_HEIGHT','Viewport height');
+define('TEXT_SELECT_FILE','Select file');
+define('TEXT_LOADING','Loading...');
+define('TEXT_OBJECT_COLOR','Object color');
+define('TEXT_HIDE_NAME_ON_PRINT_PAGE','Hide name on print page');
+define('TEXT_ENTER_PASSWORD_MANDATORY','Enter password mandatory');
+define('TEXT_LISTING_TYPE','Listing type');
+define('TEXT_RECORD_INFO_COLLAPSED_BY_DEFAULT','Record info collapsed by default');
+define('TEXT_HIDE_FIELD_NAMES','Hide field names');
+define('TEXT_HIDE_FIELD_NAMES_TIP','To save space, you can hide the field names on the record page.');
+define('DISPLAY_QR_CODE_ON_ITEM_PAGE','Display QR code on record page');
+define('TEXT_ENTER_RECORDS_ID_BY_COMMA','Enter records id by comma');
+define('TEXT_LISTING_HIGHLIGHT_NUMERIC_FIELDS_TOOLTIP','Also you can compare values from current record, for example: <code> >0&<[552] </code>');
+define('TEXT_GRID_ELEMENT_WILL_BE_CLICKABLE','Grid element will be clickable and redirect to record info page.');
+define('TEXT_ATTACHMENTS_SORT_ORDER','Sorting attachments');
+define('TEXT_BY_DATE_UPLOAD','By upload date');
+define('TEXT_BY_FILENAME','By file name');
+define('TEXT_MANUAL_SORTING','Manual sorting');
+define('TEXT_ALLOW_ACCESS_FOR_ALL_USERS','Allow access for all users');
+define('TEXT_DISPLAY_FILTER_PANEL','Display filter panel');
+define('TEXT_DISPLAY_COPY_TO_CLIPBOARD_ICON','Display copy to clipboard icon');
+define('TEXT_ICON_WILL_DISPLAYED_ON_RECORD_PAGE','The icon will be displayed on the record page');
+define('TEXT_COPIED','Copied');
+define('TEXT_COPY_TO_CLIPBOARD','Copy to clipboard');
+define('TEXT_DISPLAY_INPUT_FIELD_ENTER_PERSON_NAME','Display input field to enter person name');
+define('TEXT_DISPLAY','Display');
+define('TEXT_PAGINATION','Pagination');
+define('TEXT_FILTER_BY_ENTITY','Filter by entity');
+define('TEXT_FILTER_BY_GLOBAL_LIST','Filter by global list');
+
+
 
 
 

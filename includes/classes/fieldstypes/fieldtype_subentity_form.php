@@ -170,6 +170,7 @@ class fieldtype_subentity_form
                         'fieldtype_input_numeric',
                         'fieldtype_input_date',
                         'fieldtype_input_datetime',
+                        'fieldtype_input_date_extra',
                         'fieldtype_jalali_calendar',
                         'fieldtype_time',
                         'fieldtype_textarea',
@@ -231,6 +232,22 @@ class fieldtype_subentity_form
                         'type'=>'dropdown',
                         'choices'=>$choices,
                         'params'=>array('class'=>'form-control input-medium'));
+                    
+                    $choices = [];
+                    $fields_query = db_query("select f.*, t.name as tab_name from app_fields f, app_forms_tabs t where f.type in ('fieldtype_input_numeric','fieldtype_js_formula') and  f.entities_id='" . $entities_id . "' and f.forms_tabs_id=t.id order by t.sort_order, t.name, f.sort_order, f.name");
+                    while($fields = db_fetch_array($fields_query))
+                    {
+                            $choices[$fields['id']] = fields_types::get_option($fields['type'],'name',$fields['name']) . ' (#' . $fields['id'] . ')';
+                    }
+                    
+                    $cfg[] = array(
+                        'title'=>TEXT_CALCULATE_TOTALS,
+                        'name'=>'fields_totals_in_listing',
+                        'type'=>'dropdown',
+                        'tooltip'=>TEXT_CALCULATE_TOTALS_INFO . '<br>' . TEXT_AVAILABLE_FIELS . ': ' . TEXT_FIELDTYPE_INPUT_NUMERIC_TITLE . ', ' . TEXT_FIELDTYPE_JS_FORMULA_TITLE,
+                        'choices'=>$choices,   
+                        'form_group' => ['form_display_rules'=>'fields_configuration_listing_type:table'],
+                        'params'=>array('class'=>'form-control chosen-select input-xlarge','multiple' =>'multiple'));
                     
                     $cfg[] = array(
                         'title'=>TEXT_COLUMN_WIDHT, 

@@ -18,7 +18,7 @@
 
 <?php require('js/mapbbcode-master/includes.css.php'); ?>
 
-<script src="template/plugins/jquery-1.10.2.min.js" type="text/javascript"></script>   
+<script src="<?= CFG_PATH_TO_JQUERY ?>" type="text/javascript"></script>   
 
 <script type="text/javascript" src="js/main.js?v=<?php echo PROJECT_VERSION ?>"></script>
 
@@ -49,6 +49,8 @@
     require($path);
   }   
 ?>
+    
+<?php require('js/mapbbcode-master/includes.js.php'); ?>
 
 
 <script src="template/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
@@ -60,6 +62,8 @@
         App.initMapSidebar();
     })
 </script>
+
+<?php echo i18n_js() ?>
 
 </body>
 <!-- END BODY -->

@@ -192,13 +192,16 @@ class image_map
 				{
 					//prepare field value
 					$value = items::prepare_field_value_by_type($field, $items);
+                                        
+                                        $path_info = items::get_path_info($field['entities_id'], $items['id'], $items);
 			
 					$output_options = array('class'=>$field['type'],
 							'value'=>$value,
 							'field'=>$field,
 							'item'=>$items,
 							'is_listing'  => true,
-							'path'=>'');
+                                                        'is_print'=>true,
+							'path'=>$path_info['full_path']);
 			
 					$value = trim(fields_types::output($output_options));
 			

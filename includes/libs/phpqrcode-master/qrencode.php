@@ -423,6 +423,8 @@
         public $level = QR_ECLEVEL_L;
         public $hint = QR_MODE_8;
         
+        public $cmyk;
+        
         //----------------------------------------------------------------------
         public static function factory($level = QR_ECLEVEL_L, $size = 3, $margin = 4, $back_color = 0xFFFFFF, $fore_color = 0x000000, $cmyk = false)
         {

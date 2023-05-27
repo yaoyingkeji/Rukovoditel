@@ -30,7 +30,7 @@
                     <div class="col-md-9">
                         <?php echo select_tag('CFG[PUBLIC_REGISTRATION_USER_GROUP][]', access_groups::get_choices(false), CFG_PUBLIC_REGISTRATION_USER_GROUP, array('class' => 'form-control input-xlarge chosen-select', 'multiple' => 'multiple')); ?>	    	
                     </div>			
-                </div>
+                </div>                                
                 
                 <?php if(CFG_ENABLE_MULTIPLE_ACCESS_GROUPS): ?>
                 <div class="form-group">
@@ -40,6 +40,13 @@
                     </div>			
                 </div>
                 <?php endif ?>
+                
+                <div class="form-group">
+                    <label class="col-md-3 control-label" for="CFG_PUBLIC_REGISTRATION_PWD_REQUIRED"><?php echo TEXT_ENTER_PASSWORD_MANDATORY ?></label>
+                    <div class="col-md-9">
+                        <?php echo select_tag('CFG[PUBLIC_REGISTRATION_PWD_REQUIRED]', $default_selector, CFG_PUBLIC_REGISTRATION_PWD_REQUIRED, array('class' => 'form-control input-small')); ?> 
+                    </div>			
+                </div>
 
                 <div class="form-group">
                     <label class="col-md-3 control-label" for="CFG_PUBLIC_REGISTRATION_PAGE_HEADING"><?php echo TEXT_LOGIN_PAGE_HEADING ?></label>

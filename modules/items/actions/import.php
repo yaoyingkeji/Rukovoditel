@@ -165,7 +165,7 @@ switch($app_module_action)
 
 		exit();
 		break;
-	case 'bind_field':
+	case 'bind_field':                
 		$col = $_POST['col'];
 		$filed_id = $_POST['filed_id'];
 		

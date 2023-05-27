@@ -3,7 +3,7 @@
 class filters_panels
 {
 
-    public $entities_id, $reports_id, $listing_container, $vertical_width, $fields_access_schema, $parent_entity_item_id;
+    public $entities_id, $reports_id, $listing_container, $vertical_width, $fields_access_schema, $parent_entity_item_id, $type,$load_items_listing_funciton_name, $custom_panel_id, $custom_panel_css;
 
     function __construct($entities_id, $reports_id, $listing_container, $parent_entity_item_id = false)
     {
@@ -198,10 +198,108 @@ class filters_panels
         }                
 
         $html = '				
-				<div class="heading">
-					' . $field_name . ': <a href="javascript:delete_field_fielter_value' . $this->custom_panel_id . '(' . $field_info['id'] . ')" title="' . TEXT_RESET . '"><i class="fa fa-times" aria-hidden="true"></i></a>						
-			    </div>';
+                <div class="heading">
+                    ' . $field_name . ': <a href="javascript:delete_field_fielter_value' . $this->custom_panel_id . '(' . $field_info['id'] . ')" title="' . TEXT_RESET . '"><i class="fa fa-times" aria-hidden="true"></i></a>						
+                </div>';    
+        
+        /**
+         * Handle exclude_values_not_in_listing for dropdowns
+         */
+         if($panel_field['exclude_values_not_in_listing']==1 and in_array($field_info['type'], array(
+                    'fieldtype_image_map',
+                    'fieldtype_autostatus',
+                    'fieldtype_checkboxes',
+                    'fieldtype_radioboxes',
+                    'fieldtype_dropdown',
+                    'fieldtype_dropdown_multiple',
+                    'fieldtype_dropdown_multilevel',
+                    'fieldtype_grouped_users',
+                    'fieldtype_tags',
+                    'fieldtype_stages',
+                    'fieldtype_color',
+                )))
+        {
+              $cfg = new fields_types_cfg($field_info['configuration']);
 
+                if ($cfg->get('use_global_list') > 0)
+                {
+                    $choices = global_lists::get_choices($cfg->get('use_global_list'), false);
+                } else
+                {
+                    $choices = fields_choices::get_choices($field_info['id'], false);
+                }
+                
+             $choices = array();
+                                                       
+            //prepare selected values
+            if(strlen($filters_values))
+            {
+                foreach(explode(',',$filters_values) as $choice_id)
+                {
+                    $choices[$choice_id] = $cfg->get('use_global_list') > 0 ? global_lists::get_choices_name_by_id($id) : fields_choices::get_name_by_id($choice_id);
+                }                                    
+            }
+
+            switch ($panel_field['display_type'])
+            {
+                case 'dropdown':
+                    $attributes = array('id'=>'values_' . $field_info['id'],'class' => 'form-control entity-ajax-select filters-panels-fields' . $panels_id_str . ' filters-panels-field-' . $field_info['id'] . ' ' . $panel_field['width'], 'data-field-id' => $field_info['id']);
+                    $html .= select_tag('values[]', ['' => ''] + $choices, $filters_values, $attributes);
+                    break;
+                case 'dropdown_multiple':
+                    $attributes = array('id'=>'values_' . $field_info['id'],'class' => 'form-control entity-ajax-select filters-panels-fields' . $panels_id_str . ' filters-panels-field-' . $field_info['id'] . ' ' . $panel_field['width'], 'multiple' => 'multiple', 'style' => 'height:24px; visibility: hidden', 'data-field-id' => $field_info['id']);
+                    $html .= select_tag('values[]', $choices, $filters_values, $attributes);
+                    break;
+            }
+
+                
+ $html .= '
+    <script>
+        $(function(){	
+
+            
+            $(".filters-panels-field-' . $field_info['id'] . '").select2({		      
+                width: $(".filters-panels-field-' . $field_info['id'] . '").parents(".vertical-filters-panels").length>0 ? "100%":' . fieldtype_entity_ajax::get_select2_width_by_class($panel_field['width']). ',		                      
+                "language":{
+                  "noResults" : function () { return "' . addslashes(TEXT_NO_RESULTS_FOUND) . '"; },
+                            "searching" : function () { return "' . addslashes(TEXT_SEARCHING) . '"; },
+                            "errorLoading" : function () { return "' . addslashes(TEXT_RESULTS_COULD_NOT_BE_LOADED) . '"; },
+                            "loadingMore" : function () { return "' . addslashes(TEXT_LOADING_MORE_RESULTS) . '"; }		    				
+                },	
+                allowClear: true,
+                placeholder: \'' . addslashes(TEXT_SELECT_SOME_VALUES) . '\',
+                ajax: {
+                        url: "' . url_for('items/select2_choices_filter','action=select_values&path=' . $field_info['entities_id']) . '",
+                        dataType: "json",  
+                        delay: 250,
+                        type: "POST",
+                        data: function (params) {
+                            var query = {
+                              search: params.term,
+                              page: params.page || 1, 
+                              entity_id: ' . $field_info['entities_id'] . ',                              
+                              parent_item_id: ' . (int)$this->parent_entity_item_id . ',
+                              panel_field_id: ' . $panel_field['id'] . ',
+                              field_id: ' . $field_info['id'] . ',   
+                              reports_id: ' . $this->reports_id . ',    
+                            }
+
+                          // Query parameters will be ?search=[term]&page=[page]
+                          return query;
+                        },        				        				
+                    },        				
+                    templateResult: function (d) { return $(d.html); },      		        			
+            });               
+        })
+    </script>
+'; 
+             return $html;
+        }
+
+        
+        /*
+         * Handle other field type without exclude_values_not_in_listing
+         */
         switch ($field_info['type'])
         {
             case 'fieldtype_parent_item_id_off':
@@ -410,7 +508,7 @@ class filters_panels
 
             
             $(".filters-panels-field-' . $field_info['id'] . '").select2({		      
-                width: $(".filters-panels-field-' . $field_info['id'] . '").parents(".vertical-filters-panels").size()>0 ? "100%":' . fieldtype_entity_ajax::get_select2_width_by_class($panel_field['width']). ',		                      
+                width: $(".filters-panels-field-' . $field_info['id'] . '").parents(".vertical-filters-panels").length>0 ? "100%":' . fieldtype_entity_ajax::get_select2_width_by_class($panel_field['width']). ',		                      
                 "language":{
                   "noResults" : function () { return "' . addslashes(TEXT_NO_RESULTS_FOUND) . '"; },
                             "searching" : function () { return "' . addslashes(TEXT_SEARCHING) . '"; },
@@ -472,6 +570,17 @@ class filters_panels
 
                 $panel_field['display_type'] = 'dropdown';
                 $panel_field['width'] = 'input-small';
+                break;
+            
+            case 'fieldtype_related_mail':
+                $choices = [
+                    ''=>'',
+                    'has_related_emails' => TEXT_HAS_RELATED_EMALS, 
+                    'has_unread_emails' => TEXT_HAS_UNREAD_RELATED_EMALS,
+                    'no_related_emails' => TEXT_NO_RELATED_EMALS,
+                ];
+                $panel_field['display_type'] = 'dropdown';
+                $panel_field['width'] = 'input-medium';
                 break;
             case 'fieldtype_barcode':
                 
@@ -538,9 +647,15 @@ class filters_panels
             default:
 
                 $input_width = 'input-medium';
+                $field_val_html =  '';
                 if (in_array($field_info['type'], ['fieldtype_id', 'fieldtype_formula', 'fieldtype_input_numeric', 'fieldtype_input_numeric_comments', 'fieldtype_years_difference', 'fieldtype_months_difference', 'fieldtype_hours_difference', 'fieldtype_days_difference', 'fieldtype_mysql_query', 'fieldtype_auto_increment']))
                 {
-                    $input_width = 'input-small';
+                    $input_width = strlen($panel_field['width']) ? $panel_field['width'] : 'input-small';
+                    
+                    if($panel_field['display_type']=='input_range')
+                    {
+                        $field_val_html = input_tag('field_val_from', '', array('class' => 'form-control filters-panels-input-field-extra-' . $field_info['id'], 'type'=>'number','placeholder'=>TEXT_DATE_FROM))  . '<span class="input-group-addon" style="width: 1px; padding:0;"></span>' . input_tag('field_val_to', '', array('class' => 'form-control filters-panels-input-field-extra-' . $field_info['id'], 'type'=>'number','placeholder'=>TEXT_DATE_TO));
+                    }
                 }
 
                 if (in_array($field_info['type'], ['fieldtype_input', 'fieldtype_text_pattern_static', 'fieldtype_input_encrypted']) and strlen($panel_field['width']))
@@ -555,16 +670,15 @@ class filters_panels
 
                 $html .= '
                     <form class="filters-panels-form" action="' . url_for('reports/filters', 'action=set_field_fielter_value&reports_id=' . $this->reports_id) . '" method="post">
-                            ' . input_hidden_tag('field_id', $field_info['id']) . '
-                            <div class="input-group ' . $input_width . '">
-                                    ' . input_tag('field_val', $filters_values, array('class' => 'form-control filters-panels-input-fields' . $panels_id_str . ' filters-panels-input-field-' . $field_info['id'], 'data-field-id' => $field_info['id'])) . '
-                                    ' . ($panel_field['search_type_match'] == 1 ? input_hidden_tag('search_type_match', 1) : '') . '		
-                                    <span class="input-group-btn">
-                                            <button class="btn btn-default" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
-                                    </span>
-                            </div>
-
-
+                        ' . input_hidden_tag('field_id', $field_info['id']) . '
+                        <div class="input-group ' . $input_width . '">
+                            ' . input_tag('field_val', $filters_values, array('class' => 'form-control filters-panels-input-fields' . $panels_id_str . ' filters-panels-input-field-' . $field_info['id'] . (strlen($field_val_html) ? ' hidden':''), 'data-field-id' => $field_info['id'])) . '
+                            ' . $field_val_html . '
+                            ' . ($panel_field['search_type_match'] == 1 ? input_hidden_tag('search_type_match', 1) : '') . '		
+                            <span class="input-group-btn">
+                                    <button class="btn btn-default" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+                            </span>
+                        </div>
                     </form>
                     ';
                 break;
@@ -622,13 +736,31 @@ class filters_panels
 
                         //input 
                         $("' . $this->custom_panel_css . ' .filters-panels-form").submit(function(){
-                                $.ajax({
-                                        method: "POST",
-                                        url: "' . url_for('reports/filters', 'action=set_field_fielter_value&reports_id=' . $this->reports_id) . '",
-                                        data: $(this).serializeArray()								
-                                }).done(function(){
-                                        ' . $this->load_items_listing_funciton_name . '("' . $this->listing_container . '",1)
-                                })
+                            
+                            //prepare from/to if exist                            
+                            if($(this).find("#field_val_from").length)
+                            {
+                                let value_from = $(this).find("#field_val_from").val()
+                                let value_to = $(this).find("#field_val_to").val()
+                                let value_str = (value_from.length>0 ? ">="+value_from:"")
+                                
+                                if(value_to.length>0)
+                                {
+                                    value_str = value_str+(value_str.length>0 ? "&":"")+"<="+value_to
+                                }
+                                
+                                //console.log(value_str)
+                                $(this).find("#field_val").val(value_str)
+                            }
+                            
+                            $.ajax({
+                                    method: "POST",
+                                    url: "' . url_for('reports/filters', 'action=set_field_fielter_value&reports_id=' . $this->reports_id) . '",
+                                    data: $(this).serializeArray()								
+                            }).done(function(){
+                                    ' . $this->load_items_listing_funciton_name . '("' . $this->listing_container . '",1)
+                            })
+                            
                           return false;
                         })
 
@@ -783,7 +915,9 @@ class filters_panels
                         $(".filters-panels-date-field-"+field_id).val("");										
 
                         //reset input				
-                        $(".filters-panels-input-field-"+field_id).val("");				
+                        $(".filters-panels-input-field-"+field_id).val("");
+                        
+                        $(".filters-panels-input-field-extra-"+field_id).val("");
 
                         //reset chosen				
                         if($(".filters-panels-field-"+field_id).hasClass("chosen-select"))
@@ -869,6 +1003,7 @@ class filters_panels
         $choices['dropdown_multiple'] = TEXT_FIELDTYPE_DROPDOWN_MULTIPLE_TITLE;
         $choices['checkboxes'] = TEXT_FIELDTYPE_CHECKBOXES_TITLE;
         $choices['radioboxes'] = TEXT_FIELDTYPE_RADIOBOXES_TITLE;
+        $choices['input_range'] = TEXT_FIELDTYPE_INPUT_TITLE . ' (' . TEXT_DATE_FROM. '/'  .TEXT_DATE_TO . ')';
 
         return isset($choices[$key]) ? $choices[$key] : '';
     }
@@ -1020,6 +1155,51 @@ class filters_panels
                 
                 $sql = " and (select count(*) as total from app_entity_" . $current_entity_id . "_values cv where  cv.fields_id={$field['id']} and cv.value=e.id and cv.items_id in ({$listing_sql}))>0";
             }
+        }
+        
+        return $sql;
+    }
+    
+    static function exclude_choices_values_not_in_listing_sql($panel_field_id,$reports_id, $parent_item_id)
+    {
+        global $app_fields_cache,$sql_query_having;
+        
+        $sql = "";
+        
+        $panel_field_query = db_query("select * from app_filters_panels_fields where id='" . $panel_field_id. "' and exclude_values_not_in_listing=1",false);
+        if($panel_field = db_fetch_array($panel_field_query))
+        {
+            $current_entity_id = $panel_field['entities_id'];
+            $field = $app_fields_cache[$current_entity_id][$panel_field['fields_id']];
+            
+            $cfg = new settings($field['configuration']);
+            $field_entity_id = $cfg->get('entity_id');
+                        
+            $listing_sql_query = reports::add_filters_query($reports_id, '', 'e',false,[$field['id']]);
+                        
+            $formulas_sql = false;
+            
+            if(isset($sql_query_having[$current_entity_id]))
+            {
+                $listing_sql_query .= reports::prepare_filters_having_query($sql_query_having[$current_entity_id]);
+                
+                $formulas_sql = fieldtype_formula::prepare_query_select($current_entity_id, '');
+            }
+            
+            $listing_sql_query .= " and e.parent_item_id={$parent_item_id}";
+                                                                                                                            
+            if($formulas_sql)
+            {
+                $listing_sql = "select e.id {$formulas_sql} from app_entity_" . $current_entity_id . " e where e.id>0 " . $listing_sql_query;
+                $listing_sql = "select sb.id from ({$listing_sql}) as sb";
+            }
+            else
+            {
+                $listing_sql = "select e.id from app_entity_" . $current_entity_id . " e where e.id>0 " . $listing_sql_query;
+            }
+
+            $sql = " and (select count(*) as total from app_entity_" . $current_entity_id . "_values cv where  cv.fields_id={$field['id']} and cv.value=c.id and cv.items_id in ({$listing_sql}))>0";
+            
         }
         
         return $sql;
