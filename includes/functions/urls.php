@@ -34,7 +34,7 @@ function url_for($module, $prams = '', $hide_session = false)
     $host = $_SERVER['HTTP_HOST'];
 
     $self = pathinfo($_SERVER['PHP_SELF']);
-    $self['dirname'] = str_replace("\\", "/", $self['dirname']);
+    $self['dirname'] = str_replace("\\", "/", $self['dirname']??'');
     $path = $self['dirname'] . (substr($self['dirname'], -1) != '/' ? '/' : '');
 
     $prams = (strlen($prams) > 0 ? '&' . $prams : '');

@@ -35,9 +35,9 @@
 <link href="template/css/style-responsive.css?v=2" rel="stylesheet" type="text/css"/>
 <link href="template/css/plugins.css" rel="stylesheet" type="text/css"/>
 <link href="js/uploadifive/uploadifive.css" rel="stylesheet" media="screen">
-<link href="js/chosen/chosen.css" rel="stylesheet" media="screen">
+<link href="js/chosen/1.8.7/chosen.css" rel="stylesheet" media="screen">
 <link rel="stylesheet" type="text/css" href="template/plugins/jquery-nestable/jquery.nestable.css"/>
-<link rel="stylesheet" type="text/css" href="js/select2/dist/css/select2.min.css" />
+<link rel="stylesheet" type="text/css" href="js/select2/4.1.0/css/select2.min.css" />
 <link rel="stylesheet" type="text/css" href="js/xdsoft_datetimepicker/2.5.22/jquery.datetimepicker.css">
 
 <?php require('js/mapbbcode-master/includes.css.php'); ?>
@@ -57,8 +57,8 @@
 <script type="text/javascript" src="js/izoAutocomplete/1.0/izoAutocomplete.js"></script>
 
 <!-- Add fancyBox -->
-<link rel="stylesheet" href="js/fancybox/source/jquery.fancybox.css?v=2.1.5" type="text/css" media="screen" />
-<script type="text/javascript" src="js/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+<link rel="stylesheet" href="js/fancybox/2.1.7/jquery.fancybox.css" type="text/css" media="screen" />
+<script type="text/javascript" src="js/fancybox/2.1.7/jquery.fancybox.pack.js"></script>
 
 <script type="text/javascript" src="js/main.js?v=<?php echo PROJECT_VERSION ?>"></script>
 
@@ -183,12 +183,13 @@
 <script type="text/javascript" src="template/plugins/jquery-nestable/jquery.nestable.js"></script>
 <script type="text/javascript" src="template/plugins/bootstrap-wizard/jquery.bootstrap.wizard.js"></script>
 <script type="text/javascript" src="js/uploadifive/jquery.uploadifive.js?v=1.2.2"></script>
-<script type="text/javascript" src="js/chosen/chosen.jquery.min.js"></script>
-<script type="text/javascript" src="js/chosen/jquery-chosen-sortable.min.js"></script>
+<script type="text/javascript" src="js/chosen/1.8.7/chosen.jquery.js"></script>
+<script type="text/javascript" src="js/chosen/1.8.7/jquery-chosen-sortable.min.js"></script>
+<script type="text/javascript" src="js/chosen/1.8.7/chosen-order/chosen.order.jquery.min.js"></script>
 <script type="text/javascript" src="js/maskedinput/jquery.maskedinput.js"></script>
 <script type="text/javascript" src="js/totop/jquery.ui.totop.js" ></script>
 <script type="text/javascript" src="js/jquery-number-master/jquery.number.min.js" ></script>
-<script type="text/javascript" src="js/select2/dist/js/select2.full.js" ></script>
+<script type="text/javascript" src="js/select2/4.1.0/js/select2.full.js" ></script>
 <script type="text/javascript" src="js/jquery.taboverride-master/build/taboverride.min.js" ></script>
 <script type="text/javascript" src="js/jquery.taboverride-master/build/jquery.taboverride.min.js" ></script>
 <script type="text/javascript" src="js/scannerdetection/1.1.2/jquery.scannerdetection.js" ></script>

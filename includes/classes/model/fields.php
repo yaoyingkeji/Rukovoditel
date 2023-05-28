@@ -809,6 +809,10 @@ class fields
                                     let cursor = doc.getCursor();
                                     doc.replaceRange(html, cursor);
                                 }
+                                else if($("#' . $template_field_id . '").hasClass("editor"))
+                                {
+                                    CKEDITOR.instances.' . $template_field_id . '.insertText(html);
+                                }
                                 else
                                 {                                    
                                     textarea_insert_at_caret("' . $template_field_id . '",html)  					

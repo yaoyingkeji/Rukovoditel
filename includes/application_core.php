@@ -1,7 +1,7 @@
 <?php 
 
     define('PROJECT_VERSION','3.4');
-    define('PROJECT_VERSION_DEV','BETA 1');    
+    define('PROJECT_VERSION_DEV','BETA 2');    
     
 //is HTTPS
     define('IS_HTTPS',(isset($_SERVER['HTTPS']) ? (strtolower($_SERVER['HTTPS'])=='on' ? true : false): false));
@@ -26,7 +26,7 @@
     define('CFG_PATH_TO_PHPSPREADSHEET','includes/libs/PHPSpreadsheet/1.27.0/vendor/autoload.php');
     
     //jquery
-    define('CFG_PATH_TO_JQUERY','js/jquery/3.6.4/jquery-3.6.4.min.js');
+    define('CFG_PATH_TO_JQUERY','js/jquery/3.7.0/jquery-3.7.0.min.js');
     define('CFG_PATH_TO_JQUERY_VALIDATION','js/validation/1.9.5/jquery.validate.min.js');
     define('CFG_PATH_TO_JQUERY_VALIDATION_METHODS','js/validation/1.9.5/additional-methods.min.js');
     

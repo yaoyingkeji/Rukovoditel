@@ -39,7 +39,7 @@
 <link rel="stylesheet" type="text/css" href="template/plugins/jquery-nestable/jquery.nestable.css"/>
 <link rel="stylesheet" type="text/css" media="screen" href="<?= CFG_PATH_TO_CKEDITOR ?>plugins/codesnippet/lib/highlight/styles/default.css" />
 <link rel="stylesheet" type="text/css" href="js/datatables/1.13.4/datatables.min.css" />
-<link rel="stylesheet" type="text/css" href="js/select2/dist/css/select2.min.css" />
+<link rel="stylesheet" type="text/css" href="js/select2/4.1.0/css/select2.min.css" />
 <link rel="stylesheet" type="text/css" href="js/multistep-indicator-master/css/style.css" />
 <link rel="stylesheet" type="text/css" href="js/JalaliCalendar/jquery.Bootstrap-PersianDateTimePicker.css" />
 <link rel="stylesheet" type="text/css" href="js/treetable-master/jquery-treetable.css">
@@ -204,7 +204,7 @@
 <script type="text/javascript" src="js/totop/jquery.ui.totop.js" ></script>
 <script type="text/javascript" src="js/jquery-number-master/jquery.number.min.js" ></script>
 <script type="text/javascript" src="js/jquery-resizable/jquery-resizable.js" ></script>
-<script type="text/javascript" src="js/select2/dist/js/select2.full.js" ></script>
+<script type="text/javascript" src="js/select2/4.1.0/js/select2.full.js" ></script>
 <script type="text/javascript" src="js/jquery.taboverride-master/build/taboverride.min.js" ></script>
 <script type="text/javascript" src="js/jquery.taboverride-master/build/jquery.taboverride.min.js" ></script>
 <script type="text/javascript" src="js/JalaliCalendar/jalaali.js"></script>

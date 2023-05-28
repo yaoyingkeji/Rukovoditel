@@ -135,7 +135,7 @@ class fieldtype_dynamic_date
             }
 
             //highlight field if overdue date    
-            if ((date('Y-m-d', $options['value']) == date('Y-m-d') or $options['value'] < time()) and strlen($cfg->get('background')) > 0)
+            if (($options['value'] < time()) and strlen($cfg->get('background')) > 0)
             {
                 $html = render_bg_color_block($cfg->get('background'), format_date($options['value'], $cfg->get('date_format')));
             }

@@ -151,11 +151,18 @@ class items_page
                 $html_fields .= fieldtype_dropdown_multilevel::output_info_box($output_options);
             }
             //hide field name to save space to display value
-            elseif($cfg->get('hide_field_name')==1)
+            elseif($cfg->get('hide_field_name')==1 or in_array($field['id'], explode(',',$this->entity_cfg->get('item_page_hidden_field_names'))))
             {
+                $field_value = fields_types::output($output_options);
+                $clipboard_html = '';
+                if(in_array($field['id'], explode(',',$this->entity_cfg->get('item_page_copy_to_clipboard_fields'))))
+                {
+                    $clipboard_html = app_clipboardjs_icon(strip_tags($field_value));
+                }
+                    
                 $html_fields .='
                     <tr class="form-group form-group-' . $field['id'] . '">
-                      <td colspan="2">' . fields_types::output($output_options). '</td>
+                      <td colspan="2">' . $field_value  . $clipboard_html . '</td>
                     </tr>
                   ';
             }
@@ -190,12 +197,19 @@ class items_page
                     $field_name_html = '<br><span class="download-all-attachments"><a style="margin-left: 0; font-weight: normal" href="' . url_for('items/info','action=download_all_attachments&id=' . $field['id'] . '&path=' . $current_path). '"><i class="fa fa-download"></i> ' . TEXT_DOWNLOAD_ALL_ATTACHMENTS . '</a></span>';
                 }
                 
+                $field_value = fields_types::output($output_options);
+                $clipboard_html = '';
+                if(in_array($field['id'], explode(',',$this->entity_cfg->get('item_page_copy_to_clipboard_fields'))))
+                {
+                    $clipboard_html = app_clipboardjs_icon(strip_tags($field_value));
+                }
+                
                 $html_fields .='
                     <tr class="form-group form-group-' . $field['id'] . '">
                       <th ' . (strlen($field_name)>25 ? 'class="white-space-normal"':''). '>' .
                       $field_name . $field_name_html .
                       '</th>
-                      <td>' . fields_types::output($output_options). '</td>
+                      <td>' . $field_value .  $clipboard_html . '</td>
                     </tr>
                   ';
             }

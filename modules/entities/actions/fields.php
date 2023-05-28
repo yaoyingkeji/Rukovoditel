@@ -16,7 +16,7 @@ switch($app_module_action)
         exit();
         break;
     case 'disable_listing_fields_configuration':
-        $value = is_array($_POST['disable_listing_fields_configuration']) ? implode(',',$_POST['disable_listing_fields_configuration']):'';
+        $value = (isset($_POST['disable_listing_fields_configuration']) and is_array($_POST['disable_listing_fields_configuration'])) ? implode(',',$_POST['disable_listing_fields_configuration']):'';
         entities::set_cfg('disable_listing_fields_configuration', $value, $_GET['entities_id']);
         exit();
         break;

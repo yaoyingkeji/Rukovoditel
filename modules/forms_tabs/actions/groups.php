@@ -64,7 +64,7 @@ switch($app_module_action)
         if(isset($_POST['group_0']))
         {
           $sort_order = 0;
-          foreach(explode(',',str_replace('entity_','',$_POST['group_0'])) as $v)
+          foreach(explode(',',str_replace('form_tab_','',$_POST['group_0'])) as $v)
           {
             db_perform('app_forms_tabs',array('sort_order'=>$sort_order,'parent_id'=>0),'update',"id='" . db_input($v) . "'");
             $sort_order++;

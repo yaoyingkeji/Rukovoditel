@@ -2324,6 +2324,10 @@ th .tooltip{
 	background: #f1f1f1;
 }
 
+.select2-search__field:focus{
+    outline: none;     
+}
+
 .fa-success{
 	color: #5cb85c;
 }
@@ -3156,6 +3160,10 @@ tr.form-group{
 
 .table-xls-export{
     float: right;
+    padding-left: 10px;
+}
+
+.table-xls-export-link{    
     padding-left: 10px;
 }
 

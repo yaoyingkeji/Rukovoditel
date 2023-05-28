@@ -235,7 +235,7 @@ class entities
 
             if (count($relationship) > 0)
             {
-                if (!defined(TEXT_WARN_DELETE_ENTITY_HAS_RELATIONSHIP))
+                if (!defined('TEXT_WARN_DELETE_ENTITY_HAS_RELATIONSHIP'))
                 {
                     define('TEXT_WARN_DELETE_ENTITY_HAS_RELATIONSHIP', 'You can\'t delete entity <b>%s</b> because it has relationship with: <br>%s.<br><br>Delete all fields which related to this entity.');
                 }

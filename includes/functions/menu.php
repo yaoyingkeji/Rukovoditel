@@ -40,7 +40,7 @@ function build_user_menu()
     $menu[] = array('title' => TEXT_CONFIGURE_DASHBOARD, 'url' => url_for('dashboard/configure'), 'modalbox' => true, 'class' => 'fa-bars');
     $menu[] = array('title' => TEXT_CONFIGURE_THEME, 'url' => url_for('dashboard/configure_theme'), 'modalbox' => true, 'class' => 'fa-gear');
 
-    if((!in_array($app_user['group_id'], explode(',', CFG_APP_DISABLE_CHANGE_PWD)) or strlen(CFG_APP_DISABLE_CHANGE_PWD) == 0) and CFG_USE_LDAP_LOGIN_ONLY == false)
+    if((!in_array($app_user['group_id'], explode(',', CFG_APP_DISABLE_CHANGE_PWD??'')) or strlen(CFG_APP_DISABLE_CHANGE_PWD??'') == 0) and CFG_USE_LDAP_LOGIN_ONLY == false)
     {
         $menu[] = array('title' => TEXT_CHANGE_PASSWORD, 'url' => url_for('users/change_password'), 'class' => 'fa-unlock-alt');
     }

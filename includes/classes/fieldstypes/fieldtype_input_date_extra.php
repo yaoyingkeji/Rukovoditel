@@ -456,7 +456,14 @@ class fieldtype_input_date_extra
         
         if(strlen($cfg->get('min_date')))
         {
-            $settings['minDate'] = date('Y-m-d', strtotime("+" . (int) $cfg->get('min_date') . " day"));
+            if(substr($cfg->get('min_date'),0,1)=='-')
+            {
+                $settings['minDate'] = date('Y-m-d', strtotime("-" . (int) $cfg->get('min_date') . " day"));
+            }
+            else
+            {
+                $settings['minDate'] = date('Y-m-d', strtotime("+" . (int) $cfg->get('min_date') . " day"));
+            }
         }
         
         if(strlen($cfg->get('max_date')))

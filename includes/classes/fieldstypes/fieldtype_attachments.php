@@ -218,7 +218,7 @@ class fieldtype_attachments
     {
         global $app_changed_fields;
 
-        $cfg = new settings($options['field']['configuration']);
+        $cfg = new settings($options['field']['configuration']??'');
         
         if(is_array($options['value']))
         {
