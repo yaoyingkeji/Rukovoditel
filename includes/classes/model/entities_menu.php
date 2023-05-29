@@ -569,7 +569,7 @@ class entities_menu
 
         while($pages = db_fetch_array($ipages_query))
         {
-            $menu_title = (strlen($pages['short_name']) ? $pages['short_name'] : $pages['name']);
+            $menu_title = (strlen($pages['short_name']??'') ? $pages['short_name'] : $pages['name']);
             $menu_icon = (strlen($pages['menu_icon']) > 0 ? $pages['menu_icon'] : 'fa-reorder');
 
             $sub_menu[] = array('title' => $menu_title, 'url' => url_for('ext/ipages/view', 'id=' . $pages['id']), 'class' => $menu_icon);
