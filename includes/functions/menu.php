@@ -229,7 +229,7 @@ function build_custom_entities_menu($menu, $parent_id = 0, $level = 0)
 
         if(count($sub_menu) == 1 and !$has_nested)
         {
-            $menu_icon = (strlen($entities_menu['icon']) > 0 ? $entities_menu['icon'] : 'fa-reorder');
+            $menu_icon = (strlen($entities_menu['icon']??'') > 0 ? $entities_menu['icon'] : 'fa-reorder');
             $menu[] = array(
                 'title' => $entities_menu['name'], 
                 'url' => $sub_menu[0]['url'], 
