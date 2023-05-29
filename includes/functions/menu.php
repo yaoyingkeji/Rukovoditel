@@ -582,7 +582,7 @@ function renderSidebarMenu($menu = array(), $html = '', $level = 0)
         {
             $query = parse_url($url,PHP_URL_QUERY);
             parse_str($query, $query);               
-            $query = $query['module'] . ($query['id']??'') . ($query['path']??'') . ($query['reports_id']??'');            
+            $query = ($query['module']??'') . ($query['id']??'') . ($query['path']??'') . ($query['reports_id']??'');            
             $link_class = 'menu-' . preg_replace('/[\W]/','',$query);                        
         }    
         
