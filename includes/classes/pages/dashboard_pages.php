@@ -230,7 +230,7 @@ class dashboard_pages
             if ($pages['color'] == 'default')
             {
                 $html .= '
-						<h3 class="page-title">' . (strlen($pages['icon']) ? app_render_icon($pages['icon']) . ' ' : '') . $pages['name'] . '</h3>
+						<h3 class="page-title">' . (strlen($pages['icon']??'') ? app_render_icon($pages['icon']) . ' ' : '') . $pages['name'] . '</h3>
 						<p>' . $pages['description'] . '</p>
 						';
             }
@@ -238,7 +238,7 @@ class dashboard_pages
             {
                 $html .= '
 						<div class="alert alert-' . $pages['color'] . '">
-							<h3 class="page-title">' . (strlen($pages['icon']) ? app_render_icon($pages['icon']) . ' ' : '') . $pages['name'] . '</h3>
+							<h3 class="page-title">' . (strlen($pages['icon']??'') ? app_render_icon($pages['icon']) . ' ' : '') . $pages['name'] . '</h3>
 							<p>' . $pages['description'] . '</p>
 						</div>		
 						';
