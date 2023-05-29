@@ -37,7 +37,7 @@ else
     echo '<h3 class="page-title">' . $page_title . '</h3>';
 }
 
-if(strlen($reports_info['description']))
+if(strlen($reports_info['description']??''))
 {
     echo '<p>' . $reports_info['description'] . '</p>';
 }
