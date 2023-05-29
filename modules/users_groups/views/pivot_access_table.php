@@ -32,14 +32,14 @@ $breadcrumb[] = '<li>' . $users_groups_info['name'] . '</li>';
                 $acess_info_query = db_query("select access_schema from app_entities_access where entities_id='" . db_input($v['id']) . "' and access_groups_id='" . $users_groups_info['id'] . "'");
                 if($acess_info = db_fetch_array($acess_info_query))
                 {
-                    $access_schema = explode(',', $acess_info['access_schema']);
+                    $access_schema = explode(',', $acess_info['access_schema']??');
                 }
 
                 $comments_schema = '';
                 $comments_acess_info_query = db_query("select access_schema from app_comments_access where entities_id='" . db_input($v['id']) . "' and access_groups_id='" . $users_groups_info['id'] . "'");
                 if($comments_acess_info = db_fetch_array($comments_acess_info_query))
                 {
-                    $comments_schema = str_replace(',', '_', $comments_acess_info['access_schema']);
+                    $comments_schema = str_replace(',', '_', $comments_acess_info['access_schema']??');
                 }
 
                 $entity_cfg = new entities_cfg($v['id']);
