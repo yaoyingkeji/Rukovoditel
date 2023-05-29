@@ -32,7 +32,7 @@
                         }
                         else
                         {
-                            if(strlen($v['entities_list']) > 0)
+                            if(strlen($v['entities_list']??'') > 0)
                             {
                                 $entities_query = db_query("select * from app_entities where id in (" . $v['entities_list'] . ") order by field(id," . $v['entities_list'] . ")");
                                 while($entities = db_fetch_array($entities_query))
@@ -41,12 +41,12 @@
                                 }
                             }
 
-                            if(strlen($v['reports_list']) > 0)
+                            if(strlen($v['reports_list']??'') > 0)
                             {
                                 echo entities_menu::get_reports_list($v['reports_list']);
                             }
                             
-                            if(strlen($v['pages_list']) > 0)
+                            if(strlen($v['pages_list']??'') > 0)
                             {
                                 echo entities_menu::get_pages_list($v['pages_list']);
                             }
